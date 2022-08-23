@@ -1,0 +1,22 @@
+
+
+-- If you don't use MCM, change your defaults from here.
+local defaults = {
+    ["cond"] = 90,
+    ["debug"] = false,
+}
+
+function get_config(key)
+    if ui_mcm then return ui_mcm.get("barter/"..key) else return defaults[key] end
+end
+
+function on_mcm_load()
+    op = { id= "barter",sh=true ,gr={
+            { id= "title",type= "slide",link= "ui_options_slider_player",text="ui_mcm_barter_title",size= {512,50},spacing= 20 },
+            {id = "cond", type = "track", val = 2, min=60,max=99,step=1, def = 90},
+            {id = "debug", type = "check", val = 1, def = false},                    
+
+        }
+    }
+    return op
+end

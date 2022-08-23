@@ -1,0 +1,38 @@
+
+[sid_jelly_suit] ; trade stalker suit for jellyfish, one time only
+trader          = m_trader
+precondition    = barter_core.check_limit,barter_core.check_goodwill
+postcondition   = barter_core.increment_limit
+give            = stalker_outfit
+take            = af_medusa,1
+repeat          = fixed
+limit           = 1
+goodwill        = stalker,100
+
+
+
+[loris_ak] ; early availability AK-47
+trader          = esc_main_base_trader_mlr
+give            = stalker_outfit
+take            = ammo_9x18_fmj,1,medkit,1,wpn_pm,1
+precondition    = barter_core.check_limit,barter_core.check_goodwill
+postcondition   = barter_core.increment_limit
+repeat          = fixed
+limit           = 1
+goodwill        = stalker,100
+
+[xenotech_scrap_oil] ; scrap for cheap gun oil
+trader          = esc_smart_terrain_5_7_loner_mechanic_stalker
+give            = gun_oil_ru
+take            = prt_i_scrap,5
+precondition    = barter_core.check_limit
+repeat          = restock
+limit           = 5
+
+[xenotech_scrap_glue] ; scrap for basic repair glue
+trader          = esc_smart_terrain_5_7_loner_mechanic_stalker
+give            = glue_b
+take            = prt_i_scrap,5
+precondition    = barter_core.check_limit
+repeat          = restock
+limit           = 5

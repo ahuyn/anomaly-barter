@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="windows-1251"?>
+<string_table>
+    
+    <string id="st_ui_mm_barter">
+        <text>Barter</text>
+    </string>
+
+    <string id="st_barter_goodwill">
+        <text>goodwill required: </text>
+    </string>
+    <string id="st_barter_limit">
+        <text>limit</text>
+    </string>
+
+    <string id="st_barter_refresh">
+        <text>(refreshed on restock)</text>
+    </string>
+    <string id="st_barter_fixed">
+        <text>(does not refresh)</text>
+    </string>
+	<string id="st_ui_itm_barter_base">
+		<text>Available Barters</text>
+	</string>
+	<string id="st_ui_itm_barter_support">
+		<text>Required Items</text>
+	</string>
+	<string id="st_ui_barter_rules">
+		<text>Ground rules for bartering:\n
+            • Condition items must be at %s%.\n
+            • Multi-use items must have all uses.\n
+            • Ammunition must have a full box.
+        </text>
+	</string>
+
+    
+    <string id="ui_mcm_menu_barter">
+        <text>Barter</text>
+    </string>
+    <string id="ui_mcm_barter_title">
+        <text>Anomaly NPC Bartering</text>
+    </string>
+    <string id="ui_mcm_barter_cond">
+        <text>Take Weapon Condition Minimum</text>
+    </string>
+    <string id="ui_mcm_barter_cond_desc">
+        <text>Minimum required condition for player-provided weapons in a barter. \n \n
+            For Parts Overhaul users, a hard requirement of 60% minimum condition for ALL parts is required.
+        </text>
+    </string>
+    <string id="ui_mcm_barter_debug">
+        <text>Debug Printing</text>
+    </string>
+
+</string_table>
