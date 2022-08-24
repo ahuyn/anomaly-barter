@@ -6,13 +6,13 @@
     </string>
 
     <string id="st_barter_goodwill">
-        <text>goodwill required: </text>
+        <text>req. goodwill: </text>
     </string>
     <string id="st_barter_limit">
         <text>limit</text>
     </string>
 
-    <string id="st_barter_refresh">
+    <string id="st_barter_restock">
         <text>(refreshed on restock)</text>
     </string>
     <string id="st_barter_fixed">
@@ -51,4 +51,7 @@
         <text>Debug Printing</text>
     </string>
 
+    <string id="st_dot">
+        <text>•</text>
+    </string>
 </string_table>

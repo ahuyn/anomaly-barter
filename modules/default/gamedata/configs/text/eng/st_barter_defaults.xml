@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="windows-1251"?>
+<string_table>
+    <string id="st_sid_jelly_suit">
+        <text>So, today's your lucky day. I have a spare suit lying around - previous owner won't be needing it anymore. I need to make sure if it goes to you it won't find its way back to me again. Show me you're somewhat competent, eh, and I'll hand it over. Think of it as startup capital.</text>
+    </string>
+    <string id="st_sid_jelly_suit_done">
+        <text>Nice work, stalker. Here you go. Be sure to remember your old pal Sid when you become rich, ok?</text>
+    </string>
+    
+    <string id="st_loris_ak">
+        <text>Stalker, are you really running around with that pea shooter? At this rate you'll be dead so quickly there won't be anything valuable to strip off your corpse. I have this old AK, real Cold War relic, and customers aren't too keen on it because they prefer more modern, lighter weapons. I'll let you have it if you get me something decent to eat.</text>
+    </string>
+    <string id="st_loris_ak_done">
+        <text>Thanks, stalker. I could really use something to wash this down, too, hmm..</text>
+    </string>
+    <string id="st_loris_762">
+        <text>Need ammo for that AK? I happen to have a few crates lying around. Get me something to drink and we'll have a deal.</text>
+    </string>
+    <string id="st_loris_762_done">
+        <text>Thanks, stalker. I have to wait for Sid to get another shipment in, but keep the beer coming.</text>
+    </string>
+</string_table>

@@ -1,0 +1,26 @@
+; all the repeatable barters
+
+[xenotech_scrap_oil] ; scrap for cheap gun oil
+trader          = esc_smart_terrain_5_7_loner_mechanic_stalker
+give            = gun_oil_ru
+take            = prt_i_scrap,5
+precondition    = barter_core.check_limit
+repeat          = restock
+limit           = 5
+
+[xenotech_scrap_glue] ; scrap for basic repair glue
+trader          = esc_smart_terrain_5_7_loner_mechanic_stalker
+give            = glue_b
+take            = prt_i_scrap,5
+precondition    = barter_core.check_limit
+repeat          = restock
+limit           = 5
+
+
+[hunter_meat_1] ; meat for sharpening stones
+trader          = hunter_gar_trader
+give            = sharpening_stones
+take            = meat_dog,3
+precondition    = barter_core.check_limit
+repeat          = restock
+limit           = 2

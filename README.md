@@ -43,6 +43,10 @@ repeat          = fixed
 limit           = 1
 ; Leveraged by barter_core.check_goodwill. Requires the specified amount of goodwill for the given faction before allowing the barter.
 goodwill        = stalker,100
+; Description that shows in box when barter is selected.
+desc            = st_sid_jelly_suit
+; Optional, if the limit is reached for limited barters this message will display.
+desc_done       = st_sid_jelly_suit_done
 ```
 3. Specified trader should have your item in barter menu.
 4. Custom functions can be specified based oh what conditions you want your barter to show up.

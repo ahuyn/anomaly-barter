@@ -11,11 +11,20 @@ local barter_mdata = {
 local ini_barters = ini_file("barter\\importer.ltx")
 ini_parts = itms_manager.ini_parts
 gc = game.translate_string
+get_config = barter_mcm.get_config
 
 function print_dbg(txt, ...)
 	if (get_config("debug") or false) then
 		printf("barter | %s | " .. txt, time_global(), ...)
 	end
+end
+
+function get_desc(name)
+    local desc = "desc"
+    if ini_barters:r_string_ex(name, "repeat") and ini_barters:r_string_ex(name, "desc_done") and not check_limit(name) then
+        desc = "desc_done"
+    end
+    return ini_barters:r_string_ex(name, desc) or "st_ui_barter_rules"
 end
 
 -- get barter list with data on each barter
@@ -122,7 +131,7 @@ function build_string(name)
         local actor_goodwill = relation_registry.community_goodwill(goodwill[1], AC_ID)
         local req_goodwill = tonumber(goodwill[2])
         local clr = actor_goodwill < req_goodwill and clr_r or clr_g
-        str = str .. " " .. gc("st_dot") .. " " .. gc(goodwill[1]) .. " " .. gc("st_barter_goodwill") .. clr ..  actor_goodwill .. "/" .. req_goodwill .. clr_2 .. " \\n "
+        str = str .. " " .. gc("st_dot") .. " " .. gc(goodwill[1]) .. " " .. gc("st_barter_goodwill") .. " " .. clr ..  actor_goodwill .. "/" .. req_goodwill .. clr_2 .. " \\n"
     end
 
     local rep = ini_barters:r_string_ex(name, "repeat")
@@ -130,7 +139,7 @@ function build_string(name)
         local b_done = barter_mdata[rep][name] or 0
         local b_limit = ini_barters:r_float_ex(name, "limit") or 0
         local clr = b_done < b_limit and clr_g or clr_r
-        str = str .. " " .. gc("st_dot") .. " " .. gc("st_barter_limit") .. clr ..  " " ..b_done .. "/" .. b_limit .. clr_2 .. " " .. gc("st_barter_"..rep) .. " \\n "
+        str = str .. " " .. gc("st_dot") .. " " .. gc("st_barter_limit") .. clr ..  " " ..b_done .. "/" .. b_limit .. clr_2 .. " " .. gc("st_barter_"..rep) .. " \\n"
     end
 
     return str
@@ -216,7 +225,9 @@ local function parse_barters()
             print_dbg("Barter %s attempted to add nonexistant give item %s", name, give)
             return 
         end
-        local take = parse_barterstring(ini_barters:r_string_ex(name, "take"), ",")
+        local take =ini_barters:r_string_ex(name, "take")
+        if not take then return end
+        take = parse_barterstring(take)
         for k,v in pairs(take) do
             if not ini_sys:section_exist(k) then
                 print_dbg("Barter %s attempted to add nanexistant take item %s", name, k)

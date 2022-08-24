@@ -8,31 +8,51 @@ take            = af_medusa,1
 repeat          = fixed
 limit           = 1
 goodwill        = stalker,100
-
+desc            = st_sid_jelly_suit
+desc_done       = st_sid_jelly_suit_done
 
 
 [loris_ak] ; early availability AK-47
 trader          = esc_main_base_trader_mlr
-give            = stalker_outfit
-take            = ammo_9x18_fmj,1,medkit,1,wpn_pm,1
-precondition    = barter_core.check_limit,barter_core.check_goodwill
+give            = wpn_ak
+take            = mre,1
+precondition    = barter_core.check_limit
 postcondition   = barter_core.increment_limit
 repeat          = fixed
 limit           = 1
 goodwill        = stalker,100
+desc            = st_loris_ak
+desc_done       = st_loris_ak_done
 
-[xenotech_scrap_oil] ; scrap for cheap gun oil
-trader          = esc_smart_terrain_5_7_loner_mechanic_stalker
-give            = gun_oil_ru
-take            = prt_i_scrap,5
+[loris_762] ; you dont give someone a toy without batteries
+trader          = esc_main_base_trader_mlr
+give            = ammo_7.62x39_fmj
+take            = beer,1
+precondition    = barter_core.check_limit
+postcondition   = barter_core.increment_limit
+repeat          = restock
+limit           = 2
+goodwill        = stalker,100
+desc            = st_loris_762
+desc_done       = st_loris_762_done
+
+[loris_545] ; you dont give someone a toy without batteries
+trader          = esc_main_base_trader_mlr
+give            = ammo_5.45x39_fmj
+take            = beer,1
+precondition    = barter_core.check_limit
+postcondition   = barter_core.increment_limit
+repeat          = restock
+limit           = 2
+goodwill        = stalker,100
+desc            = st_loris_762
+desc_done       = st_loris_762_done
+
+
+[hunter_knoife] ; one time hunting knife
+trader          = hunter_gar_trader
+give            = wpn_knife3
+take            = wpn_ak,1
 precondition    = barter_core.check_limit
 repeat          = restock
-limit           = 5
-
-[xenotech_scrap_glue] ; scrap for basic repair glue
-trader          = esc_smart_terrain_5_7_loner_mechanic_stalker
-give            = glue_b
-take            = prt_i_scrap,5
-precondition    = barter_core.check_limit
-repeat          = restock
-limit           = 5
+limit           = 2

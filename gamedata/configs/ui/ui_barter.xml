@@ -18,6 +18,8 @@
 			<texture>ui_inGame2_item_1_inv</texture>
 		</back_inv_2>
 		
+		<scroll_desc_2 x="324" y="390" width="180" height="111" right_ident="0" left_ident="0" top_indent="0" bottom_indent="0" vert_interval="0" always_show_scroll="0"/>
+
 		<box_item_2 x="324" y="390" width="180" height="111" stretch="1">
 			<text complex_mode="1" r="150" g="150" b="150" align="l" vert_align="c" font="letterica16"/>
 		</box_item_2>
@@ -43,7 +45,9 @@
 			<texture>ui_inGame2_item_1_inv</texture>
 		</back_inv_1>
 		
-		<box_item_1 x="64" y="390" width="180" height="111" stretch="1">
+		<scroll_desc_1 x="64" y="390" width="180" height="111" right_ident="0" left_ident="0" top_indent="0" bottom_indent="0" vert_interval="0" always_show_scroll="0"/>
+
+		<box_item_1 x="64" y="390" width="180" height="111" stretch="1" >
 			<text complex_mode="1" r="150" g="150" b="150" align="l" vert_align="c" font="letterica16"/>
 		</box_item_1>
 		<back_item_1 x="59" y="384" width="192" height="125" stretch="1">
