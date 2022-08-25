@@ -1,7 +1,7 @@
 -- cache all existing barters, source of truth
-local barters = {}
+barters = {}
 -- list of all barters associated with trader (array index)
-local trader_to_barter = {}
+trader_to_barter = {}
 -- track existing data when it comes to barters that have been partially completed n such, need to be reloaded, etc
 local barter_mdata = {
     fixed = {}, -- limited
@@ -27,8 +27,14 @@ function get_desc(name)
     return ini_barters:r_string_ex(name, desc) or "st_ui_barter_rules"
 end
 
+function npc_has_barter(npc)
+    local name = npc:section()
+    return trader_to_barter[name] and not is_empty(trader_to_barter[name])
+end
+
 -- get barter list with data on each barter
 function get_barter_list(npc)
+    if not npc_has_barter(npc) then return {} end
     local name = npc:section()
     print_dbg("Fetching list for %s", npc:character_name())
     local barter_list = {}
@@ -58,7 +64,7 @@ function eval_barter(name, condition)
 end
 
 -- return data on barter eligibility and what items are taken
-function barter_get_data(name)
+function barter_get_data(name, sort_func)
     -- eval precond
     local allowed = eval_barter(name, "precondition")
     -- eval items
@@ -115,6 +121,11 @@ function barter_get_data(name)
     print_dbg("Barter allowance for %s is %s", name, allowed)
     data.allowed = allowed
     data.take_items = take_items
+
+    if sort_func then
+        table.sort(data, sort_func)
+    end
+
     return data
 end
 

@@ -26,27 +26,31 @@ These are restated in game.
 1. Create a file `barter_yourcustom.ltx` under file path `configs\barter`.
 2. Sample barter with fields explained.
 ```
-[sid_jelly_suit]:sid_base
-; section of the trader to register barter for
+[sid_jelly_suit]
 trader          = m_trader 
-; item to be offered. Right now limitation is to a single instance of one item  as given reward.  Any invalid sections will render the barter invalid.
 give            = stalker_outfit 
-; Comma separated list, format is section,quantity. Any invalid sections will render the barter invalid.
 take            = ammo_9x18_fmj,1,medkit,1,wpn_pm,1 
-; These functions will be executed to check eligibility. If false is returned, the barter will be prevented. Functions are executed in order and ALL functions must return true to proceed.
 precondition    = barter_core.check_limit,barter_core.check_goodwill
-; This function is executed after the barter is cone.
 postcondition   = barter_core.increment_limit
-; Leveraged by barter_core.check_limit. This determines the type of repeatability for the barter. Valid keys are either 'fixed` or 'restock' Optional: remove for infinite repeatability.
 repeat          = fixed
-; Leveraged by barter_core.check_limit. Determines max trades that can be performed before the reset condition.
 limit           = 1
-; Leveraged by barter_core.check_goodwill. Requires the specified amount of goodwill for the given faction before allowing the barter.
 goodwill        = stalker,100
-; Description that shows in box when barter is selected.
 desc            = st_sid_jelly_suit
-; Optional, if the limit is reached for limited barters this message will display.
 desc_done       = st_sid_jelly_suit_done
 ```
+| Field | Type | Description |
+|-------|------|-------------|
+|trader | string | Section of the trader to register barter for. |
+| give | string | Item to be offered. Right now limitation is to a single instance of one item  as given reward.  Any invalid sections will render the barter invalid. |
+|take|string (comma separated)| Format is `section,quantity` repeated at least once. Any invalid sections will render the barter invalid. |
+|precondition|string (function refs)|These functions will be executed to check eligibility. If false is returned, the barter will be prevented. Functions are executed in order and ALL functions must return true to proceed. |
+|postcondition|string (function refs)|These functions are executed after the barter is done.|
+|repeat| `fixed/restock`|OPTIONAL. Leveraged by barter_core.check_limit. This determines the type of repeatability for the barter. Valid keys are either 'fixed` or 'restock'|
+|limit|float|Max number of times barter can be performed before reset.|
+|goodwill|`faction,int`|Requires the specified amount of goodwill for the given faction before allowing the barter.|
+|desc|string|String key of message displayed when barter is selected.|
+|des_done|string|String key of message displayed when max limit of barters is reached.|
 3. Specified trader should have your item in barter menu.
 4. Custom functions can be specified based oh what conditions you want your barter to show up.
+
+## Available 

@@ -8,6 +8,7 @@ barter_get_data             = barter_core.barter_get_data
 build_string  	            = barter_core.build_string
 do_barter		            = barter_core.do_barter
 get_desc		            = barter_core.get_desc
+npc_has_barter				= barter_core.npc_has_barter
 -- temp way to start trade window
 
 ----------------------------------------------------------------------
@@ -41,11 +42,16 @@ function ui_inventory.UIInventory:InitBarterButton()
 		pos.y
 	))
 
-	self.npc_barter_btn:TextControl():SetText(game.translate_string("st_start_barter"))
+	self.npc_barter_btn:TextControl():SetText(game.translate_string("st_ui_mm_barter"))
 	
 	self:Register(self.npc_barter_btn, "barter")
 
 	self:InitBarterButtonCallback()
+
+	local npc = mob_trade.GetTalkingNpc()
+	local enable = npc_has_barter(npc)
+	self.npc_barter_btn:Enable(enable)
+
 end
 
 function ui_inventory.UIInventory:InitBarterButtonCallback()
@@ -108,9 +114,6 @@ function UIBarter:InitControls()
 		self.b_inv[i]             = xml:InitStatic("barter:back_inv_" .. tostring(i) , self.dialog)
 		self.b_item[i]            = xml:InitStatic("barter:back_item_" .. tostring(i) , self.dialog)
 		self.text_item[i]         = xml:InitTextWnd("barter:text_item_" .. tostring(i) , self.dialog)
-
-		-- self.cell_item[i]         = utils_ui.UICellItem( {path="container" , xml=xml} , { path="barter:box_item_" .. tostring(i) , base= self.dialog } )
-		-- self.cell_item[i].disable_bar = true
 		self.cell_item[i]		  = xml:InitTextWnd("barter:box_item_" .. tostring(i) , nil)
 		self.cell_scroll[i]		  = xml:InitScrollView("barter:scroll_desc_" .. tostring(i) , self.dialog)
 		self.cell_scroll[i]:AddWindow(self.cell_item[i], true)
@@ -143,12 +146,11 @@ function UIBarter:InitCallBacks()
 end
 
 function UIBarter:Reset()
-	print_dbg("Reset barter")
     local npc = mob_trade.GetTalkingNpc()
 	self.section = npc:section()
 
 	-- Settings
-	self.barter_frame      =  "ui_itm_barter_1"
+	self.barter_frame      =  "ui_itm_repair_1"
 	self.barters = get_barter_list(npc) -- barters for this npc
 	self.index_barter = {} -- 
 	self.selected_barter = "" -- currently selected barter
@@ -168,10 +170,8 @@ function UIBarter:Reset()
 	self.text_item[2]:Show(to_show)
 	self.CC[2]:Show(to_show)
 	
-	-- Set npc face (needs new func)
+	-- Set npc face
 	self.box_item_main:InitTexture( npc:character_icon() )
-	-- utils_xml.set_upgr_icon(self.obj, self.section, self.box_item_main, self.box_item_main_temp)
-
 	
 	-- Set npc trader name
 	self.cap_menu:SetText(gc(npc:character_name()))
@@ -187,13 +187,14 @@ local clr_g  = utils_xml.get_color("d_green", true)
 local clr_r  = utils_xml.get_color("d_red", true)
 function UIBarter:InitInventory(n)
 	local inv = {}
-	local size_t = 0
+	local inf = {}
 
 	-- get all the barters for this npc
     -- gray out items and make unclickable if not valid
 	if n == 1 then
 		for k,v in pairs(self.barters) do
             inv[#inv+1] = v.give
+			inf[#inf+1] = v.amt .. "/" .. v.limit
 			self.index_barter[#self.index_barter + 1] = k
 		end
 		self.CC[1]:Reinit(inv)
@@ -206,13 +207,12 @@ function UIBarter:InitInventory(n)
 				else
 					ci:Colorize("hide")
 				end
+				ci:Add_CustomText(ci.flags.info, nil, nil, clr, fnt)
 			end
 		end
 	-- get all the required items to exchange, grayed out if requirements not met
 	elseif n == 2 then
 		-- assume self.selected_barter has the selected barter
-		local inv = {}
-		local inf = {}
 		if not self.selected_barter then return end
 		local barter_data = self.barters[self.selected_barter]
 		local take = barter_data.take_items
@@ -354,8 +354,4 @@ function utils_ui.UICellContainer:GetSortMethod()
 	else
 		return GetSort(self)
 	end 
-end
-
-function sort_barter(t, a, b)
-	return (SYS_GetParam(2, t[a], "cost") or 0) > (SYS_GetParam(2, t[b], "cost") or 0)
 end
