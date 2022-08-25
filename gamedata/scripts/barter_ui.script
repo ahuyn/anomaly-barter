@@ -9,11 +9,7 @@ build_string  	            = barter_core.build_string
 do_barter		            = barter_core.do_barter
 get_desc		            = barter_core.get_desc
 -- temp way to start trade window
-StartTrade = dialogs.npc_is_trader
-function dialogs.npc_is_trader(a, b)
-    StartTrade(a, b)
-    start()
-end
+
 ----------------------------------------------------------------------
 GUI = nil -- instance, don't touch
 function start()
@@ -32,6 +28,40 @@ function start()
 		GUI:ShowDialog(true)
 		Register_UI("UIBarter","barter_ui")
 	end
+end
+
+function ui_inventory.UIInventory:InitBarterButton()
+	self.npc_barter_btn = self.xml:Init3tButton("npc:trade_delimiter:trade_buy_button", self.npc_trade)
+
+	local pos = self.npc_barter_btn:GetWndPos()
+	local w = self.npc_barter_btn:GetWidth()
+
+	self.npc_barter_btn:SetWndPos(vector2():set(
+		pos.x + w + 10, -- TODO: Add sliders in MCM to adjust button position
+		pos.y
+	))
+
+	self.npc_barter_btn:TextControl():SetText(game.translate_string("st_start_barter"))
+	
+	self:Register(self.npc_barter_btn, "barter")
+
+	self:InitBarterButtonCallback()
+end
+
+function ui_inventory.UIInventory:InitBarterButtonCallback()
+	self:AddCallback("barter", ui_events.BUTTON_CLICKED, start, self)
+end
+
+function GUI_on_show(name, path)
+	if name ~= "UIInventory" or (not ui_inventory.GUI) then return end
+	
+	if (not ui_inventory.GUI.npc_barter_btn) then
+		ui_inventory.GUI:InitBarterButton()
+	end
+end
+
+function on_game_start()
+	RegisterScriptCallback("GUI_on_show", GUI_on_show)
 end
 
 ----------------------------------------------------------------------
