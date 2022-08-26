@@ -125,7 +125,7 @@ function UIBarter:InitControls()
 		self.CC[i].showcase	 	  = true
 		self.CC[i]:SetGridSpecs(35, 2)
 	end
-	self.CC[1].sort_method = "sort_barter"
+	self.CC[1].sort_method = "none"
 	self.item_info = utils_ui.UIInfoItem(self, 1000)
 	
 	-- Main icon - change to npc face
@@ -153,7 +153,7 @@ function UIBarter:Reset()
 	self.barter_frame      =  "ui_itm_repair_1"
 	self.barters = get_barter_list(npc) -- barters for this npc
 	self.index_barter = {} -- 
-	self.selected_barter = "" -- currently selected barter
+	self.selected = "" -- currently selected barter
 	
 	-- Elements
 	self.CC[2]:Reset()
@@ -194,27 +194,31 @@ function UIBarter:InitInventory(n)
 	if n == 1 then
 		for k,v in pairs(self.barters) do
             inv[#inv+1] = v.give
-			inf[#inf+1] = v.amt .. "/" .. v.limit
-			self.index_barter[#self.index_barter + 1] = k
+			inf[#inf+1] = v.amt and v.amt .. "/" .. v.limit or ""
+			-- self.index_barter[#self.index_barter + 1] = k
 		end
-		self.CC[1]:Reinit(inv)
+		self.CC[1]:Reinit(inv, inf)
 
 		-- colorize what can be traded for
 		for i,ci in pairs(self.CC[1].cell) do
 			if ci:IsShown() then
-				if self.barters[self.index_barter[ci.indx]].allowed then
+				local b = self.barters[ci.indx]
+				if b.allowed then
 					ci:Colorize("def")
 				else
 					ci:Colorize("hide")
 				end
-				ci:Add_CustomText(ci.flags.info, nil, nil, clr, fnt)
+				if ci.flags.info ~= "" then
+					local clr = b.amt < b.limit and clr_g or clr_r
+					ci:Add_CustomText(ci.flags.info, nil, nil, clr, fnt)
+				end
 			end
 		end
 	-- get all the required items to exchange, grayed out if requirements not met
 	elseif n == 2 then
-		-- assume self.selected_barter has the selected barter
-		if not self.selected_barter then return end
-		local barter_data = self.barters[self.selected_barter]
+		-- assume self.selected has the selected barter
+		if not self.selected then return end
+		local barter_data = self.barters[self.selected]
 		local take = barter_data.take_items
 		for k,v in pairs(take) do
             inv[#inv+1] = k
@@ -278,27 +282,27 @@ function UIBarter:OnItemSelect(n)
 	local idx = obj_1.indx
 
 	if n == 1 then
-		self.selected_barter = self.index_barter[idx]
+		self.selected = idx--self.index_barter[idx]
 		-- -- Text (Name)
-		local name = ui_item.get_sec_name(self.barters[self.selected_barter].give)
+		local name = ui_item.get_sec_name(self.barters[self.selected].give)
 		-- set name of barter give item
 		self.text_item[n]:SetText(name)
 		-- set conditions
-		self.cell_item[1]:SetText(gc(get_desc(self.selected_barter)))
+		self.cell_item[1]:SetText(gc(get_desc(self.barters[self.selected].name)))
 		self.cell_item[1]:AdjustHeightToText()
 		self.cell_item[1]:SetWndSize(vector2():set(self.cell_item[1]:GetWidth(),self.cell_item[1]:GetHeight()+10))
 		self.cell_scroll[1]:Clear()
 		self.cell_scroll[1]:AddWindow(self.cell_item[1], true)
 		self.cell_item[1]:SetAutoDelete(false)
 		
-		self.cell_item[2]:SetText(build_string(self.selected_barter))
+		self.cell_item[2]:SetText(build_string(self.barters[self.selected].name))
 		self.cell_item[2]:AdjustHeightToText()
 		self.cell_item[2]:SetWndSize(vector2():set(self.cell_item[2]:GetWidth(),self.cell_item[2]:GetHeight()+10))
 		self.cell_scroll[2]:Clear()
 		self.cell_scroll[2]:AddWindow(self.cell_item[2], true)
 		self.cell_item[2]:SetAutoDelete(false)
 		
-		if self.barters[self.selected_barter].allowed then
+		if self.barters[self.selected].allowed then
 			self.btn_barter:Enable(true)
 		else
 			self.btn_barter:Enable(false)			
@@ -310,7 +314,7 @@ function UIBarter:OnBarter()
 	local obj_1 = self.CC[1]:GetCell_Selected()
 	local obj_2 = self.CC[2]:GetCell_Selected()
 	
-	do_barter(self.selected_barter, self.barters[self.selected_barter].take_items)
+	do_barter(self.barters[self.selected].name, self.barters[self.selected].take_items)
 	-- consider resetting ui?
 	self.CC[1]:Reset()
 	CreateTimeEvent("barter", math.random(69), 0, function()
@@ -349,7 +353,7 @@ end
 
 GetSort = utils_ui.UICellContainer.GetSortMethod
 function utils_ui.UICellContainer:GetSortMethod()
-	if self.sort_method == "sort_barter" then
+	if self.sort_method == "none" then
 		return
 	else
 		return GetSort(self)
