@@ -59,11 +59,14 @@ function ui_inventory.UIInventory:InitBarterButtonCallback()
 end
 
 function GUI_on_show(name, path)
-	if name ~= "UIInventory" or (not ui_inventory.GUI) then return end
-	
-	if (not ui_inventory.GUI.npc_barter_btn) then
-		ui_inventory.GUI:InitBarterButton()
+	local instance = ui_inventory.GUI
+	if name ~= "UIInventory" or (not instance ) then return end
+
+	if (not instance.npc_barter_btn) then
+		instance:InitBarterButton()
 	end
+	local partner = instance:GetPartner()
+	instance.npc_barter_btn:Show(partner and npc_has_barter(partner))
 end
 
 function on_game_start()

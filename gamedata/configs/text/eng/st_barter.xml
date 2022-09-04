@@ -47,26 +47,6 @@
         </text>
     </string>
     
-    <string id="ui_mcm_barter_sort">
-        <text>Barter Sorting</text>
-    </string>
-    <string id="ui_mcm_barter_sort_desc">
-        <text>Ordering of NPC barters.\n \n
-            • Cost: Order by cost of the barter item\n
-            • Goodwill: Order by goodwill required for barter\n
-            • Limit: Groups barters by type of limit (fixed, restock, none)\n
-        </text>
-    </string>
-    
-    <string id="ui_mcm_lst_cost">
-        <text>Barter Sorting</text>
-    </string>
-    <string id="ui_mcm_lst_goodwill">
-        <text>Barter Sorting</text>
-    </string>
-    <string id="ui_mcm_lst_limit">
-        <text>Barter Sorting</text>
-    </string>
     <string id="ui_mcm_barter_debug">
         <text>Debug Printing</text>
     </string>

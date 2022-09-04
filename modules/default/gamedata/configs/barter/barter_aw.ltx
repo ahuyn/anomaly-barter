@@ -1,0 +1,23 @@
+
+; skinflint
+[skinflint_ammo_556]
+trader          = mil_smart_terrain_7_10_freedom_trader_stalker
+give            = medkit
+take            = ammo_5.56x45_fmj,1
+precondition    = barter_core.check_limit
+postcondition   = barter_core.increment_limit
+repeat          = restock
+limit           = 2
+desc            = st_skinflint_ammo
+desc_done       = st_skinflint_ammo_done
+
+[skinflint_ammo_308]
+trader          = mil_smart_terrain_7_10_freedom_trader_stalker
+give            = medkit_army
+take            = ammo_7.62x51_fmj,2
+precondition    = barter_core.check_limit
+postcondition   = barter_core.increment_limit
+repeat          = restock
+limit           = 2
+desc            = st_skinflint_ammo
+desc_done       = st_skinflint_ammo_done

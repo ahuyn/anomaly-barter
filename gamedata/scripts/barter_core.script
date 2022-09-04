@@ -28,21 +28,10 @@ function get_desc(name)
 end
 
 function npc_has_barter(npc)
-    local name = npc:section()
+    local name = npc and npc:section() or ""
+    printf("Talking to %s", name)
     return trader_to_barter[name] and not is_empty(trader_to_barter[name])
 end
-
--- -- cost of give item
--- function sort_cost(t, a, b)
---     return SYS_GetParam(2, t[a].give, "cost") > SYS_GetParam(2, t[b].give, "cost")
--- end
-
--- function sort_goodwill(t, a, b)
---     local a_rep = ini_barters:r_float_ex(t[a].name, "goodwill") or 0
---     local b_rep = ini_barters:r_float_ex(t[b].name, "goodwill") or 0
---     return a_rep > b_rep
--- end
-
 
 -- barter name, "precondition"/"postcondition"
 function eval_barter(name, condition)
@@ -68,7 +57,7 @@ local repeat_ranks = {
     ["fixed"] = 1
 }
 
--- infinite, restock, fixed
+-- sorts barters
 function sort_func(a, b)
     -- goodwill
     local a_rep = ini_barters:r_float_ex(a.name, "goodwill") or 0
@@ -91,7 +80,7 @@ function sort_func(a, b)
 end
 
 -- get barter list with data on each barter
-function get_barter_list(npc)
+function get_barter_list(npc, random)
     if not npc_has_barter(npc) then return {} end
     local name = npc:section()
     print_dbg("Fetching list for %s", npc:character_name())

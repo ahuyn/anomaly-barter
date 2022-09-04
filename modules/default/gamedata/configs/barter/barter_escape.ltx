@@ -1,0 +1,115 @@
+; Sid
+[sid_jelly_suit] ; trade stalker suit for jellyfish, one time only
+trader          = m_trader
+precondition    = barter_core.check_limit,barter_core.check_goodwill
+postcondition   = barter_core.increment_limit
+give            = stalker_outfit
+take            = af_medusa,1
+repeat          = fixed
+limit           = 1
+faction         = stalker
+goodwill        = 100
+desc            = st_sid_jelly_suit
+desc_done       = st_sid_jelly_suit_done
+
+[sid_shotgun] ; shotty for patches
+trader          = m_trader
+precondition    = barter_core.check_limit,barter_core.check_goodwill
+postcondition   = barter_core.increment_limit
+give            = wpn_bm16
+take            = bandit_patch,6
+repeat          = fixed
+limit           = 1
+faction         = stalker
+goodwill        = 100
+desc            = st_sid_shotgun
+desc_done       = st_sid_shotgun_done
+
+[sid_salmon_medkit]
+trader          = m_trader
+precondition    = barter_core.check_limit,barter_core.check_goodwill
+postcondition   = barter_core.increment_limit
+give            = medkit_army
+take            = salmon,1
+repeat          = restock
+limit           = 1
+faction         = stalker
+goodwill        = 100
+desc            = st_sid_salmon
+desc_done       = st_generic_done
+
+[sid_salmon_ammo]
+trader          = m_trader
+precondition    = barter_core.check_limit,barter_core.check_goodwill
+postcondition   = barter_core.increment_limit
+give            = ammo_7.62x54_7h1
+take            = salmon,1
+repeat          = restock
+limit           = 1
+faction         = stalker
+goodwill        = 100
+desc            = st_sid_salmon
+desc_done       = st_generic_done
+
+
+; Loris
+[loris_ak] ; early availability AK-47
+trader          = esc_main_base_trader_mlr
+give            = wpn_ak
+take            = mre,1
+precondition    = barter_core.check_limit,barter_core.check_goodwill
+postcondition   = barter_core.increment_limit
+repeat          = fixed
+limit           = 1
+faction         = stalker
+goodwill        = 200
+desc            = st_loris_ak
+desc_done       = st_loris_ak_done
+
+[loris_762]
+trader          = esc_main_base_trader_mlr
+give            = ammo_7.62x39_fmj
+take            = beer,1
+precondition    = barter_core.check_limit,barter_core.check_goodwill
+postcondition   = barter_core.increment_limit
+repeat          = restock
+limit           = 2
+faction         = stalker
+goodwill        = 200
+desc            = st_loris_762
+desc_done       = st_loris_762_done
+
+
+; loner tech
+[xenotech_scrap_oil] ; wood scrap for cheap gun oil
+trader          = esc_smart_terrain_5_7_loner_mechanic_stalker
+give            = gun_oil_ru
+take            = prt_i_wood,3
+precondition    = barter_core.check_limit
+postcondition   = barter_core.increment_limit
+repeat          = restock
+limit           = 5
+desc            = st_xenotech_scrap
+desc_done       = st_xenotech_scrap_done
+
+[xenotech_scrap_glue] ; metal scrap for basic repair glue
+trader          = esc_smart_terrain_5_7_loner_mechanic_stalker
+give            = glue_b
+take            = prt_i_scrap,3
+precondition    = barter_core.check_limit
+postcondition   = barter_core.increment_limit
+repeat          = restock
+limit           = 5
+desc            = st_xenotech_scrap
+desc_done       = st_xenotech_scrap_done
+
+[xenotech_scrap_thread] ; scrap for basic repair glue
+trader          = esc_smart_terrain_5_7_loner_mechanic_stalker
+give            = sewing_thread
+take            = prt_i_fasteners,3
+precondition    = barter_core.check_limit
+postcondition   = barter_core.increment_limit
+repeat          = restock
+limit           = 5
+desc            = st_xenotech_scrap
+desc_done       = st_xenotech_scrap_done
