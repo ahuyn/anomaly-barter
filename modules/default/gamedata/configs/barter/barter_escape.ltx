@@ -20,6 +20,7 @@ give            = wpn_bm16
 take            = bandit_patch,6
 repeat          = fixed
 limit           = 1
+restricted      = stalker
 faction         = stalker
 goodwill        = 100
 desc            = st_sid_shotgun
@@ -84,7 +85,8 @@ desc_done       = st_loris_762_done
 [xenotech_scrap_oil] ; wood scrap for cheap gun oil
 trader          = esc_smart_terrain_5_7_loner_mechanic_stalker
 give            = gun_oil_ru
-take            = prt_i_wood,3
+take            = prt_i_wood,3,prt_i_fasteners,3,prt_i_scrap,3
+type            = anyOf
 precondition    = barter_core.check_limit
 postcondition   = barter_core.increment_limit
 repeat          = restock
@@ -95,7 +97,8 @@ desc_done       = st_xenotech_scrap_done
 [xenotech_scrap_glue] ; metal scrap for basic repair glue
 trader          = esc_smart_terrain_5_7_loner_mechanic_stalker
 give            = glue_b
-take            = prt_i_scrap,3
+take            = prt_i_wood,3,prt_i_fasteners,3,prt_i_scrap,3
+type            = anyOf
 precondition    = barter_core.check_limit
 postcondition   = barter_core.increment_limit
 repeat          = restock
@@ -106,7 +109,8 @@ desc_done       = st_xenotech_scrap_done
 [xenotech_scrap_thread] ; scrap for basic repair glue
 trader          = esc_smart_terrain_5_7_loner_mechanic_stalker
 give            = sewing_thread
-take            = prt_i_fasteners,3
+take            = prt_i_wood,3,prt_i_fasteners,3,prt_i_scrap,3
+type            = anyOf
 precondition    = barter_core.check_limit
 postcondition   = barter_core.increment_limit
 repeat          = restock

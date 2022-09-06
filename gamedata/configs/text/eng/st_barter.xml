@@ -4,6 +4,9 @@
         <text>Barter</text>
     </string>
 
+    <string id="st_barter_anyOf">
+        <text>Select one type of item to give.</text>
+    </string>
     <string id="st_barter_goodwill">
         <text>req. goodwill: </text>
     </string>
