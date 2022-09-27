@@ -199,7 +199,7 @@ function UIBarter:InitInventory(n)
     -- gray out items and make unclickable if not valid
 	if n == 1 then
 		for k,v in pairs(self.barters) do
-            inv[#inv+1] = v.give
+            inv[#inv+1] = v.give.sec
 			inf[#inf+1] = v.amt and v.amt .. "/" .. v.limit or ""
 		end
 		self.CC[1]:Reinit(inv, inf)
@@ -300,7 +300,11 @@ function UIBarter:OnItemSelect(n)
 	if n == 1 then
 		self.selected = idx
 		-- -- Text (Name)
-		local name = ui_item.get_sec_name(self.barters[self.selected].give)
+		local give = self.barters[self.selected].give
+		local name = ui_item.get_sec_name(give.sec)
+		if give.amt > 1 then
+			name = name .. " (x" .. give.amt .. ")"
+		end
 		-- set name of barter give item
 		self.text_item[n]:SetText(name)
 		self:SetWindowText(1, gc(get_desc(self.barters[self.selected].name)))

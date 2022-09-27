@@ -75,7 +75,7 @@ function sort_func(a, b)
     if a_limit ~= b_limit then return a_limit > b_limit end
     -- cost
     
-    return SYS_GetParam(2, a.give, "cost") > SYS_GetParam(2, b.give, "cost")
+    return (SYS_GetParam(2, a.give.sec, "cost") * a.give.amt) > (SYS_GetParam(2, b.give.sec, "cost") * b.give.amt)
 
 end
 
@@ -220,7 +220,10 @@ function do_barter(name, items, ind)
             end
         end
     end
-    alife_create_item(barters[name].give, db.actor)
+    give = barters[name].give
+    for i=1,give.amt do
+        alife_create_item(give.sec, db.actor)
+    end
     eval_barter(name, "postcondition")
 end
 
@@ -282,6 +285,10 @@ function trader_autoinject.update(npc)
     TraderAuto(npc)    
     local sec = npc:section()
     if not trader_to_barter[sec] then return end
+    
+    if not barter_mdata.fixed then barter_mdata.fixed = {} end
+    if not barter_mdata.restock then barter_mdata.restock = {} end
+    
     for k,v in pairs(trader_to_barter[sec]) do
         if barter_mdata.restock[v] then
             barter_mdata.restock[v] = 0
@@ -303,10 +310,15 @@ local function parse_barters()
         print_dbg("Parsing barter %s", name)
         local npc = ini_barters:r_string_ex(name, "trader")
         local give = ini_barters:r_string_ex(name, "give")
-        if not give or not ini_sys:section_exist(give) then 
+        give = str_explode(give, ",")
+        if not give[1] or not ini_sys:section_exist(give[1]) then 
             print_dbg("Barter %s attempted to add nonexistant give item %s", name, give)
             return 
         end
+        give_t = {
+            sec = give[1],
+            amt = tonumber(give[2]) or 1
+        }
         local take = ini_barters:r_string_ex(name, "take")
         if not take then return end
         take = parse_barterstring(take)
@@ -317,7 +329,7 @@ local function parse_barters()
             end
         end
         local data = {
-            give = give,
+            give = give_t,
             take = take,
         }
         local restricted = ini_barters:r_string_ex(name, "restricted")
