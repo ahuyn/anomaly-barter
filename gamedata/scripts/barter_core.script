@@ -106,6 +106,7 @@ function barter_get_data(name)
     data.give = barters[name].give
     data.take = barters[name].take
     data.type = barters[name].type
+    data.goodwill = ini_barters:r_float_ex(name, "goodwill") or 0
     data.amt = data.limit and get_barter_amt(name) or nil
     local take_items = {}
     for k,v in pairs(data.take) do

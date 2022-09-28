@@ -1,0 +1,108 @@
+class "UIBarterCellContainer" (utils_ui.UICellContainer)
+
+function UIBarterCellContainer:__init(id, owner, path, prof, ele_base, manual, use_frame)
+    super(id, owner, path, prof, ele_base, manual, use_frame)
+end
+
+function UIBarterCellContainer:Reinit(t, tf)
+    
+	self:Reset()
+	self.start_row = 0
+	-- If no inventory is passed, this function will just clear cells
+	if (not t) then
+		return
+	end
+
+	-- Create cells
+	self.ignore_scroll = true
+	self:Print(nil, "Reset | START Number of cells: %s", #self.cell)
+	
+	local sort_order = self:GetSortMethod()
+	if self.showcase then
+		for i=1,#t do
+            if t[i] == "newline" then
+                -- set start row to first available space
+                local found = false
+                for j=1,#self.grid do
+                    if self:RowFree(j) then
+                        self.start_row = j
+                        found = true
+                        break
+                    end
+                end
+                if not found then
+                    self:Grow()
+                    self.start_row = #self.grid
+                end
+            else
+                self:AddItem(nil,t[i], tf and tf[i])
+            end
+		end
+	else
+		for i,obj in spairs(t, sort_order) do
+			self:AddItem(obj, nil, tf and tf[i])
+		end
+	end
+	
+	self.ignore_scroll = false
+	self:Print(nil, "Reset | END Number of cells: %s", #self.cell)
+	
+	self:Scroll_Reinit()
+end
+
+function UIBarterCellContainer:RowFree(row)
+    for i=1,self.cols-1 do
+        if self.grid[row][i] == false then
+            return false
+        end
+    end
+    return true
+end
+
+function UIBarterCellContainer:FindSimilar(obj, sec)
+    return false
+end
+
+function UIBarterCellContainer:FindFreeCell(obj, sec)
+    
+	if (not sec) then
+		if (not obj) then
+			return false
+		end
+		sec = obj and obj:section()
+	end
+	
+	local w = SYS_GetParam(2,sec, "inv_grid_width",1)
+	local h = SYS_GetParam(2,sec, "inv_grid_height",1)
+
+	-- Avoid icons that don't fit
+	if w > self.cols then
+		return false
+	end
+
+	-- Sorting by kind: when sorting a new kind, always start from last row taken by previous kind
+	if self.sort_method == "kind" then
+		self.rKind.current = item_order[ab_k[sec]]
+		if (self.rKind.last ~= self.rKind.current) then
+			
+			self.rKind.last = self.rKind.current
+			self.rKind.row = self.row_end + 1
+		end
+	end
+	
+	local row_s = self.start_row or self.rKind.row
+	local rows = #self.grid
+	local cols = self.cols + 1 - w
+	self:Print(nil, "FindFreeCell for [%s] (rows: %s, cols: %s, W: %s, H: %s)", sec, rows,cols,w,h)
+	for r=row_s, rows do
+		for c=1,cols do
+			if self:IsFreeRoom(r,c,w,h) then
+				return self:TakeRoom(r,c,w,h)
+			end
+		end
+	end
+	
+	self:Grow()
+	
+	return self:FindFreeCell(obj, sec)
+end
