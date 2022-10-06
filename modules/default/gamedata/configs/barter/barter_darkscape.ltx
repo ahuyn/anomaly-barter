@@ -1,0 +1,22 @@
+; Darkscape trader
+[darkscape_arty_jelly]
+trader          = esc_main_base_trader_mlr
+give            = af_medusa
+take            = medkit,3
+precondition    = barter_core.check_limit
+postcondition   = barter_core.increment_limit
+repeat          = fixed
+limit           = 1
+desc            = st_darkscape_arty
+desc_done       = st_darkscape_arty_done
+
+[darkscape_arty_cristall]
+trader          = esc_main_base_trader_mlr
+give            = af_cristall
+take            = water_drink,3,energy_drink,3
+precondition    = barter_core.check_limit
+postcondition   = barter_core.increment_limit
+repeat          = fixed
+limit           = 1
+desc            = st_darkscape_arty
+desc_done       = st_darkscape_arty_done

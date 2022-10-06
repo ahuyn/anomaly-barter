@@ -69,7 +69,7 @@
 		<con_item_1_new x="447" y="483" width="57" height="18">
 			<text complex_mode="1" r="150" g="150" b="150" align="c" vert_align="c" font="letterica16"/>
 		</con_item_1_new>
-		<pic_item_main x="318" y="559" width="182" height="98" stretch="1"/>
+		<pic_item_main x="360" y="559" width="98" height="98" stretch="1"/>
 		
 		<btn_barter x="90" y="568" width="141" height="37">
 			<text r="150" g="150" b="150" font="letterica16" align="c" vert_align="c">st_ui_mm_barter</text>

@@ -1,0 +1,68 @@
+; garbage
+
+[hunter_knoife] ; one time hunting knife
+trader          = hunter_gar_trader
+give            = wpn_knife3
+take            = wpn_ak,1
+precondition    = barter_core.check_limit
+repeat          = restock
+limit           = 2
+
+
+; butcher
+[hunter_meat_bandage] ; meat for bandage
+trader          = hunter_gar_trader
+give            = bandage
+take            = mutant_part_dog_meat,2
+precondition    = barter_core.check_limit
+postcondition   = barter_core.increment_limit
+repeat          = restock
+limit           = 6
+desc            = st_hunter_meat
+desc_done       = st_hunter_meat_done
+
+[hunter_meat_stones] ; meat for stones
+trader          = hunter_gar_trader
+give            = sharpening_stones
+take            = mutant_part_flesh_meat,2
+precondition    = barter_core.check_limit
+postcondition   = barter_core.increment_limit
+repeat          = restock
+limit           = 3
+desc            = st_hunter_meat
+desc_done       = st_hunter_meat_done
+
+[hunter_meat_buck] ; cleaning kit for buckshot
+trader          = hunter_gar_trader
+give            = ammo_12x70_buck
+take            = mutant_part_boar_chop,1
+precondition    = barter_core.check_limit
+postcondition   = barter_core.increment_limit
+repeat          = restock
+limit           = 4
+desc            = st_hunter_meat
+desc_done       = st_hunter_meat_done
+
+[hunter_meat_clean] ; cleaning kit for stones
+trader          = hunter_gar_trader
+give            = cleaning_kit_s
+take            = mutant_part_boar_chop,2
+precondition    = barter_core.check_limit
+postcondition   = barter_core.increment_limit
+repeat          = restock
+limit           = 1
+desc            = st_hunter_meat
+desc_done       = st_hunter_meat_done
+
+
+; flea market
+[flea_toolkit_b]
+trader          = baraholka_trader
+give            = itm_basickit
+take            = cigarettes_lucky,1,ammo_5.45x39_fmj,2
+precondition    = barter_core.check_limit
+postcondition   = barter_core.increment_limit
+repeat          = fixed
+limit           = 1
+desc            = st_flea_toolkit
+desc_done       = st_generic_done

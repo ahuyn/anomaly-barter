@@ -26,27 +26,41 @@ These are restated in game.
 1. Create a file `barter_yourcustom.ltx` under file path `configs\barter`.
 2. Sample barter with fields explained.
 ```
-[sid_jelly_suit]:sid_base
-; section of the trader to register barter for
+[sid_jelly_suit]
 trader          = m_trader 
-; item to be offered. Right now limitation is to a single instance of one item  as given reward.  Any invalid sections will render the barter invalid.
-give            = stalker_outfit 
-; Comma separated list, format is section,quantity. Any invalid sections will render the barter invalid.
-take            = ammo_9x18_fmj,1,medkit,1,wpn_pm,1 
-; These functions will be executed to check eligibility. If false is returned, the barter will be prevented. Functions are executed in order and ALL functions must return true to proceed.
+give            = stalker_outfit,2
+take            = ammo_9x18_fmj,1,medkit,1,wpn_pm,1
+type            = anyOf
 precondition    = barter_core.check_limit,barter_core.check_goodwill
-; This function is executed after the barter is cone.
 postcondition   = barter_core.increment_limit
-; Leveraged by barter_core.check_limit. This determines the type of repeatability for the barter. Valid keys are either 'fixed` or 'restock' Optional: remove for infinite repeatability.
+restricted      = stalker
 repeat          = fixed
-; Leveraged by barter_core.check_limit. Determines max trades that can be performed before the reset condition.
 limit           = 1
-; Leveraged by barter_core.check_goodwill. Requires the specified amount of goodwill for the given faction before allowing the barter.
-goodwill        = stalker,100
-; Description that shows in box when barter is selected.
+faction         = stalker
+goodwill        = 100
 desc            = st_sid_jelly_suit
-; Optional, if the limit is reached for limited barters this message will display.
 desc_done       = st_sid_jelly_suit_done
 ```
+In plain english:
+
+The above barter is offered by Sid, exchanging two stalker suits for either some 9x18 rounds, a medkit, or a PM. This is a one-time only deal (never resets), is only offered to stalker characters, and requires 100 stalker goodwill as a precondition.
+
+## Table of fields 
+All fields besides `trader, give, take` are technically optional.
+| Field | Type | Description | Default Behavior |
+|-------|------|-------------| ---------------- |
+|trader | string | Section of the trader to register barter for. |
+| give | string (comma separated) | Item to be offered. Supports format of `item,quant` where item is what is given and quant is how many. Any invalid sections will render the barter invalid. |
+|take|string (comma separated)| Format is `section,quantity` repeated at least once. Any invalid sections will render the barter invalid. |
+|type|string (`allOf/anyOf`)|`allOf`: Requires ALL take items present to execute barter. <br> `anyOf`: Requires any of the given take items (respecting quanitity). On barter, actor will be prompted to select one.| Defaults to `allOf` |
+|precondition|string (function refs)|These functions will be executed to check eligibility. If false is returned, the barter will be prevented. Functions are executed in order and ALL functions must return true to proceed.| Aways passes (e.g. barter is always eligible to view) |
+|postcondition|string (function refs)|These functions are executed after the barter is done.| No postconditions applied |
+|restricted| string (comma separated factions)|Requires actor be one of the listed factions in order to view the barter.| All factions can view (assuming friendly) |
+|repeat| `fixed/restock`|Leveraged by barter_core.check_limit. This determines the type of repeatability for the barter. Valid keys are either 'fixed` or 'restock'| No limit imposed on the barter. |
+|limit|float|Max number of times barter can be performed before reset.| Defaults to 1 |
+|faction| string (faction)|OPTIONAL. Goes in tandem with `goodwill` key, is the 'given' faction for the goodwill requirement.| If not specified, no goodwill required. |
+|goodwill|integer|Requires the specified amount of goodwill for the given faction before allowing the barter.| Defaults to 0 goodwill |
+|desc|string|String key of message displayed when barter is selected.| Defaults to informational barter string |
+|des_done|string|String key of message displayed when max limit of barters is reached.| Defaults to informational barter string | 
 3. Specified trader should have your item in barter menu.
 4. Custom functions can be specified based oh what conditions you want your barter to show up.

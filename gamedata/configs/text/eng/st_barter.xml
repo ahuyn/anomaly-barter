@@ -1,10 +1,12 @@
 <?xml version="1.0" encoding="windows-1251"?>
 <string_table>
-    
     <string id="st_ui_mm_barter">
         <text>Barter</text>
     </string>
 
+    <string id="st_barter_anyOf">
+        <text>Select one type of item to give.</text>
+    </string>
     <string id="st_barter_goodwill">
         <text>req. goodwill: </text>
     </string>
@@ -47,6 +49,7 @@
             For Parts Overhaul users, a hard requirement of 60% minimum condition for ALL parts is required.
         </text>
     </string>
+    
     <string id="ui_mcm_barter_debug">
         <text>Debug Printing</text>
     </string>

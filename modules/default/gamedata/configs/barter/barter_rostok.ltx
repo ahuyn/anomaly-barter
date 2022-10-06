@@ -1,0 +1,39 @@
+
+; petrenko
+[petrenko_ammo_545] ; ammo for trophies
+trader          = bar_dolg_general_petrenko_stalker
+give            = ammo_5.45x39_fmj
+take            = mutant_part_psevdodog_tail,1
+precondition    = barter_core.check_limit
+postcondition   = barter_core.increment_limit
+repeat          = restock
+limit           = 4
+desc            = st_petrenko_trophies
+desc_done       = st_petrenko_trophies_done
+
+[petrenko_ammo_762] ; ammo for trophies
+trader          = bar_dolg_general_petrenko_stalker
+give            = ammo_7.62x54_fmj
+take            = mutant_part_krovosos_jaw,1
+precondition    = barter_core.check_limit
+postcondition   = barter_core.increment_limit
+repeat          = restock
+limit           = 2
+desc            = st_petrenko_trophies
+desc_done       = st_petrenko_trophies_done
+
+[petrenko_ammo_grenade] ; ammo for trophies
+trader          = bar_dolg_general_petrenko_stalker
+give            = grenade_rgd
+take            = mutant_part_boar_leg,1
+precondition    = barter_core.check_limit
+postcondition   = barter_core.increment_limit
+repeat          = restock
+limit           = 2
+desc            = st_petrenko_trophies
+desc_done       = st_petrenko_trophies_done
+
+; mangun
+
+
+; medic

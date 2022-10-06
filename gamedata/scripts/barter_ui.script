@@ -8,6 +8,7 @@ barter_get_data             = barter_core.barter_get_data
 build_string  	            = barter_core.build_string
 do_barter		            = barter_core.do_barter
 get_desc		            = barter_core.get_desc
+npc_has_barter				= barter_core.npc_has_barter
 -- temp way to start trade window
 
 ----------------------------------------------------------------------
@@ -41,11 +42,16 @@ function ui_inventory.UIInventory:InitBarterButton()
 		pos.y
 	))
 
-	self.npc_barter_btn:TextControl():SetText(game.translate_string("st_start_barter"))
+	self.npc_barter_btn:TextControl():SetText(game.translate_string("st_ui_mm_barter"))
 	
 	self:Register(self.npc_barter_btn, "barter")
 
 	self:InitBarterButtonCallback()
+
+	local npc = mob_trade.GetTalkingNpc()
+	local enable = npc_has_barter(npc)
+	self.npc_barter_btn:Enable(enable)
+
 end
 
 function ui_inventory.UIInventory:InitBarterButtonCallback()
@@ -53,11 +59,14 @@ function ui_inventory.UIInventory:InitBarterButtonCallback()
 end
 
 function GUI_on_show(name, path)
-	if name ~= "UIInventory" or (not ui_inventory.GUI) then return end
-	
-	if (not ui_inventory.GUI.npc_barter_btn) then
-		ui_inventory.GUI:InitBarterButton()
+	local instance = ui_inventory.GUI
+	if name ~= "UIInventory" or (not instance ) then return end
+
+	if (not instance.npc_barter_btn) then
+		instance:InitBarterButton()
 	end
+	local partner = instance:GetPartner()
+	instance.npc_barter_btn:Show(partner and npc_has_barter(partner))
 end
 
 function on_game_start()
@@ -108,21 +117,19 @@ function UIBarter:InitControls()
 		self.b_inv[i]             = xml:InitStatic("barter:back_inv_" .. tostring(i) , self.dialog)
 		self.b_item[i]            = xml:InitStatic("barter:back_item_" .. tostring(i) , self.dialog)
 		self.text_item[i]         = xml:InitTextWnd("barter:text_item_" .. tostring(i) , self.dialog)
-
-		-- self.cell_item[i]         = utils_ui.UICellItem( {path="container" , xml=xml} , { path="barter:box_item_" .. tostring(i) , base= self.dialog } )
-		-- self.cell_item[i].disable_bar = true
 		self.cell_item[i]		  = xml:InitTextWnd("barter:box_item_" .. tostring(i) , nil)
 		self.cell_scroll[i]		  = xml:InitScrollView("barter:scroll_desc_" .. tostring(i) , self.dialog)
 		self.cell_scroll[i]:AddWindow(self.cell_item[i], true)
 		self.cell_item[i]:SetAutoDelete(false)
 
-		self.CC[i]                = utils_ui.UICellContainer(i, self, nil, "barter:cont_inv_" .. tostring(i), self.dialog)
+		self.CC[i]                = barter_cellcont.UIBarterCellContainer(i, self, nil, "barter:cont_inv_" .. tostring(i), self.dialog)
 		self.CC[i].can_select	  = true
 		self.CC[i].disable_drag   = true
 		self.CC[i].showcase	 	  = true
 		self.CC[i]:SetGridSpecs(35, 2)
 	end
-	self.CC[1].sort_method = "sort_barter"
+	self.CC[1].sort_method = "none"
+	self.CC[2].sort_method = "none"
 	self.item_info = utils_ui.UIInfoItem(self, 1000)
 	
 	-- Main icon - change to npc face
@@ -143,15 +150,14 @@ function UIBarter:InitCallBacks()
 end
 
 function UIBarter:Reset()
-	print_dbg("Reset barter")
     local npc = mob_trade.GetTalkingNpc()
 	self.section = npc:section()
 
 	-- Settings
-	self.barter_frame      =  "ui_itm_barter_1"
+	self.barter_frame      =  "ui_itm_repair_1"
 	self.barters = get_barter_list(npc) -- barters for this npc
 	self.index_barter = {} -- 
-	self.selected_barter = "" -- currently selected barter
+	self.selected = "" -- currently selected barter
 	
 	-- Elements
 	self.CC[2]:Reset()
@@ -168,10 +174,8 @@ function UIBarter:Reset()
 	self.text_item[2]:Show(to_show)
 	self.CC[2]:Show(to_show)
 	
-	-- Set npc face (needs new func)
+	-- Set npc face
 	self.box_item_main:InitTexture( npc:character_icon() )
-	-- utils_xml.set_upgr_icon(self.obj, self.section, self.box_item_main, self.box_item_main_temp)
-
 	
 	-- Set npc trader name
 	self.cap_menu:SetText(gc(npc:character_name()))
@@ -187,47 +191,58 @@ local clr_g  = utils_xml.get_color("d_green", true)
 local clr_r  = utils_xml.get_color("d_red", true)
 function UIBarter:InitInventory(n)
 	local inv = {}
-	local size_t = 0
+	local inf = {}
 
 	-- get all the barters for this npc
     -- gray out items and make unclickable if not valid
 	if n == 1 then
+		local prev_rep = nil
 		for k,v in pairs(self.barters) do
-            inv[#inv+1] = v.give
-			self.index_barter[#self.index_barter + 1] = k
+			-- custom cell container supports adding 'newlines' which will force subsequent items to start occupying the next line
+			-- default behavior segments based on goodwill
+			if not prev_rep then prev_rep = v.goodwill end 
+			if prev_rep ~= v.goodwill then
+				inv[#inv+1] = "newline"
+				inf[#inf+1] = ""
+				prev_rep = v.goodwill
+			end
+            inv[#inv+1] = v.give.sec
+			inf[#inf+1] = v.amt and v.amt .. "/" .. v.limit or ""
 		end
-		self.CC[1]:Reinit(inv)
+		self.CC[1]:Reinit(inv, inf)
 
 		-- colorize what can be traded for
 		for i,ci in pairs(self.CC[1].cell) do
 			if ci:IsShown() then
-				if self.barters[self.index_barter[ci.indx]].allowed then
+				local b = self.barters[ci.indx]
+				if b.allowed then
 					ci:Colorize("def")
 				else
 					ci:Colorize("hide")
+				end
+				if ci.flags.info ~= "" then
+					local clr = b.amt < b.limit and clr_g or clr_r
+					ci:Add_CustomText(ci.flags.info, nil, nil, clr, fnt)
 				end
 			end
 		end
 	-- get all the required items to exchange, grayed out if requirements not met
 	elseif n == 2 then
-		-- assume self.selected_barter has the selected barter
-		local inv = {}
-		local inf = {}
-		if not self.selected_barter then return end
-		local barter_data = self.barters[self.selected_barter]
+		-- assume self.selected has the selected barter
+		if not self.selected then return end
+		local barter_data = self.barters[self.selected]
 		local take = barter_data.take_items
-		for k,v in pairs(take) do
-            inv[#inv+1] = k
-			inf[#inf+1] = v.amt .. "/" .. v.limit
+		for i=1,#take do
+            inv[#inv+1] = take[i].sec
+			inf[#inf+1] = take[i].amt .. "/" .. take[i].limit
 		end
 
 		-- second arg to reinit paints the numbered cell with the appropriate text
 		self.CC[2]:Reinit(inv, inf)
-		-- local clr_b = utils_xml.get_color("pda_blue",true)
 		local fnt = GetFontSmall()
 		for i,ci in pairs(self.CC[2].cell) do
 			if ci:IsShown() then
-				local data = take[ci.section]
+				local data = take[ci.indx]
 				local clr = clr_r
 				if data.amt < data.limit then
 					ci:Colorize("hide")
@@ -273,36 +288,53 @@ function UIBarter:On_CC_Mouse1(cont, idx)
 	end
 end
 
+-- set the text box to be scrolly n shit
+function UIBarter:SetWindowText(n, str)
+	
+	self.cell_item[n]:SetText(str)
+	self.cell_item[n]:AdjustHeightToText()
+	self.cell_item[n]:SetWndSize(vector2():set(self.cell_item[n]:GetWidth(),self.cell_item[n]:GetHeight()+10))
+	self.cell_scroll[n]:Clear()
+	self.cell_scroll[n]:AddWindow(self.cell_item[n], true)
+	self.cell_item[n]:SetAutoDelete(false)
+	
+end
+
 function UIBarter:OnItemSelect(n)
 	local obj_1 = self.CC[1]:GetCell_Selected()
 	local idx = obj_1.indx
 
 	if n == 1 then
-		self.selected_barter = self.index_barter[idx]
+		self.selected = idx
 		-- -- Text (Name)
-		local name = ui_item.get_sec_name(self.barters[self.selected_barter].give)
+		local give = self.barters[self.selected].give
+		local name = ui_item.get_sec_name(give.sec)
+		if give.amt > 1 then
+			name = name .. " (x" .. give.amt .. ")"
+		end
 		-- set name of barter give item
 		self.text_item[n]:SetText(name)
-		-- set conditions
-		self.cell_item[1]:SetText(gc(get_desc(self.selected_barter)))
-		self.cell_item[1]:AdjustHeightToText()
-		self.cell_item[1]:SetWndSize(vector2():set(self.cell_item[1]:GetWidth(),self.cell_item[1]:GetHeight()+10))
-		self.cell_scroll[1]:Clear()
-		self.cell_scroll[1]:AddWindow(self.cell_item[1], true)
-		self.cell_item[1]:SetAutoDelete(false)
+		self:SetWindowText(1, gc(get_desc(self.barters[self.selected].name)))
+		self:SetWindowText(2, build_string(self.barters[self.selected].name))
 		
-		self.cell_item[2]:SetText(build_string(self.selected_barter))
-		self.cell_item[2]:AdjustHeightToText()
-		self.cell_item[2]:SetWndSize(vector2():set(self.cell_item[2]:GetWidth(),self.cell_item[2]:GetHeight()+10))
-		self.cell_scroll[2]:Clear()
-		self.cell_scroll[2]:AddWindow(self.cell_item[2], true)
-		self.cell_item[2]:SetAutoDelete(false)
-		
-		if self.barters[self.selected_barter].allowed then
-			self.btn_barter:Enable(true)
+		if self.barters[self.selected].type == "allOf" then
+			self.btn_barter:Enable(self.barters[self.selected].allowed)
 		else
-			self.btn_barter:Enable(false)			
+			self.btn_barter:Enable(false)
 		end
+	else
+		-- for anyof barters, if the selected item is sufficient use that
+		local barter_data = self.barters[self.selected]
+		if barter_data.type ~= "anyOf" then return end
+		-- check if the selected cell is full
+		local obj_n = self.CC[n]:GetCell_Selected()
+		local n_indx = obj_n.indx
+		local take = barter_data.take_items[n_indx]
+		print_dbg("Any of check index %s, selected item %s", n_indx, take.sec)
+		local name = ui_item.get_sec_name(take.sec)
+		-- set name of barter give item
+		self.text_item[n]:SetText(name)
+		self.btn_barter:Enable(take.amt >= take.limit)
 	end
 end
 
@@ -310,7 +342,7 @@ function UIBarter:OnBarter()
 	local obj_1 = self.CC[1]:GetCell_Selected()
 	local obj_2 = self.CC[2]:GetCell_Selected()
 	
-	do_barter(self.selected_barter, self.barters[self.selected_barter].take_items)
+	do_barter(self.barters[self.selected].name, self.barters[self.selected].take_items, obj_2.indx)
 	-- consider resetting ui?
 	self.CC[1]:Reset()
 	CreateTimeEvent("barter", math.random(69), 0, function()
@@ -344,18 +376,4 @@ function UIBarter:OnCancel()
 	self:HideDialog()
 	
 	Unregister_UI("UIBarter")
-end
-
-
-GetSort = utils_ui.UICellContainer.GetSortMethod
-function utils_ui.UICellContainer:GetSortMethod()
-	if self.sort_method == "sort_barter" then
-		return
-	else
-		return GetSort(self)
-	end 
-end
-
-function sort_barter(t, a, b)
-	return (SYS_GetParam(2, t[a], "cost") or 0) > (SYS_GetParam(2, t[b], "cost") or 0)
 end

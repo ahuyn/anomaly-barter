@@ -1,26 +1,8 @@
 CORDON
-esc_2_12_stalker_fanat (Fanatic)
-esc_2_12_stalker_wolf (Wolf)
 m_trader (Sid)
 esc_smart_terrain_5_7_loner_mechanic_stalker (Xenotech)
 esc_main_base_trader_mlr (Loris)
 esc_3_16_military_trader (outpost dude)
-
-GARBAGE
-hunter_gar_trader (butcher)
-baraholka_trader (flea market day)
-baraholka_trader_night (flea market night)
-
-DARKSCAPE
-dasc_tech_mlr (mechanic)
-dasc_trade_mlr (trader)
-
-AGROPROM
-agr_smart_terrain_1_6_near_2_military_colonel_kovalski (Kuznetsov)
-agr_smart_terrain_1_6_army_trader_stalker (Mili trader)
-agr_smart_terrain_1_6_army_mechanic_stalker (Mili mechanic)
-agr_1_6_medic_army_mlr (Mili medic)
-agr_1_6_barman_army_mlr (Mili barman)
 
 SWAMPS
 mar_smart_terrain_base_doctor (CS Medic, Kalancha)
@@ -29,14 +11,21 @@ mar_base_owl_stalker_trader (Spore)
 mar_base_stalker_tech (Novikov)
 mar_smart_terrain_base_stalker_leader_marsh (Cold)
 
-ROSTOK
-bar_visitors_barman_stalker_trader (Barkeep)
-bar_informator_mlr (Snitch)
-bar_dolg_leader (Voronin)
-bar_dolg_general_petrenko_stalker (Petrenko)
-bar_dolg_medic (Dooty medic)
-bar_visitors_stalker_mechanic (Duty tech)
-bar_arena_manager (Arnie)
+DARKSCAPE
+dasc_tech_mlr (mechanic)
+dasc_trade_mlr (trader)
+
+GARBAGE
+hunter_gar_trader (butcher)
+baraholka_trader (flea market day)
+baraholka_trader_night (flea market night)
+
+AGROPROM
+agr_smart_terrain_1_6_near_2_military_colonel_kovalski (Kuznetsov)
+agr_smart_terrain_1_6_army_trader_stalker (Mili trader)
+agr_smart_terrain_1_6_army_mechanic_stalker (Mili mechanic)
+agr_1_6_medic_army_mlr (Mili medic)
+agr_1_6_barman_army_mlr (Mili barman)
 
 DARK VALLEY
 zat_b7_bandit_boss_sultan (Sultan)
@@ -44,6 +33,49 @@ val_smart_terrain_7_4_bandit_trader_stalker (Bandit trader)
 val_smart_terrain_7_3_bandit_mechanic_stalker (Bandit mechanic)
 bandit_main_base_medic_mlr (Bandit medic)
 
+ROSTOK
+bar_visitors_barman_stalker_trader (Barkeep)
+bar_informator_mlr (Snitch)
+bar_dolg_leader (Voronin)
+bar_dolg_general_petrenko_stalker (Petrenko)
+bar_dolg_medic (Dooty medic)
+bar_visitors_stalker_mechanic (Duty tech)
+
+YANTAR
+yan_stalker_sakharov (Sugar Daddy)
+yan_povar_army_mlr (Spirit)
+mechanic_army_yan_mlr (Eco Mechanic)
+
+ARMY WAREHOUSES
+mil_smart_terrain_7_10_freedom_trader_stalker (Skinflint)
+mil_smart_terrain_7_7_freedom_mechanic_stalker (Freedom Mech)
+mil_freedom_barman_mlr (Freedom barman)
+mil_freedom_medic (Freedom Medic)
+
 DEAD CITY
 cit_killers_merc_trader_stalker (Dushman)
+cit_killers_merc_barman_mlr (Aslan)
+cit_killers_merc_medic_stalker (Surgeon)
+cit_killers_merc_mechanic_stalker (Hog)
+
+RED FOREST
+m_lesnik (Forester)
+
+PRIPYAT
+jup_b19_freedom_yar (Yar)
+trader_pri_a15_mlr (Cashier)
+pri_special_trader_mlr (Meeker, merc)
+pri_a16_mech_mlr (Merc tech)
+
+YANOV
+jup_a6_freedom_trader_ashot (Ashot)
+jup_b217_stalker_tech (Nitro)
+jup_b6_scientist_novikov (Tukarev)
+
+
+ZATON
+zat_tech_mlr (Spleen)
+zat_b30_owl_stalker_trader (Owl)
+zat_a2_stalker_nimble (Nimble)
+zat_a2_stalker_barmen (Beard)
 
