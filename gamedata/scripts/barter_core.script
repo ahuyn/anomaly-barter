@@ -33,6 +33,15 @@ function npc_has_barter(npc)
     return trader_to_barter[name] and not is_empty(trader_to_barter[name])
 end
 
+-- yoink
+function eval_func(f, ...)
+    fc = str_explode(f, "%.")
+    file, func = unpack(fc)
+    if file and func and _G[file] and _G[file][func] then
+        return _G[file][func](...)
+    end
+end
+
 -- barter name, "precondition"/"postcondition"
 function eval_barter(name, condition)
     conds = ini_barters:r_string_ex(name, condition) or "barter_core.check_pass"
@@ -40,13 +49,13 @@ function eval_barter(name, condition)
     -- short circuit L->R evaluation
     local result = true
     for k,v in pairs(conds) do
-        pc = str_explode(v, "%.")
-        if pc and pc[1] and pc[2] and _G[pc[1]] and _G[pc[1]][pc[2]] then
-            result = result and _G[pc[1]][pc[2]](name)
-        else 
+        res = eval_func(v, name)
+        if res then
+            result = result and res
+        else
             print_dbg("%s is not a function", k)
             result = false 
-        end 
+        end
     end
     return result
 end
@@ -183,28 +192,44 @@ local clr_1  = utils_xml.get_color("ui_gray_2")
 local clr_2  = utils_xml.get_color("ui_gray_1")
 function build_string(name)
     local str = ""
+    local funcs = ini_barters:r_string_ex(name, "precond_text") or ""
+    funcs = str_explode(funcs, ",")
+    for k,v in pairs(funcs) do
+        print_dbg("Eval string func %s", v)
+        val = eval_func(v, name)
+        if val and val ~= "" then
+            str = str .. " " .. gc("st_dot") .. " " .. val .. "\\n"
+        end
+    end
+    return str
+end
 
+function str_any(name)
     if barters[name].type == "anyOf" then
-        str = str .. " " .. gc("st_dot") .. " " .. gc("st_barter_anyOf") .. " \\n"
+        return gc("st_barter_anyOf")
     end
+end
 
-    local faction = ini_barters:r_string_ex(name, "faction")
-    if faction then
-        local rep = ini_barters:r_float_ex(name, "goodwill")
-        local actor_goodwill = relation_registry.community_goodwill(faction, AC_ID)
-        local clr = actor_goodwill < rep and clr_r or clr_g
-        str = str .. " " .. gc("st_dot") .. " " .. gc(faction) .. " " .. gc("st_barter_goodwill") .. " " .. clr ..  actor_goodwill .. "/" .. rep .. clr_2 .. " \\n"
-    end
-
+function str_limit(name)
     local rep = ini_barters:r_string_ex(name, "repeat")
     if rep then
         local b_done = barter_mdata[rep][name] or 0
         local b_limit = ini_barters:r_float_ex(name, "limit") or 0
         local clr = b_done < b_limit and clr_g or clr_r
-        str = str .. " " .. gc("st_dot") .. " " .. gc("st_barter_limit") .. clr ..  " " ..b_done .. "/" .. b_limit .. clr_2 .. " " .. gc("st_barter_"..rep) .. " \\n"
+        return gc("st_barter_limit") .. clr ..  " " ..b_done .. "/" .. b_limit .. clr_2 .. " " .. gc("st_barter_"..rep) .. " \\n"
     end
 
-    return str
+end
+
+function str_goodwill(name)
+    local faction = ini_barters:r_string_ex(name, "faction")
+    if faction then
+        local rep = ini_barters:r_float_ex(name, "goodwill")
+        local actor_goodwill = relation_registry.community_goodwill(faction, AC_ID)
+        local clr = actor_goodwill < rep and clr_r or clr_g
+        return gc(faction) .. " " .. gc("st_barter_goodwill") .. " " .. clr ..  actor_goodwill .. "/" .. rep .. clr_2 .. " \\n"
+    end
+
 end
 
 -- assume that the player has filled their end of the bargain and wants to execute on the bargain
