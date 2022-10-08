@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="windows-1251"?>
+<string_table>
+    
+    <string id="st_hunter_meat">
+        <text>Stalker, have you had mutant meat? I know it's not that great, but I've got some contacts on the outside who will pay a pretty penny for some salted, seasoned mutant jerky. The more exotic, the better, eh? So if you bring me meat, I'll be sure to keep you supplied with the means to keep bringing in meat, if you know what I mean.</text>
+    </string>
+    <string id="st_hunter_meat_done">
+        <text>Thanks, stalker. I've got enough of this type for now.</text>
+    </string>
+    
+    <string id="st_hunter_meat">
+        <text>Stalker, have you had mutant meat? I know it's not that great, but I've got some contacts on the outside who will pay a pretty penny for some salted, seasoned mutant jerky. The more exotic, the better, eh? So if you bring me meat, I'll be sure to keep you supplied with the means to keep bringing in meat, if you know what I mean.</text>
+    </string>
+    <string id="st_hunter_meat_done">
+        <text>Thanks, stalker. I've got enough of this type for now.</text>
+    </string>
+
+</string_table>

@@ -1,0 +1,84 @@
+; Spirit
+[spirit_vodka1]
+trader          = yan_povar_army_mlr
+precondition    = barter_core.check_limit
+postcondition   = barter_core.increment_limit
+give            = ammo_5.45x39_fmj,2
+take            = vodka,2
+repeat          = restock
+limit           = 3
+desc            = st_spirit_vodka
+desc_done       = st_spirit_vodka_done
+
+[spirit_vodka2]:spirit_vodka1
+give            = ammo_9x18_ap,4
+
+[spirit_vodka3]:spirit_vodka1
+give            = ammo_7.62x54_7h1
+take            = vodka,3
+
+[spirit_vodka4]:spirit_vodka1
+give            = ammo_12x70_buck
+take            = vodka,3
+
+[spirit_vodka5]:spirit_vodka1
+give            = ammo_pkm_100
+take            = vodka,5
+
+[spirit_vodka_outfit]:spirit_vodka1
+precondition    = barter_core.check_limit,barter_core.check_goodwill
+give            = army_outfit
+take            = vodka,3
+repeat          = fixed
+limit           = 1
+faction         = ecolog
+goodwill        = 10
+desc            = st_spirit_vodka_basic
+
+[spirit_vodka_outfit2]:spirit_vodka_outfit
+give            = specops_outfit
+take            = vodka,7
+repeat          = fixed
+limit           = 1
+goodwill        = 250
+desc            = st_spirit_vodka_berill
+
+[spirit_vodka_outfit3]:spirit_vodka_outfit
+precondition    = barter_core.check_limit,barter_core.check_goodwill
+give            = military_outfit
+take            = vodka,12
+repeat          = fixed
+limit           = 1
+faction         = ecolog
+goodwill        = 500
+desc            = st_spirit_vodka_skat
+
+; Peregrine - plates for food
+[peregrine_plate1]
+trader          = mechanic_army_yan_mlr
+precondition    = barter_core.check_limit
+postcondition   = barter_core.increment_limit
+give            = af_kevlar
+take            = bread,1,sausage,1
+repeat          = restock
+limit           = 1
+desc            = st_spirit_vodka
+desc_done       = st_spirit_vodka_done
+
+[peregrine_plate2]:peregrine_plate1
+give            = af_plates
+take            = tomato,1,corn,1,beans,1
+
+[peregrine_plate3]:peregrine_plate1
+precondition    = barter_core.check_limit,barter_core.check_goodwill
+give            = af_kevlar_up
+take            = chocolate,1,protein,1
+faction         = ecolog
+goodwill        = 200
+
+[peregrine_plate4]:peregrine_plate1
+precondition    = barter_core.check_limit,barter_core.check_goodwill
+give            = af_plates_up
+take            = ration_ukr,1
+faction         = ecolog
+goodwill        = 500

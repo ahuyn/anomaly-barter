@@ -194,8 +194,8 @@ function build_string(name)
     local str = ""
     local funcs = ini_barters:r_string_ex(name, "precond_text") or ""
     funcs = str_explode(funcs, ",")
+    table.sort(funcs)
     for k,v in pairs(funcs) do
-        print_dbg("Eval string func %s", v)
         val = eval_func(v, name)
         if val and val ~= "" then
             str = str .. " " .. gc("st_dot") .. " " .. val .. "\\n"

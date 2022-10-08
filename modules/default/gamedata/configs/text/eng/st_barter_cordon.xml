@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="windows-1251"?>
+<string_table>
+    
+    <string id="st_generic_done">
+        <text>Good work, stalker. Your business is appreciated.</text>
+    </string>
+
+    <string id="st_sid_jelly_suit">
+        <text>So, today's your lucky day. I have a spare suit lying around - previous owner won't be needing it anymore. I need to make sure if it goes to you it won't find its way back to me again. Show me you're somewhat competent, eh, and I'll hand it over. Think of it as startup capital.</text>
+    </string>
+    <string id="st_sid_jelly_suit_done">
+        <text>Nice work, stalker. Here you go. Be sure to remember your old pal Sid when you become rich, ok?</text>
+    </string>
+    
+    <string id="st_sid_shotgun">
+        <text>Damn bandits keep undercutting my business. I send couriers out, they get intercepted, I send out envoys, they come back with empty pockets! Stalker, are you willing to help me deal with this problem? Bring me proof of your willingness to..take care of business and I'll give you this gun. Think of it as the start of a long and fruitful relationship.</text>
+    </string>
+    <string id="st_sid_shotgun_done">
+        <text>Good work, stalker. There's no shortage of the bastards running around but this will make it a lot easier for you.</text>
+    </string>
+    
+    <string id="st_sid_salmon">
+        <text>Barkeep has connections to a smoked salmon producer in Kyiv. There's nothing better to enjoy crackers with but salmon and a bit of cream cheese. Whatever salmon you can get for me, I'll be sure to give you something useful.</text>
+    </string>
+    
+    <string id="st_loris_ak">
+        <text>Stalker, are you really running around with that pea shooter? At this rate you'll be dead so quickly there won't be anything valuable to strip off your corpse. I have this old AK, real Cold War relic, and customers aren't too keen on it because they prefer more modern, lighter weapons. I'll let you have it if you get me something decent to eat.</text>
+    </string>
+    <string id="st_loris_ak_done">
+        <text>Thanks, stalker. I could really use something to wash this down, too, hmm..</text>
+    </string>
+
+    <string id="st_loris_762">
+        <text>Need ammo for that AK? I happen to have a few crates lying around. Get me something to drink and we'll have a deal.</text>
+    </string>
+    <string id="st_loris_762_done">
+        <text>Thanks, stalker. I have to wait for Sid to get another shipment in, but keep the beer coming.</text>
+    </string>
+
+    <string id="st_loris_generic">
+        <text>Greetings, stalker. Ammo is always in pretty short supply here for the rookies to keep themselves safe. If you have any on hand, I'll be willing to trade some basic medical supplies for it.</text>
+    </string>
+    <string id="st_loris_generic_done">
+        <text>Thanks, stalker. Keeping the rookies armed helps keep them alive, and profitable.</text>
+    </string>
+
+    <string id="st_xenotech_scrap">
+        <text>Hello, stalker. As you know there's no shortage of things to fix around these parts - I have all the tools I need, but finding spare parts can be hard, especially because most of it gets glossed over. If you can find any scrap or screws, I'll be willing to trade you some of my excess repair supplies.</text>
+    </string>
+    <string id="st_xenotech_scrap_done">
+        <text>Thanks for the help, stalker. This will do for now.</text>
+    </string>
+
+</string_table>

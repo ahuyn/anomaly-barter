@@ -54,6 +54,7 @@ All fields besides `trader, give, take` are technically optional.
 |take|string (comma separated)| Format is `section,quantity` repeated at least once. Any invalid sections will render the barter invalid. |
 |type|string (`allOf/anyOf`)|`allOf`: Requires ALL take items present to execute barter. <br> `anyOf`: Requires any of the given take items (respecting quanitity). On barter, actor will be prompted to select one.| Defaults to `allOf` |
 |precondition|string (function refs)|These functions will be executed to check eligibility. If false is returned, the barter will be prevented. Functions are executed in order and ALL functions must return true to proceed.| Aways passes (e.g. barter is always eligible to view) |
+|precond_text|string (function refs|Functions used to build the info window of preconditions.|Blank|
 |postcondition|string (function refs)|These functions are executed after the barter is done.| No postconditions applied |
 |restricted| string (comma separated factions)|Requires actor be one of the listed factions in order to view the barter.| All factions can view (assuming friendly) |
 |repeat| `fixed/restock`|Leveraged by barter_core.check_limit. This determines the type of repeatability for the barter. Valid keys are either 'fixed` or 'restock'| No limit imposed on the barter. |
