@@ -8,12 +8,8 @@
     <string id="st_petrenko_trophies_done">
         <text>Thanks, stalker. I've got enough of this type for now.</text>
     </string>
-    
-    <string id="st_darkscape_arty">
-        <text>Hey, stalker. The diggers have found some good stuff here but we're running low on supplies and we can't afford to send anyone back for supplies this far from Cordon. If you can bring us some stuff, we'll be sure to share some of the artifacts we've found.</text>
-    </string>
-    <string id="st_darkscape_arty_done">
-        <text>Great! Here you go.</text>
-    </string>
 
+    <string id="st_mangun_parts">
+        <text>Hello, stalker. Good parts are rare to come by these days. Help me fix up these weapons and I'll let you have a few things from my stores.</text>
+    </string>
 </string_table>

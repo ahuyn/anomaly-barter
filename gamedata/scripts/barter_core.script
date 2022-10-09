@@ -216,7 +216,7 @@ function str_limit(name)
         local b_done = barter_mdata[rep][name] or 0
         local b_limit = ini_barters:r_float_ex(name, "limit") or 0
         local clr = b_done < b_limit and clr_g or clr_r
-        return gc("st_barter_limit") .. clr ..  " " ..b_done .. "/" .. b_limit .. clr_2 .. " " .. gc("st_barter_"..rep) .. " \\n"
+        return gc("st_barter_limit") .. clr ..  " " ..b_done .. "/" .. b_limit .. clr_2 .. " " .. gc("st_barter_"..rep)
     end
 
 end
@@ -227,9 +227,17 @@ function str_goodwill(name)
         local rep = ini_barters:r_float_ex(name, "goodwill")
         local actor_goodwill = relation_registry.community_goodwill(faction, AC_ID)
         local clr = actor_goodwill < rep and clr_r or clr_g
-        return gc(faction) .. " " .. gc("st_barter_goodwill") .. " " .. clr ..  actor_goodwill .. "/" .. rep .. clr_2 .. " \\n"
+        return gc(faction) .. " " .. gc("st_barter_goodwill") .. " " .. clr ..  actor_goodwill .. "/" .. rep .. clr_2
     end
+end
 
+function str_mutant(name)
+    local count = ini_barters:r_string_ex(name, "kill_cnt")
+    if count then
+        local current = game_statistics.get_statistic("killed_monstesr")
+        local clr = current < count and clr_r or clr_g
+        return gc(faction) .. " " .. gc("st_mutants_killed") .. " " .. clr ..  current .. "/" .. count .. clr_2
+    end
 end
 
 -- assume that the player has filled their end of the bargain and wants to execute on the bargain
@@ -285,6 +293,13 @@ function check_limit(name)
     return barter_amt < limit
 end
 
+function kill_mutant(name)
+    local count = ini_barters:r_string_ex(name, "kill_cnt")
+    if count then
+        local current = game_statistics.get_statistic("killed_monstesr")
+        return current < count
+    end
+end
 -- allow
 function check_pass(name)
     return true

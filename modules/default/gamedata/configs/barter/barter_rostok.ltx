@@ -13,31 +13,76 @@ limit           = 4
 desc            = st_petrenko_trophies
 desc_done       = st_petrenko_trophies_done
 
-[petrenko_ammo2]:petrenko_ammo1 
-give            = ammo_7.62x39_fmj
-
-[petrenko_ammo_grenade]:petrenko_ammo1 
-give            = grenade_rgd
-take            = mutant_part_psevdodog_tail,1,mutant_part_boar_leg,2,mutant_part_krovosos_jaw,1,mutant_part_snork_mask,1
-
+[petrenko_ammo2]:petrenko_ammo1
+give            = ammo_7.62x25_p
 
 [petrenko_ammo3]:petrenko_ammo1
+precondition    = barter_core.check_limit,barter_core.check_goodwill
+precond_text    = barter_core.str_limit,barter_core.str_goodwill,barter_core.str_any
 give            = ammo_5.45x39_fmj
-take            = mutant_part_psevdodog_tail,1,mutant_part_boar_leg,2,mutant_part_krovosos_jaw,1,mutant_part_snork_mask,1
+take            = mutant_part_psevdodog_tail,1,mutant_part_boar_leg,2,mutant_part_snork_mask,1
+faction         = dolg
+goodwill        = 200
 
-[petrenko_ammo4]:petrenko_ammo1
+[petrenko_ammo3]:petrenko_ammo3 
+give            = ammo_7.62x39_fmj
+
+[petrenko_ammo_grenade]:petrenko_ammo3 
+give            = grenade_rgd
+
+[petrenko_ammo4]:petrenko_ammo3
 give            = ammo_9x39_pab9
-take            = mutant_part_krovosos_jaw,1
+take            = mutant_part_krovosos_jaw,1,mutant_part_psysucker_hand,1
+goodwill        = 400
 
-[petrenko_ammo5]:petrenko_ammo1
+[petrenko_ammo5]:petrenko_ammo3
 give            = ammo_7.62x54_7h1
 take            = mutant_part_krovosos_jaw,1,mutant_part_psysucker_hand,1
+goodwill        = 400
 
-[petrenko_ammo6]:petrenko_ammo1
+[petrenko_ammo6]:petrenko_ammo3
 give            = ammo_pkm_100
-take            = mutant_part_pseudogigant_eye,1
+take            = mutant_part_pseudogigant_eye,1,mutant_part_chimera_kogot,1
+goodwill        = 600
 limit           = 1
 
 ; mangun
+[mangun_parts_p] ; parts for repair item
+trader          = bar_visitors_stalker_mechanic
+give            = cleaning_kit_p
+take            = prt_w_p_barrel_1,1,prt_w_p_trigger_3,1,prt_w_p_spring_1,1
+precondition    = barter_core.check_limit
+precond_text    = barter_core.str_limit
+postcondition   = barter_core.increment_limit
+repeat          = restock
+limit           = 1
+desc            = st_mangun_parts
+desc_done       = st_mangun_parts_done
+
+[mangun_parts_p2]:mangun_parts_p
+take            = prt_w_p_barrel_1,6,prt_w_p_trigger_3,1,prt_w_p_spring_1,1
+[mangun_parts_p3]:mangun_parts_p
+take            = prt_w_p_barrel_5,6,prt_w_p_trigger_1,1,prt_w_p_spring_1,5
+[mangun_parts_p_full]:mangun_parts_p
+give            = toolkit_p
+take            = prt_w_p_barrel_1,1,prt_w_p_barrel_5,1,prt_w_p_barrel_6,1,prt_w_p_trigger_3,prt_w_p_trigger_1,1,2,prt_w_p_spring_1,2,prt_w_p_spring_5,1
+
+[mangun_parts_r]:mangun_parts_p
+precondition    = barter_core.check_limit,barter_core.check_goodwill
+precond_text    = barter_core.str_limit,barter_core.str_goodwill
+faction         = dolg
+goodwill        = 200
+give            = cleaning_kit_r5
+take            = prt_w_barrel_8,1,prt_w_trigger_components_2,1,prt_w_bolt_carrier_1,1,prt_w_bolt_6,1,prt_w_gas_tube_5,1
+[mangun_parts_r2]:mangun_parts_r
+give            = cleaning_kit_r5
+take            = prt_w_barrel_8,1,prt_w_trigger_components_3,1,prt_w_bolt_carrier_1,1,prt_w_bolt_6,1,prt_w_gas_tube_5,1
+[mangun_parts_r3]:mangun_parts_r
+give            = cleaning_kit_r5
+take            = prt_w_barrel_7,1,prt_w_trigger_components_2,1,prt_w_bolt_carrier_1,1,prt_w_bolt_6,1,prt_w_gas_tube_5,1
+[mangun_parts_r_full]:mangun_parts_r
+give            = toolkit_r5
+take            = prt_w_barrel_7,1,prt_w_barrel_8,2,prt_w_trigger_components_2,2,prt_w_trigger_components_3,1,prt_w_bolt_carrier_1,3,prt_w_bolt_6,3,prt_w_gas_tube_5,3
+
 
 ; medic
