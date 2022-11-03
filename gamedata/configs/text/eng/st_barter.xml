@@ -13,6 +13,25 @@
     <string id="st_barter_limit">
         <text>limit</text>
     </string>
+    <string id="st_barter_toolkit1">
+        <text>technician requires basic tools</text>
+    </string>
+    <string id="st_barter_toolkit2">
+        <text>technician requires advanced tools</text>
+    </string>
+    <string id="st_barter_toolkit3">
+        <text>technician requires expert tools</text>
+    </string>
+
+    <string id="st_barter_uses">
+        <text>uses: </text>
+    </string>
+    <string id="st_barter_ammo">
+        <text>rounds: </text>
+    </string>
+    <string id="st_barter_cond">
+        <text>condition: %</text>
+    </string>
 
     <string id="st_barter_restock">
         <text>(refreshed on restock)</text>

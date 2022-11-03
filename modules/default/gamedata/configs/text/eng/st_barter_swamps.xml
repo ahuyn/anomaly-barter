@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="windows-1251"?>
+<string_table>
+    
+    <string id="st_kalancha_meds">
+        <text>Greetings, stalker. Swamp living tends to take its toll on us. Many of our members are coming down with illness owing to staying out late on recon and having to deal with the cold and wet. If you can help us with getting some over the counter medicine, we'll provide you some of the surplus scientific equipment we have.</text>
+    </string>
+    <string id="st_kalancha_meds_done">
+        <text>Your help is appreciated, stalker.</text>
+    </string>
+    
+    <string id="st_librarian_fuel">
+        <text>Hey stalker, I let you in on a little secret. One of the anomalies in this swamp, I won't say which one, seems to produce a continuous, but small, amount of fuel. Kerosene, gasoline, you name it! The scientist boys figured out how to convert some of something with some artifacts or crap to produce fuel! Anyway, we have a permanent surplus - we'll share some of our fuel if you help us with our orders. Oh, and keep it a secret, okay?</text>
+    </string><string id="st_librarian_fuel_done">
+        <text>Your help is appreciated, man. We gotta keep our boys alive.</text>
+    </string>
+
+    
+    <string id="st_spore_weapons">
+        <text>Howdy, stalker. Trekking out of these swamps is a pain for our couriers, especially those who have to carry a lot of stuff. If you can get us some stuff to lighten our load, I'll give you some old weapons we have laying around.</text>
+    </string>
+    <string id="st_spore_weapons_done">
+        <text>Your help is appreciated, man. We gotta keep our boys alive.</text>
+    </string>
+
+    <string id="st_novikov_1">
+        <text>Hello, stalker. An old man like me needs to keep busy, and I keep busy best by working on protective gear. That jacket of yours? That's not going to keep you alive long out here - bring me a few items and I'll fit that into a proper stalker's suit.</text>
+    </string>
+    
+    <string id="st_novikov_2a">
+        <text>How's that suit treating you? Want something better suited for anomalies? I can try and fit a gas mask or something on there, as well as add a simple protective layer. I'll need a GP-5 and a few other things, if you can get them for me.</text>
+    </string>
+    <string id="st_novikov_2b">
+        <text>Is that a bullet hole? If you plan on getting into firefights, you'll need a plate carrier at least and not just a kevlar vest. I have the tools, but I'll need some material to put it together.</text>
+    </string>
+    <string id="st_novikov_2c">
+        <text>Hey, stalker - say, do you happen to have some exoskeleton frames? I think I can retrofit that suit to use an exoskeleton, it'll definitely let you carry a whole lot more! Just keep in mind that I can't 'un'install it, so buyer beware!</text>
+    </string>
+
+    <string id="st_novikov_3a">
+        <text>Hey, hey, come here! I found this old SCBA unit in the back room! If you get me a few more things...I might be able to put together a SEVA suit for you!</text>
+    </string>
+    <string id="st_novikov_3b">
+        <text>Hey stalker, how's the suit? I was thinking we could install some extended protection in there if you don't mind the additional weight. Here's the list of what I need, you know the drill.</text>
+    </string>
+    <string id="st_novikov_4a">
+        <text>Hey stalker, I got some good news. One of my military contacts managed to trade me the schematics for advanced SKAT-9 armor for a few favors. I should be able to retrofit your heavy suit to incorporate most of the new features. It will end up being a well-rounded suit, but this is unfortunately the most I can do for it.</text>
+    </string>
+    <string id="st_novikov_4b">
+        <text>Hey, stalker, guess what? We managed to find an old exoskeleton hidden in a swamp attic! I've been reverse engineering the armor design and I should be able to produce a mostly functional copy of the armored suit. I'll need quite a few materials to do so, however. I think if we keep analyzing this we should, in theory, be able to attach an exoskeleton to it as well...</text>
+    </string>
+    <string id="st_novikov_5a">
+        <text>Hey, stalker. You've done so much for us already. I'll let you in on a little secret...I have a technique to apply a coating to a SEVA suit to phenomenally increase its protective properties! I just need you to bring me this artifact and a bit of kerosene, and then I should be able to do the rest.</text>
+    </string>
+    <string id="st_novikov_5b">
+        <text>Alright, stalker, now's the time! I've managed to figure out how to reprogram the servomotor control unit! I just need your suit, a good frame and a few tools and we should get you looking like a Starship Trooper!</text>
+    </string>
+    <string id="st_novikov_done">
+        <text>Wear it well, stalker. Come by later, I might think of further improvements.</text>
+    </string>
+</string_table>

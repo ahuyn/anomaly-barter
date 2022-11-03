@@ -1,0 +1,24 @@
+[meeker_wep1] ; one time hunting knife
+trader          = pri_special_trader_mlr
+give            = wpn_colt1911_custom
+take            = flask,3,mineral_water,3,tea,1
+precondition    = barter_core.check_limit
+precond_text    = barter_core.str_limit
+postcondition   = barter_core.increment_limit
+repeat          = fixed
+limit           = 1
+desc            = st_meeker_weapons
+desc            = st_meeker_weapons_done
+
+[meeker_wep2]:meeker_wep1
+give            = wpn_g36
+take            = tushonka,3,ration_ru,1
+
+[meeker_wep3]:meeker_wep1
+give            = wpn_galil_modern
+take            = mre,2
+
+[meeker_wep4]:meeker_wep1
+give            = wpn_l96a1m
+take            = ration_ukr,2
+

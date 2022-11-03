@@ -308,10 +308,7 @@ function UIBarter:OnItemSelect(n)
 		self.selected = idx
 		-- -- Text (Name)
 		local give = self.barters[self.selected].give
-		local name = ui_item.get_sec_name(give.sec)
-		if give.amt > 1 then
-			name = name .. " (x" .. give.amt .. ")"
-		end
+		local name = barter_core.get_give_str(give)
 		-- set name of barter give item
 		self.text_item[n]:SetText(name)
 		self:SetWindowText(1, gc(get_desc(self.barters[self.selected].name)))

@@ -198,7 +198,7 @@ function build_string(name)
     for k,v in pairs(funcs) do
         val = eval_func(v, name)
         if val and val ~= "" then
-            str = str .. " " .. gc("st_dot") .. " " .. val .. "\\n"
+            str = str .. " " .. gc("st_dot") .. " " .. val .. " \\n"
         end
     end
     return str
@@ -240,6 +240,20 @@ function str_mutant(name)
     end
 end
 
+local function str_toolkit(lv)
+    return gc("st_barter_toolkit"..lv)
+end
+
+function str_toolkit1(name)
+    return str_toolkit(1)
+end
+function str_toolkit2(name)
+    return str_toolkit(2)
+end
+function str_toolkit3(name)
+    return str_toolkit(3)
+end
+
 -- assume that the player has filled their end of the bargain and wants to execute on the bargain
 function do_barter(name, items, ind)
     print_dbg("Performing barter %s, index %s", name, ind)
@@ -256,7 +270,11 @@ function do_barter(name, items, ind)
     end
     give = barters[name].give
     for i=1,give.amt do
-        alife_create_item(give.sec, db.actor)
+        local meta = {}
+        if give.type then
+            meta[give.type] = give.meta
+        end
+        alife_create_item(give.sec, db.actor, meta)
     end
     eval_barter(name, "postcondition")
 end
@@ -268,6 +286,18 @@ function get_barter_amt(name)
     local barter_sub = rep == "fixed" and barter_mdata.fixed or barter_mdata.restock
     if not barter_sub[name] then barter_sub[name] = 0 end
     return barter_sub[name]
+end
+
+function get_give_str(give)
+    str = ui_item.get_sec_name(give.sec)
+    if give.type then
+        str = str .. ", " ..  gc("st_barter_"..give.type) ..give.meta .. " "
+        -- pluralize later
+    end
+    if give.amt > 1 then
+        str = str .. " (x" .. give.amt .. ")"
+    end
+    return str
 end
 
 -- barter condition functions
@@ -299,6 +329,21 @@ function kill_mutant(name)
         local current = game_statistics.get_statistic("killed_monstesr")
         return current < count
     end
+end
+
+local function check_toolkit(lv)
+    local npc = mob_trade.GetTalkingNpc()
+    return has_alife_info(npc:section() .. "_upgrade_tier_" .. tostring(lv))
+end
+
+function check_toolkit1(name)
+    return check_toolkit(1)
+end
+function check_toolkit2(name)
+    return check_toolkit(2)
+end
+function check_toolkit3(name)
+    return check_toolkit(3)
 end
 -- allow
 function check_pass(name)
@@ -360,6 +405,17 @@ local function parse_barters()
             sec = give[1],
             amt = tonumber(give[2]) or 1
         }
+        local meta = ini_barters:r_float_ex(name, "give_meta")
+        if meta then
+            give_t.meta = meta
+            if IsItem("multiuse", give_t.sec) and give_t.meta <= SYS_GetParam(2, give_t.sec, "max_uses") then
+                give_t.type = "uses"
+            elseif IsItem("ammo", give_t.sec) and give_t.meta <= SYS_GetParam(2, give_t.sec, "box_size") then
+                give_t.type = "ammo"
+            elseif (IsItem("outfit", give_t.sec) or IsItem("helmet", give_t.sec) or (string.find(give_t.sec, "wpn_") and not IsItem("fake_ammo_wpn", give_t.sec))) and give_t.meta <= 100 then
+                give_t.type = "cond"
+            end
+        end
         local take = ini_barters:r_string_ex(name, "take")
         if not take then return end
         take = parse_barterstring(take)

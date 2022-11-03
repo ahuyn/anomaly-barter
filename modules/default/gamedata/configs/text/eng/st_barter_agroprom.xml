@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="windows-1251"?>
+<string_table>
+    
+    <string id="st_spooner_trade">
+        <text>Hey man, got anything to read? Being stuck in this storeroom forever sucks ass, and I can't even drink the time away lest the colonel comes down and busts my balls. Here, bring me some good reading material and we'll see if we can't build a good working relationship.</text>
+    </string>
+    <string id="st_spooner_trade_done">
+        <text>Your help is appreciated, man. We gotta keep our boys alive.</text>
+    </string>
+
+    <string id="st_spooner_trade2">
+        <text>Howdy, soldier. There's been a bit more demand for where you got those magazines, especially with the boys stuck on watchtower duty. If you got any more, feel free to bring them.</text>
+    </string>
+    <string id="st_spooner_trade2_done">
+        <text>Your help is appreciated, man. We gotta keep our boys alive.</text>
+    </string>
+
+</string_table>

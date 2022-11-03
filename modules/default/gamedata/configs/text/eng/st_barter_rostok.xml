@@ -12,4 +12,14 @@
     <string id="st_mangun_parts">
         <text>Hello, stalker. Good parts are rare to come by these days. Help me fix up these weapons and I'll let you have a few things from my stores.</text>
     </string>
+
+    
+    <string id="st_asp_smokes">
+        <text>Hello, stalker. Got anything to smoke? I know, I know - health, now do you want some medical supplies or not?.</text>
+    </string>
+
+    
+    <string id="st_mangun_parts">
+        <text>Hello, stalker. Good parts are rare to come by these days. Help me fix up these weapons and I'll let you have a few things from my stores.</text>
+    </string>
 </string_table>
