@@ -104,9 +104,10 @@ precond_text    = barter_core.str_limit,barter_core.str_any
 postcondition   = barter_core.increment_limit
 type            = anyOf
 give            = kerosene
-take            = mutant_part_flesh_meat,3,mutant_part_dog_meat,5,mutant_part_boar_chop,3
+give_meta       = 1
+take            = mutant_part_flesh_meat,1,mutant_part_dog_meat,2,mutant_part_boar_chop,1
 repeat          = restock
-limit           = 2
+limit           = 3
 desc            = st_librarian_fuel
 desc_done       = st_librarian_fuel_done
 
@@ -137,3 +138,14 @@ take            = antibio_chlor,2,antibio_sulfad,2,akvatab,1
 give            = af_surge
 take            = antibio_chlor,2,antibio_sulfad,2,tetanus,1
 
+[spore_cleaning]
+trader          = mar_smart_terrain_base_doctor
+precondition    = barter_core.check_limit
+precond_text    = barter_core.str_limit
+postcondition   = barter_core.increment_limit
+give            = lead_box
+take            = antibio_chlor,1,antibio_sulfad,1
+repeat          = restock
+limit           = 1
+desc            = st_kalancha_meds
+desc_done       = st_kalancha_meds_done

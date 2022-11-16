@@ -53,7 +53,7 @@ function eval_barter(name, condition)
         if res then
             result = result and res
         else
-            print_dbg("%s is not a function", k)
+            print_dbg("%s is not a function", v)
             result = false 
         end
     end
@@ -125,6 +125,9 @@ function barter_get_data(name)
             amt = 0,
             limit = v
         }
+        if k == "money" then
+            take_items[k].amt = db.actor:money()
+        end
     end
     db.actor:iterate_inventory(function(actor, item)
         local sec = item:section()
@@ -254,18 +257,26 @@ function str_toolkit3(name)
     return str_toolkit(3)
 end
 
+local function remove(item)
+    if item.sec == "money" then
+        db.actor:give_money(-1 * item.limit)
+    else
+        for i=1,#items[ind].ids do
+            alife_release_id(item.ids[i])
+        end
+    end
+end
+
 -- assume that the player has filled their end of the bargain and wants to execute on the bargain
 function do_barter(name, items, ind)
     print_dbg("Performing barter %s, index %s", name, ind)
     if ind and barters[name].type == "anyOf" then
         for i=1,#items[ind].ids do
-            alife_release_id(items[ind].ids[i])
+            remove(items[ind])
         end
     else
         for k,v in pairs(items) do
-            for i=1,#v.ids do
-                alife_release_id(v.ids[i])
-            end
+            remove(v)
         end
     end
     give = barters[name].give
@@ -397,7 +408,7 @@ local function parse_barters()
         local npc = ini_barters:r_string_ex(name, "trader")
         local give = ini_barters:r_string_ex(name, "give")
         give = str_explode(give, ",")
-        if not give[1] or not ini_sys:section_exist(give[1]) then 
+        if not give[1] or (give[1] ~= "money" and not ini_sys:section_exist(give[1])) then 
             print_dbg("Barter %s attempted to add nonexistant give item %s", name, give)
             return 
         end
@@ -420,7 +431,7 @@ local function parse_barters()
         if not take then return end
         take = parse_barterstring(take)
         for k,v in pairs(take) do
-            if not ini_sys:section_exist(k) then
+            if (k ~= "money" and not ini_sys:section_exist(k)) then
                 print_dbg("Barter %s attempted to add nonexistant take item %s", name, k)
                 return
             end

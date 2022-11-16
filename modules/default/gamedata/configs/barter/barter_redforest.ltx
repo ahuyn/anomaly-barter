@@ -1,0 +1,11 @@
+[forester_trade1]
+trader          = m_lesnik
+give            = wpn_colt1911_custom
+take            = flask,3,mineral_water,3,tea,1
+precondition    = barter_core.check_limit
+precond_text    = barter_core.str_limit
+postcondition   = barter_core.increment_limit
+repeat          = fixed
+limit           = 1
+desc            = st_meeker_weapons
+desc            = st_meeker_weapons_done

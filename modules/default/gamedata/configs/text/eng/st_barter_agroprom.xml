@@ -2,17 +2,24 @@
 <string_table>
     
     <string id="st_spooner_trade">
-        <text>Hey man, got anything to read? Being stuck in this storeroom forever sucks ass, and I can't even drink the time away lest the colonel comes down and busts my balls. Here, bring me some good reading material and we'll see if we can't build a good working relationship.</text>
+        <text>Hey, soldier. Me and the boys stuck on guard duty are bored out of our minds, though I guess it beats walking into anomalies or becoming Pseudodog food. .</text>
     </string>
     <string id="st_spooner_trade_done">
         <text>Your help is appreciated, man. We gotta keep our boys alive.</text>
     </string>
-
-    <string id="st_spooner_trade2">
-        <text>Howdy, soldier. There's been a bit more demand for where you got those magazines, especially with the boys stuck on watchtower duty. If you got any more, feel free to bring them.</text>
+    
+    <string id="st_spooner_rpk">
+        <text>So listen, I know you're trustworthy, so I'll let you in on something. One of the long range patrol guys, I won't say who, is planning to defect and has everything cut out with the fat man. However, he needs one little thing - a Meat Chunk - and he's a free man. He's willing to trade in his machine gun if it means freedom. Can you help?.</text>
     </string>
-    <string id="st_spooner_trade2_done">
+    <string id="st_spooner_rpk_done">
         <text>Your help is appreciated, man. We gotta keep our boys alive.</text>
+    </string>
+
+    <string id="st_armytech">
+        <text>This fucking Zone! All of our equipment rusts before our eyes! We've burned through almost all of our cleaning supplies keeping our damn weapons operational, and every other day people show up with rips, tears, burned clothing and other crap! Look, if you can get me some extra repair material, I'll make it up to you somehow. Can you help me out?</text>
+    </string>
+    <string id="st_armytech_done">
+        <text>Great, this'll last us a bit longer. Thanks for the help.</text>
     </string>
 
 </string_table>

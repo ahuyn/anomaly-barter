@@ -233,8 +233,13 @@ function UIBarter:InitInventory(n)
 		local barter_data = self.barters[self.selected]
 		local take = barter_data.take_items
 		for i=1,#take do
-            inv[#inv+1] = take[i].sec
-			inf[#inf+1] = take[i].amt .. "/" .. take[i].limit
+			if take[i].sec == "money" then
+	            inv[#inv+1] = "money_1000_5000"
+				inf[#inf+1] = take[i].limit
+			else
+	            inv[#inv+1] = take[i].sec
+				inf[#inf+1] = take[i].amt .. "/" .. take[i].limit
+			end
 		end
 
 		-- second arg to reinit paints the numbered cell with the appropriate text
