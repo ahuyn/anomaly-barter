@@ -39,6 +39,8 @@ function eval_func(f, ...)
     file, func = unpack(fc)
     if file and func and _G[file] and _G[file][func] then
         return _G[file][func](...)
+    else
+        print_dbg("Could not find function %s", f)
     end
 end
 
@@ -53,7 +55,7 @@ function eval_barter(name, condition)
         if res then
             result = result and res
         else
-            print_dbg("%s is not a function", v)
+            print_dbg("%s condition false", v)
             result = false 
         end
     end
@@ -261,7 +263,7 @@ local function remove(item)
     if item.sec == "money" then
         db.actor:give_money(-1 * item.limit)
     else
-        for i=1,#items[ind].ids do
+        for i=1,#item.ids do
             alife_release_id(item.ids[i])
         end
     end
@@ -325,10 +327,10 @@ end
 
 -- check against limit with variable refresh rate
 function check_limit(name)
-    local barter_amt = get_barter_amt(name)
-    if not barter_amt then return end
     if not barter_mdata.fixed then barter_mdata.fixed = {} end
     if not barter_mdata.restock then barter_mdata.restock = {} end
+    local barter_amt = get_barter_amt(name)
+    if not barter_amt then return end
 
     local limit = ini_barters:r_float_ex(name, "limit")
     return barter_amt < limit
