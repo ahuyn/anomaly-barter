@@ -13,12 +13,21 @@ ini_parts = itms_manager.ini_parts
 gc = game.translate_string
 get_config = barter_mcm.get_config
 
-function print_dbg(txt, ...)
-	if (get_config("debug") or false) then
-		printf("barter | %s | " .. txt, time_global(), ...)
-	end
-end
 
+local dbg_log
+function print_dbg(msg, ...)
+    if not mcm_log then
+        printf("![AC] " .. msg, ...)
+    elseif not ui_mcm.MCM_DEBUG then -- use MCM's debug log setting
+        return
+    else
+        if not dbg_log then
+            dbg_log = mcm_log.new("![AC]")
+            dbg_log.enabled = true
+        end
+        if dbg_log then dbg_log:log(msg, ...) end
+    end
+end
 function get_desc(name)
     local desc = "desc"
     if ini_barters:r_string_ex(name, "repeat") and ini_barters:r_string_ex(name, "desc_done") and not check_limit(name) then
@@ -29,7 +38,6 @@ end
 
 function npc_has_barter(npc)
     local name = npc and npc:section() or ""
-    printf("Talking to %s", name)
     return trader_to_barter[name] and not is_empty(trader_to_barter[name])
 end
 
@@ -136,9 +144,9 @@ function barter_get_data(name)
         local take_amt = data.take[sec]
         if not take_amt or take_amt == 0 then return end
         -- item specific stuff
-        if IsItem("multiuse", sec) and item:get_remaining_uses() < item:get_max_uses() then -- validate max uses
-            return
-        end
+        -- if IsItem("multiuse", sec) and item:get_remaining_uses() < item:get_max_uses() then -- validate max uses
+        --     return
+        -- end
 
         if IsItem("ammo", sec) and item:ammo_get_count() < item:ammo_box_size() then
             -- validate full box
@@ -157,11 +165,14 @@ function barter_get_data(name)
                 if v < 60 then return end
             end
         end
+        
+        -- process multiuse items
+        
         local item_data = take_items[sec]
         if item_data.limit > item_data.amt then
             table.insert(item_data.ids, item:id())
         end
-        item_data.amt = item_data.amt + 1
+        item_data.amt = item_data.amt + (IsItem("multiuse", sec) and item:get_remaining_uses() or 1)
     end)
     if data.type == "anyOf" then
         local at_least_one = false
@@ -263,8 +274,17 @@ local function remove(item)
     if item.sec == "money" then
         db.actor:give_money(-1 * item.limit)
     else
+        local limit = item.limit
+        print_dbg("Taking %s of item %s", item.limit, item.sec)
         for i=1,#item.ids do
-            alife_release_id(item.ids[i])
+            if IsItem("multiuse", item.sec) then
+                local obj = level.object_by_id(item.ids[i])
+                local to_discharge = clamp(limit, 0, obj:get_remaining_uses())
+                limit = limit - to_discharge
+                utils_item.discharge(obj, to_discharge)
+            else
+                alife_release_id(item.ids[i])
+            end
         end
     end
 end
@@ -273,9 +293,7 @@ end
 function do_barter(name, items, ind)
     print_dbg("Performing barter %s, index %s", name, ind)
     if ind and barters[name].type == "anyOf" then
-        for i=1,#items[ind].ids do
-            remove(items[ind])
-        end
+        remove(items[ind])
     else
         for k,v in pairs(items) do
             remove(v)
@@ -399,7 +417,11 @@ local function parse_barterstring(str)
     local temp = str_explode(str, ",")
     local t = {}
     for i=1,#temp-1, 2 do
-        t[temp[i]] = tonumber(temp[i+1])
+        local uses = temp[i+1]
+        if temp[i+1] == "full" then
+            uses = IsItem("multiuse", temp[i])
+        end
+        t[temp[i]] = tonumber(uses)
     end
     return t
 end
