@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="windows-1251"?>
+<string_table>
+    <string id="st_spleen_wastelander">
+        <text>Hey stalker, that suit of yours...I can turn that into something truly special. I have everything I need for the suit, but show me you're serious - bring me a rare artifact and I'll upgrade your suit.</text>
+    </string>
+
+    <string id="st_beard_binocs">
+        <text>One of my artifact hunters had some mildly bad luck yesterday. Climbed the Oakpine and pulled out a cache of nice artifacts, but dropped his binoculars into the pit. Poor him! Do you have any spares?</text>
+    </string>
+</string_table>

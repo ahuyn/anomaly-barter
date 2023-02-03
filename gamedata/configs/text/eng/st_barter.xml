@@ -13,6 +13,9 @@
     <string id="st_barter_limit">
         <text>limit</text>
     </string>
+    <string id="st_barter_info">
+        <text>requires previous barter</text>
+    </string>
     <string id="st_barter_toolkit1">
         <text>technician requires basic tools</text>
     </string>

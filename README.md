@@ -31,8 +31,8 @@ trader          = m_trader
 give            = stalker_outfit,2
 take            = ammo_9x18_fmj,1,medkit,1,wpn_pm,1
 type            = anyOf
-precondition    = barter_core.check_limit,barter_core.check_goodwill
-postcondition   = barter_core.increment_limit
+precondition    = barter_core.pre_std
+postcondition   = barter_core.post_std
 restricted      = stalker
 repeat          = fixed
 limit           = 1
@@ -57,7 +57,7 @@ All fields besides `trader, give, take` are technically optional.
 |precond_text|string (function refs|Functions used to build the info window of preconditions.|Blank|
 |postcondition|string (function refs)|These functions are executed after the barter is done.| No postconditions applied |
 |restricted| string (comma separated factions)|Requires actor be one of the listed factions in order to view the barter.| All factions can view (assuming friendly) |
-|repeat| `fixed/restock`|Leveraged by barter_core.check_limit. This determines the type of repeatability for the barter. Valid keys are either 'fixed` or 'restock'| No limit imposed on the barter. |
+|repeat| `fixed/restock`|Leveraged by barter_core.pre_std. This determines the type of repeatability for the barter. Valid keys are either 'fixed` or 'restock'| No limit imposed on the barter. |
 |limit|float|Max number of times barter can be performed before reset.| Defaults to 1 |
 |faction| string (faction)|OPTIONAL. Goes in tandem with `goodwill` key, is the 'given' faction for the goodwill requirement.| If not specified, no goodwill required. |
 |goodwill|integer|Requires the specified amount of goodwill for the given faction before allowing the barter.| Defaults to 0 goodwill |

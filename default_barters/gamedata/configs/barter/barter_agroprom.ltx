@@ -1,0 +1,55 @@
+
+[army_trader_aps]
+trader          = agr_smart_terrain_1_6_army_trader_stalker
+give            = wpn_aps
+take            = wpn_hpsa_alt,1,wpn_walther_custom,1
+type            = anyOf
+precondition    = barter_core.pre_std
+precond_text    = barter_core.str_std
+postcondition   = barter_core.post_std
+repeat          = fixed
+limit           = 1
+faction         = army
+goodwill        = 100
+desc            = st_spooner_trophy
+desc            = st_spooner_trophy_done
+
+[army_trader_ak]:army_trader_aps
+give            = wpn_aks74
+take            = wpn_mp5sd_custom,1,wpn_mp5sd_new,1,wpn_mp7,1
+goodwill        = 100
+
+[army_trader_mp412]:army_trader_aps
+give            = wpn_mp412
+take            = wpn_usp_custom,1,wpn_sig220_custom,1
+goodwill        = 300
+
+[army_trader_ak104]:army_trader_aps
+give            = wpn_ak104
+take            = wpn_glock_custom,1,wpn_glock_modern,1
+goodwill        = 300
+
+[army_trader_rpk]:army_trader_aps
+give            = wpn_rpk74
+take            = wpn_m4a1_freedom,1,wpn_m4a1_custom,1,wpn_m4a1_camo,1
+goodwill        = 500
+
+[army_trader_nvg]:army_trader_aps
+give            = device_torch_nv_2
+type            = allOf
+take            = wpn_m4a1_freedom,1,wpn_m4a1_custom,1,wpn_m4a1_camo,1
+goodwill        = 350
+desc            = st_spooner_nvg
+desc            = st_spooner_nvg_done
+
+[army_mech_backpack]
+trader          = agr_smart_terrain_1_6_army_mechanic_stalker
+give            = equ_military_pack
+take            = toolkit_r5,4,heavy_repair_kit,4
+precondition    = barter_core.pre_std
+precond_text    = barter_core.str_std
+postcondition   = barter_core.post_std
+repeat          = fixed
+limit           = 1
+desc            = st_armytech
+desc            = st_armytech_done

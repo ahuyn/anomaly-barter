@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="windows-1251"?>
+<string_table>
+    <string id="st_spirit_vodka">
+        <text>Got anything to drink? If you do, well...I'll make sure there are some 'accounting errors' in the ammo inventory.</text>
+    </string>
+    <string id="st_spirit_vodka_basic">
+        <text>We've got a surplus of these old uniforms around. Most of them won't fit any new joinees, and they'll definitely try to trade up anyway when they get the chance. I'll let one slip to you for a few bottles of Nemiroff.</text>
+    </string>
+    <string id="st_spirit_vodka_berill">
+        <text>Hey stalker, today's your lucky day. We got a new shipment of Berills and seems like there was a discrepancy. We have one left over, as you see. It can be yours..for a price.</text>
+    </string>
+    <string id="st_spirit_vodka_skat">
+        <text>Hey stalker, I've been hearing about the good work you've done for the eggheads here. Long story short - some specops guy got his leg blown off from a Monolith RPG not too long ago, and he's left his set of armor with us. I just had to sew on one pants leg, and it's good as new! You know the drill...bottles up front.</text>
+    </string>
+    <string id="st_spirit_vodka_done">
+        <text>Thanks, stalker. We'll toast to you.</text>
+    </string>
+
+    <string id="st_peregrine_food">
+        <text>The vodka isn't all for drinking, you know - it's really useful to sanitize tools. Either way, being out here is boring without something to snack on. Bring me something and I'll slip you some armor inserts.</text>
+    </string>
+
+    <string id="st_sakharov_parts">
+        <text>As an unofficial part of the field sample compensation program, I am distributing a limited number of certain medicines. Should you find yourself in need of certain .</text>
+    </string>
+</string_table>

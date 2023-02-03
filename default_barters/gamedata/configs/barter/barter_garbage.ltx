@@ -1,0 +1,74 @@
+; garbage
+
+; butcher
+[hunter_knoife] ; one time hunting knife
+trader          = hunter_gar_trader
+give            = wpn_knife3
+take            = hide_flesh,1
+precondition    = barter_core.pre_std
+precond_text    = barter_core.str_std
+postcondition   = barter_core.post_std
+repeat          = fixed
+limit           = 1
+desc            = st_hunter_knife
+desc            = st_hunter_knife_done
+
+[hunter_toz]:hunter_knoife
+give            = wpn_toz34
+take            = hide_boar,1
+desc            = st_hunter_toz
+desc            = st_hunter_toz_done
+
+[hunter_tozcer]:hunter_toz
+give            = wpn_toz34_decor
+take            = hide_chimera,1
+precondition    = barter_core.pre_std,barter_core.kill_mutant,barter_core.check_goodwill
+precond_text    = barter_core.str_std,barter_core.str_mutant,barter_core.str_goodwill
+faction         = stalker
+goodwill        = 1000
+kill_cnt        = 500
+desc            = st_hunter_tozcer
+desc            = st_hunter_tozcer_done
+
+[hunter_meat_bandage] ; meat for bandage
+trader          = hunter_gar_trader
+type            = anyOf
+give            = bandage
+take            = mutant_part_dog_meat,2,mutant_part_flesh_meat,2
+precondition    = barter_core.pre_std
+precond_text    = barter_core.str_std
+postcondition   = barter_core.post_std
+repeat          = restock
+limit           = 6
+desc            = st_hunter_meat
+desc_done       = st_hunter_meat_done
+
+[hunter_meat_stones]:hunter_meat_bandage ; meat for stones
+type            = anyOf
+give            = sharpening_stones
+take            = mutant_part_dog_meat,2,mutant_part_flesh_meat,2
+
+[hunter_meat_buck]:hunter_meat_bandage ; meat for buckshot
+give            = ammo_12x70_buck
+take            = mutant_part_boar_chop,1,mutant_part_psevdodog_meat,1
+limit           = 4
+
+[hunter_meat_clean]:hunter_meat_bandage ; meat for cleaning kit
+give            = cleaning_kit_s
+take            = mutant_part_boar_chop,3,mutant_part_psevdodog_meat,3
+limit           = 1
+
+; flea market?
+
+[flea_kits]
+trader          = baraholka_trader
+type            = anyOf
+give            = bandage
+take            = mutant_part_dog_meat,2,mutant_part_flesh_meat,2
+precondition    = barter_core.pre_std
+precond_text    = barter_core.str_std
+postcondition   = barter_core.post_std
+repeat          = restock
+limit           = 6
+desc            = st_flea_scrap
+desc_done       = st_generic_done

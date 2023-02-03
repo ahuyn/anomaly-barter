@@ -1,0 +1,114 @@
+; Sid
+[sid_jelly_suit] ; trade stalker suit for jellyfish, one time only
+trader          = m_trader
+precondition    = barter_core.pre_std
+precond_text    = barter_core.str_std
+postcondition   = barter_core.post_std
+give            = stalker_outfit
+take            = af_medusa,1
+repeat          = fixed
+limit           = 1
+faction         = stalker
+goodwill        = 200
+desc            = st_sid_jelly_suit
+desc_done       = st_sid_jelly_suit_done
+
+[sid_shotgun] ; shotty for patches
+trader          = m_trader
+precondition    = barter_core.pre_std
+precond_text    = barter_core.str_std
+postcondition   = barter_core.post_std
+give            = wpn_bm16
+take            = bandit_patch,6
+repeat          = fixed
+limit           = 1
+faction         = stalker
+goodwill        = 100
+desc            = st_sid_shotgun
+desc_done       = st_sid_shotgun_done
+
+
+; Loris
+[loris_ak] ; early availability AK-47
+trader          = esc_main_base_trader_mlr
+give            = wpn_ak
+take            = mre,3
+precondition    = barter_core.pre_std
+precond_text    = barter_core.str_std
+postcondition   = barter_core.post_std
+repeat          = fixed
+limit           = 1
+faction         = stalker
+goodwill        = 100
+sort_rank       = 1
+give_info       = barter_loris_ak
+desc            = st_loris_ak
+desc_done       = st_loris_ak_done
+
+[loris_762]
+trader          = esc_main_base_trader_mlr
+give            = ammo_7.62x39_fmj
+take            = beer,1
+precondition    = barter_core.pre_std
+precond_text    = barter_core.str_std
+postcondition   = barter_core.post_std
+repeat          = restock
+limit           = 2
+faction         = stalker
+goodwill        = 100
+sort_rank       = 2
+has_info        = barter_loris_ak
+desc            = st_loris_762
+desc_done       = st_loris_762_done
+
+[loris_ammo1]
+trader          = esc_main_base_trader_mlr
+type            = anyOf
+give            = bandage,2
+take            = ammo_9x18_fmj,1,ammo_7.62x25_p,1,ammo_7.62x25_ps,1,ammo_9x19_fmj,1,ammo_9x18_pmm,1,ammo_9x19_pbp,1
+precondition    = barter_core.pre_std
+precond_text    = barter_core.str_std
+postcondition   = barter_core.post_std
+repeat          = restock
+limit           = 3
+faction         = stalker
+goodwill        = 100
+has_info = dildos
+desc            = st_loris_generic
+desc_done       = st_loris_generic_done
+
+[loris_ammo2]:loris_ammo1
+give            = medkit
+take            = ammo_5.45x39_fmj,1,ammo_5.56x45_fmj,1
+
+[loris_ammo3]:loris_ammo1
+type            = allOf
+give            = antirad_kalium
+give_meta       = 1
+take            = ammo_12x70_buck,1
+
+[loris_ammo4]:loris_ammo1
+type            = allOf
+give            = morphine
+take            = ammo_12x76_zhekan,1
+
+
+; loner tech
+[xenotech_scrap_oil]
+trader          = esc_smart_terrain_5_7_loner_mechanic_stalker
+give            = gun_oil_ru
+take            = prt_i_wood,3,prt_i_fasteners,3,prt_i_scrap,3
+type            = anyOf
+precondition    = barter_core.pre_std
+precond_text    = barter_core.str_std
+postcondition   = barter_core.post_std
+repeat          = restock
+limit           = 3
+desc            = st_xenotech_scrap
+desc_done       = st_xenotech_scrap_done
+
+[xenotech_scrap_glue]:xenotech_scrap_oil
+give            = glue_b
+
+[xenotech_scrap_thread]:xenotech_scrap_oil
+give            = sewing_thread

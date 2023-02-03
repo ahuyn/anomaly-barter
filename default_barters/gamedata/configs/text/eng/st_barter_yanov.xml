@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="windows-1251"?>
+<string_table>
+    <string id="st_hawaiian_gas">
+        <text>Ever had my famous Hawaiian BBQ? Ok, it's just shashlik. But we need fuel to cook and to keep the lights on around here, so if you have any gas, I'll make good use of it.</text>
+    </string>
+
+    <string id="st_nitro_parts">
+        <text>Got any radio parts or old radios? I like to tinker with them in my spare time. Plus, having some working communications is really handy given how big this area is. I'll give you some things from my stock in exchange.</text>
+    </string>
+
+    
+
+    <string id="st_ashot_n1">
+        <text>Hey bro, can you do me a favor and take this note to Yar?</text>
+    </string>
+</string_table>

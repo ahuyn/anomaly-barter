@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="windows-1251"?>
+<string_table>
+    
+    <string id="st_spooner_trophy">
+        <text>Some of the higher ups are looking for trophies to take home. We can't officially take artifacts home, as those have to be turned over to the Ministry of Science, and smuggling isn't worth it with the new crackdown. Instead we're looking for some cool Western guns now - I hear those Mercenaries have weapons with rails! Bring me some.</text>
+    </string>
+    <string id="st_spooner_trophy_done">
+        <text>Cool! Here's something from the arsenal.</text>
+    </string>
+
+    <string id="st_spooner_nvg">
+        <text>Hey, buddy, got some good news for you. We got a shipment of NODs but we got a few more than we need. Brass doesn't schedule much night ops stuff because getting eaten by Bloodsuckers is not good for our casualty rates, so we have a surplus. Want a pair?</text>
+    </string>
+    <string id="st_spooner_nvg_done">
+        <text>Great, here you go.</text>
+    </string>
+
+    <string id="st_armytech">
+        <text>This fucking Zone! All of our equipment goes to shit before our eyes! We've burned through almost all of our cleaning supplies keeping our damn weapons operational, and every other day patrols show up with rips, tears, burned clothing and other crap! Look, if you can get me some extra repair material, I'll make it up to you somehow. Can you help me out?</text>
+    </string>
+    <string id="st_armytech_done">
+        <text>Great, this'll last us a bit longer. Thanks for the help.</text>
+    </string>
+
+
+
+</string_table>

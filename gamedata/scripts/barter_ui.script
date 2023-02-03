@@ -196,15 +196,15 @@ function UIBarter:InitInventory(n)
 	-- get all the barters for this npc
     -- gray out items and make unclickable if not valid
 	if n == 1 then
-		local prev_rep = nil
+		local prev_rank = nil
 		for k,v in pairs(self.barters) do
 			-- custom cell container supports adding 'newlines' which will force subsequent items to start occupying the next line
 			-- default behavior segments based on goodwill
-			if not prev_rep then prev_rep = v.goodwill end 
-			if prev_rep ~= v.goodwill then
+			if not prev_rank then prev_rep = v.sort_rank end 
+			if prev_rank ~= v.sort_rank then
 				inv[#inv+1] = "newline"
 				inf[#inf+1] = ""
-				prev_rep = v.goodwill
+				prev_rank = v.sort_rank
 			end
             inv[#inv+1] = v.give.sec
 			inf[#inf+1] = v.amt and v.amt .. "/" .. v.limit or ""
@@ -336,7 +336,7 @@ function UIBarter:OnItemSelect(n)
 		local name = ui_item.get_sec_name(take.sec)
 		-- set name of barter give item
 		self.text_item[n]:SetText(name)
-		self.btn_barter:Enable(take.amt >= take.limit)
+		self.btn_barter:Enable(take.amt >= take.limit and barter_data.allowed)
 	end
 end
 
