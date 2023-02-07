@@ -2,25 +2,29 @@
 [meeker_wep1]
 trader          = pri_special_trader_mlr
 give            = wpn_colt1911_custom
-take            = flask,3,mineral_water,3,tea,1
+take            = flask:9,mineral_water:3,tea:1
 precondition    = barter_core.pre_std
 precond_text    = barter_core.str_std
 postcondition   = barter_core.post_std
 repeat          = fixed
 limit           = 1
+sort_rank       = 1
 desc            = st_meeker_weapons
 desc            = st_meeker_weapons_done
 
 [meeker_wep2]:meeker_wep1
 give            = wpn_g36
-take            = tushonka,3,ration_ru,1
+take            = tushonka:3,ration_ru:full
+sort_rank       = 2
 
 [meeker_wep3]:meeker_wep1
 give            = wpn_galil_modern
-take            = mre,2
+take            = mre:6
+sort_rank       = 2
 
 [meeker_wep4]:meeker_wep1
 give            = wpn_l96a1m
-take            = ration_ukr,2
+take            = ration_ukr:12
+sort_rank       = 3
 
 ; loners

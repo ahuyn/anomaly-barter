@@ -17,18 +17,18 @@ get_config = barter_mcm.get_config
 local dbg_log
 function print_dbg(msg, ...)
     
-		printf("barter | %s | " .. msg, time_global(), ...)
-    -- if not mcm_log then
-    --     printf("![AC] " .. msg, ...)
-    -- elseif not ui_mcm.MCM_DEBUG then -- use MCM's debug log setting
-    --     return
-    -- else
-    --     if not dbg_log then
-    --         dbg_log = mcm_log.new("![AC]")
-    --         dbg_log.enabled = true
-    --     end
-    --     if dbg_log then dbg_log:log(msg, ...) end
-    -- end
+		-- printf("barter | %s | " .. msg, time_global(), ...)
+    if not mcm_log then
+        printf("![AC] " .. msg, ...)
+    elseif not ui_mcm.MCM_DEBUG then -- use MCM's debug log setting
+        return
+    else
+        if not dbg_log then
+            dbg_log = mcm_log.new("![AC]")
+            dbg_log.enabled = true
+        end
+        if dbg_log then dbg_log:log(msg, ...) end
+    end
 end
 function get_desc(name)
     local desc = "desc"
@@ -118,7 +118,7 @@ function get_barter_list(npc, random)
     return barter_list
 end
 
--- return data on barter eligibility and what items are taken
+-- for a given barter, return data on barter eligibility and what items are taken
 function barter_get_data(name)
     -- eval precond
     local allowed = eval_barter(name, "precondition")
@@ -129,8 +129,8 @@ function barter_get_data(name)
     data.give = barters[name].give
     data.take = barters[name].take
     data.type = barters[name].type
-    data.goodwill = ini_barters:r_float_ex(name, "goodwill") or 0
-    data.sort_rank = ini_barters:r_float_ex(name, "sort_rank") or data.goodwill
+    -- sort rank is important as newlines will be inserted in differences between sort rank
+    data.sort_rank = ini_barters:r_float_ex(name, "sort_rank") or ini_barters:r_float_ex(name, "goodwill") or 0
     data.amt = data.limit and get_barter_amt(name) or nil
     local take_items = {}
     for k,v in pairs(data.take) do
@@ -372,13 +372,21 @@ end
 
 -- check against rep level
 function check_goodwill(name)
-    return true
-    -- local faction = ini_barters:r_string_ex(name, "faction")
-    -- if not faction then return true end
-    -- local rep = ini_barters:r_float_ex(name, "goodwill") or 0
+    -- return true
+    local faction = ini_barters:r_string_ex(name, "faction")
+    if not faction then return true end
+    local rep = ini_barters:r_float_ex(name, "goodwill") or 0
 
-    -- return relation_registry.community_goodwill(faction, AC_ID) >= rep
+    return relation_registry.community_goodwill(faction, AC_ID) >= rep
 end
+
+-- function check_supply_lv(name)
+--     local trade_lv = ini_barters:r_string_ex(name, "supply_lvl")
+--     if not trade_lv then return true end
+--     local npc = mob_trade.GetTalkingNpc()
+--     local lv = trader_autoinject.supply_level(npc, true)
+--     return lv >= trade_lv
+-- end
 
 -- check against limit with variable refresh rate
 function check_limit(name)
@@ -479,12 +487,15 @@ end
 local function parse_barterstring(str)
     local temp = str_explode(str, ",")
     local t = {}
-    for i=1,#temp-1, 2 do
-        local uses = temp[i+1]
-        if temp[i+1] == "full" then
-            uses = IsItem("multiuse", temp[i])
+    for k,v in pairs(temp) do
+        local group = str_explode(v, ":")
+        local item = group[1]
+        local uses = group[2]
+        if not uses or uses == "full" then
+            if IsItem("multiuse", item) then uses = IsItem("multiuse", item) 
+            else uses = 1 end
         end
-        t[temp[i]] = tonumber(uses)
+        t[item] = tonumber(uses)
     end
     return t
 end
@@ -498,7 +509,7 @@ local function parse_barters()
             print_dbg("Barter %s has no give item", name)
             return 
         end
-        give = str_explode(give, ",")
+        give = str_explode(give, ":")
         if not give[1] or (give[1] ~= "money" and not ini_sys:section_exist(give[1])) then 
             print_dbg("Barter %s attempted to add nonexistant give item %s", name, give)
             return 
@@ -519,7 +530,10 @@ local function parse_barters()
             end
         end
         local take = ini_barters:r_string_ex(name, "take")
-        if not take then return end
+        if not take then 
+            print_dbg("Barter %s has no take items", name)
+            return 
+        end
         take = parse_barterstring(take)
         for k,v in pairs(take) do
             if (k ~= "money" and not ini_sys:section_exist(k)) then

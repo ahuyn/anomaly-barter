@@ -2,7 +2,7 @@
 [limpid_suit]
 trader          = val_smart_terrain_7_3_bandit_mechanic_stalker
 give            = af_electra_sparkler
-take            = novice_outfit,1,cs_novice_outfit,1
+take            = novice_outfit,cs_novice_outfit
 precondition    = barter_core.pre_std
 precond_text    = barter_core.str_std
 postcondition   = barter_core.post_std
@@ -15,13 +15,13 @@ desc_done       = st_dv_suits_done
 precondition    = barter_core.pre_std
 precond_text    = barter_core.str_std
 give            = af_mincer_meat
-take            = stalker_outfit,1
+take            = stalker_outfit
 faction         = bandit
 goodwill        = 200
 
 [limpid_suit3]:limpid_suit2
 give            = af_black_spray
-take            = dolg_outfit,1
+take            = dolg_outfit
 faction         = bandit
 goodwill        = 300
 
@@ -29,7 +29,7 @@ goodwill        = 300
 [bandit_supp]
 trader          = val_smart_terrain_7_4_bandit_trader_stalker
 give            = wpn_kiparis
-take            = wpn_sil_9mm,1,wpn_sil_aps,1,wpn_sil_6p9,1
+take            = wpn_sil_9mm,wpn_sil_aps,wpn_sil_6p9
 precondition    = barter_core.pre_std
 precond_text    = barter_core.str_std
 postcondition   = barter_core.post_std
@@ -39,12 +39,12 @@ desc            = st_dv_silencer
 desc_done       = st_dv_suits_done
 
 [bandit_supp2]:bandit_supp
-give            = wpn_colt1911
-take            = wpn_sil_gemtech,1,wpn_sil_57,1,wpn_sil_45,1
+give            = wpn_colt1911_custom
+take            = wpn_sil_gemtech,wpn_sil_57,wpn_sil_45
 
 [bandit_supp3]:bandit_supp
 give            = wpn_ak74u
-take            = wpn_sil_pbs4,1,wpn_sil_pbs1,1,wpn_sil_tgp-a,1
+take            = wpn_sil_pbs4,wpn_sil_pbs1,wpn_sil_tgp-a
 
 
 ; [bandit_drugs]

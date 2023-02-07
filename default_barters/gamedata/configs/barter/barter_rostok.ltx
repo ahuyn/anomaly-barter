@@ -3,7 +3,7 @@
 [petrenko_ammo1] ; ammo for trophies
 trader          = bar_dolg_general_petrenko_stalker
 give            = ammo_9x18_pmm
-take            = mutant_part_dog_tail,1,mutant_part_flesh_eye,1,mutant_part_tushkano_head,2
+take            = mutant_part_dog_tail:1,mutant_part_flesh_eye:1,mutant_part_tushkano_head,2
 type            = anyOf
 precondition    = barter_core.pre_std
 precond_text    = barter_core.str_std,barter_core.str_any
@@ -20,7 +20,7 @@ give            = ammo_7.62x25_p
 precondition    = barter_core.pre_std
 precond_text    = barter_core.str_std
 give            = ammo_5.45x39_fmj
-take            = mutant_part_psevdodog_tail,1,mutant_part_boar_leg,2,mutant_part_snork_mask,1
+take            = mutant_part_psevdodog_tail:1,mutant_part_boar_leg,2,mutant_part_snork_mask:1
 faction         = dolg
 goodwill        = 200
 
@@ -32,32 +32,31 @@ give            = grenade_rgd5
 
 [petrenko_ammo5]:petrenko_ammo3
 give            = ammo_9x39_pab9
-take            = mutant_part_krovosos_jaw,1,mutant_part_psysucker_hand,1
+take            = mutant_part_krovosos_jaw:1,mutant_part_psysucker_hand:1
 goodwill        = 400
 
-[petrenko_ammo6]:petrenko_ammo3
+[petrenko_ammo6]:petrenko_ammo5
 give            = ammo_7.62x54_7h14
-take            = mutant_part_krovosos_jaw,1,mutant_part_psysucker_hand,1
-goodwill        = 400
 
-[petrenko_ammo7]:petrenko_ammo3
+[petrenko_ammo6g]:petrenko_ammo5
+give            = ammo_vog-25
+limit           = 2
+
+[petrenko_ammo7]:petrenko_ammo5
 give            = ammo_pkm_100
-take            = mutant_part_pseudogigant_eye,1,mutant_part_chimera_kogot,1
+take            = mutant_part_pseudogigant_eye:1,mutant_part_chimera_kogot:1
 goodwill        = 600
 limit           = 2
 
-[petrenko_ammo8]:petrenko_ammo3
+[petrenko_ammo8]:petrenko_ammo7
 give            = ammo_og-7b
-take            = mutant_part_pseudogigant_eye,1,mutant_part_chimera_kogot,1
-goodwill        = 600
-limit           = 2
 
 ; mangun
 [mangun_parts_p] ; parts for repair item
 trader          = bar_visitors_stalker_mechanic
 give            = cleaning_kit_p
 give_meta       = 2
-take            = prt_w_p_barrel_1,1,prt_w_p_trigger_3,1,prt_w_p_spring_1,1
+take            = prt_w_p_barrel_1:1,prt_w_p_trigger_3:1,prt_w_p_spring_1:1
 precondition    = barter_core.pre_std
 precond_text    = barter_core.str_std
 postcondition   = barter_core.post_std
@@ -67,28 +66,28 @@ desc            = st_mangun_parts
 desc_done       = st_mangun_parts_done
 
 [mangun_parts_p2]:mangun_parts_p
-take            = prt_w_p_barrel_1,1,prt_w_p_trigger_3,1,prt_w_p_spring_1,1
+take            = prt_w_p_barrel_1:1,prt_w_p_trigger_3:1,prt_w_p_spring_1:1
 [mangun_parts_p3]:mangun_parts_p
-take            = prt_w_p_barrel_5,1,prt_w_p_trigger_1,1,prt_w_p_spring_5,1
+take            = prt_w_p_barrel_5:1,prt_w_p_trigger_1:1,prt_w_p_spring_5:1
 [mangun_parts_p_full]:mangun_parts_p
 give            = toolkit_p
-take            = prt_w_p_barrel_1,1,prt_w_p_barrel_5,1,prt_w_p_barrel_6,1,prt_w_p_trigger_3,1,prt_w_p_trigger_1,2,prt_w_p_spring_1,2,prt_w_p_spring_5,1
+take            = prt_w_p_barrel_1:1,prt_w_p_barrel_5:1,prt_w_p_barrel_6:1,prt_w_p_trigger_3:1,prt_w_p_trigger_1,2,prt_w_p_spring_1,2,prt_w_p_spring_5:1
 
 [mangun_parts_r]:mangun_parts_p
 faction         = dolg
 goodwill        = 200
 give            = cleaning_kit_r5
 give_meta       = 2
-take            = prt_w_barrel_8,1,prt_w_trigger_components_2,1,prt_w_bolt_carrier_1,1,prt_w_bolt_6,1,prt_w_gas_tube_5,1
+take            = prt_w_barrel_8:1,prt_w_trigger_components_2:1,prt_w_bolt_carrier_1:1,prt_w_bolt_6:1,prt_w_gas_tube_5:1
 [mangun_parts_r2]:mangun_parts_r
 give            = cleaning_kit_r5
-take            = prt_w_barrel_8,1,prt_w_trigger_components_3,1,prt_w_bolt_carrier_1,1,prt_w_bolt_6,1,prt_w_gas_tube_5,1
+take            = prt_w_barrel_8:1,prt_w_trigger_components_3:1,prt_w_bolt_carrier_1:1,prt_w_bolt_6:1,prt_w_gas_tube_5:1
 [mangun_parts_r3]:mangun_parts_r
 give            = cleaning_kit_r5
-take            = prt_w_barrel_7,1,prt_w_trigger_components_2,1,prt_w_bolt_carrier_1,1,prt_w_bolt_6,1,prt_w_gas_tube_5,1
+take            = prt_w_barrel_7:1,prt_w_trigger_components_2:1,prt_w_bolt_carrier_1:1,prt_w_bolt_6:1,prt_w_gas_tube_5:1
 [mangun_parts_r_full]:mangun_parts_r
 give            = toolkit_r5
-take            = prt_w_barrel_7,1,prt_w_barrel_8,2,prt_w_trigger_components_2,2,prt_w_trigger_components_3,1,prt_w_bolt_carrier_1,3,prt_w_bolt_6,3,prt_w_gas_tube_5,3
+take            = prt_w_barrel_7:1,prt_w_barrel_8,2,prt_w_trigger_components_2,2,prt_w_trigger_components_3:1,prt_w_bolt_carrier_1,3,prt_w_bolt_6,3,prt_w_gas_tube_5,3
 
 
 ; medic
@@ -99,7 +98,7 @@ precondition    = barter_core.pre_std
 precond_text    = barter_core.str_std
 postcondition   = barter_core.post_std
 give            = stimpack
-take            = cigarettes,3,cigarettes_lucky,3,cigarettes_russian,3
+take            = cigarettes:full,cigarettes_lucky:full,cigarettes_russian:full
 repeat          = restock
 limit           = 5
 desc            = st_asp_smokes
@@ -107,4 +106,4 @@ desc_done       = st_generic_thanks
 
 [asp_smokes2]:asp_smokes
 give            = stimpack_army
-take            = cigar1,3,cigar2,3,cigar3,3
+take            = cigar1:full,cigar2:full,cigar3:full

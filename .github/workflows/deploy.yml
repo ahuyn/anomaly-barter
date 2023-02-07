@@ -36,7 +36,7 @@ jobs:
           cp -r anomaly-dependencies/trader_autoinject/gamedata .
           
       - name: Zip folder
-        run: zip -r $RELEASE_NAME.zip gamedata module README.md 
+        run: zip -r $RELEASE_NAME.zip gamedata default_barters README.md 
         env: 
           RELEASE_NAME: ${{ github.event.repository.name }}.${{ steps.date.outputs.today }}
       

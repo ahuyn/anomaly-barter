@@ -6,7 +6,7 @@ precondition    = barter_core.pre_std
 precond_text    = barter_core.str_std
 postcondition   = barter_core.post_std
 give            = wpn_mosin
-take            = af_grid,3
+take            = af_grid:3
 repeat          = fixed
 limit           = 1
 faction         = csky
@@ -16,7 +16,7 @@ desc_done       = st_spore_weapons_done
 
 [spore_mp133]:spore_mosin
 give            = wpn_mp133
-take            = equ_small_pack,1,af_frames,1
+take            = equ_small_pack:1,af_frames:1
 [spore_type63]:spore_mosin
 give            = wpn_type63
 take            = itm_backpack,3
@@ -29,9 +29,10 @@ precondition    = barter_core.pre_std
 precond_text    = barter_core.str_std
 postcondition   = barter_core.post_std
 give            = cs_stalker_outfit
-take            = cs_novice_outfit,1,af_kevlar,1,boots,1,sewing_thread,1,prt_o_fabrics_2,1
+take            = cs_novice_outfit:1,af_kevlar:1,boots:1,sewing_thread:1,prt_o_fabrics_2:1
 repeat          = fixed
 limit           = 1
+give_info       = novikov_armor1
 desc            = st_novikov_1
 desc_done       = st_novikov_done
 
@@ -39,21 +40,23 @@ desc_done       = st_novikov_done
 precondition    = barter_core.pre_std,barter_core.check_toolkit1
 precond_text    = barter_core.str_std,barter_core.str_toolkit1
 give            = cs_nbc_outfit
-take            = cs_stalker_outfit,1,helm_respirator_gp5,1,tarpaulin,1,light_repair_kit,1,prt_o_fabrics_3,1
+take            = cs_stalker_outfit:1,helm_respirator_gp5:1,tarpaulin:1,light_repair_kit:1,prt_o_fabrics_3:1
 faction         = csky
 goodwill        = 200
+req_info        = novikov_armor1
+give_info       = novikov_armor2
 desc            = st_novikov_2a
 
 [novikov_armor2b]:novikov_armor2a
 give            = cs_medium_outfit
-take            = cs_stalker_outfit,1,af_plates,1,synthrope,1,medium_repair_kit,1,prt_o_fabrics_4,1
+take            = cs_stalker_outfit:1,af_plates:1,synthrope:1,medium_repair_kit:1,prt_o_fabrics_4:1
 desc            = st_novikov_2b
 
 [novikov_armor2c]:novikov_armor2a
 precondition    = barter_core.pre_std,barter_core.check_toolkit3
 precond_text    = barter_core.str_std,barter_core.str_toolkit3
 give            = cs_stalker_proto_exo_outfit
-take            = cs_stalker_outfit,1,prt_o_support_1,1,heavy_sewing_thread,2,exo_repair_kit,1
+take            = cs_stalker_outfit:1,prt_o_support_1:1,heavy_sewing_thread,2,exo_repair_kit:1
 goodwill        = 400
 desc            = st_novikov_2c
 
@@ -61,26 +64,30 @@ desc            = st_novikov_2c
 precondition    = barter_core.pre_std,barter_core.check_toolkit2
 precond_text    = barter_core.str_std,barter_core.str_toolkit2
 give            = cs_scientific_outfit
-take            = cs_nbc_outfit,1,helm_protective,1,medium_repair_kit,1,prt_i_copper,2,prt_o_retardant_16,1,prt_o_retardant_2,1,af_freon,1
+take            = cs_nbc_outfit,helm_protective,medium_repair_kit:1,prt_i_copper:2,prt_o_retardant_16,prt_o_retardant_2,af_freon:1
 goodwill        = 400
+req_info        = novikov_armor2
+give_info       = novikov_armor3
 desc            = st_novikov_3a
 
 [novikov_armor_3b]:novikov_armor_3a
 give            = cs_heavy_outfit
-take            = cs_medium_outfit,1,heavy_sewing_thread,1,prt_o_ballistic_2,1,prt_o_fabrics_4,1,af_kevlar,1,gloves,1
+take            = cs_medium_outfit:1,heavy_sewing_thread:1,prt_o_ballistic_2:1,prt_o_fabrics_4:1,af_kevlar:1,gloves:1
 desc            = st_novikov_3b
 
 [novikov_armor_4a]:novikov_armor_3a
 give            = military_sky_outfit
-take            = cs_heavy_outfit,1,heavy_repair_kit,1,prt_o_ballistic_2,1,prt_o_retardant_15,1,prt_o_fabrics_4,1,af_kevlar_up,1
+take            = cs_heavy_outfit:1,heavy_repair_kit:1,prt_o_ballistic_2:1,prt_o_retardant_15:1,prt_o_fabrics_4:1,af_kevlar_up:1
 goodwill        = 600
+req_info        = novikov_armor3
+give_info       = novikov_armor4
 desc            = st_novikov_4a
 
 [novikov_armor_4b]:novikov_armor_4a
 precondition    = barter_core.pre_std,barter_core.check_toolkit3
 precond_text    = barter_core.str_std,barter_core.str_toolkit3
 give            = cs_exolight_outfit
-take            = cs_heavy_outfit,1,helm_exo,1,af_plates_up,1,heavy_repair_kit,2,prt_o_ballistic_6,1,prt_o_ballistic_15,1,heavy_sewing_thread,1
+take            = cs_heavy_outfit:1,helm_exo:1,af_plates_up:1,heavy_repair_kit,2,prt_o_ballistic_6:1,prt_o_ballistic_15:1,heavy_sewing_thread:1
 goodwill        = 800
 desc            = st_novikov_4b
 
@@ -88,13 +95,14 @@ desc            = st_novikov_4b
 precondition    = barter_core.pre_std,barter_core.check_toolkit3
 precond_text    = barter_core.str_std,barter_core.str_toolkit3
 give            = cs_scientific_outfit_good
-take            = cs_scientific_outfit,1,medium_repair_kit,2,af_cristall_flower_af_iam,1,kerosene,1
+take            = cs_scientific_outfit:1,medium_repair_kit,2,af_cristall_flower_af_iam:1,kerosene:1
 goodwill        = 1000
+req_info        = novikov_armor4
 desc            = st_novikov_5a
 
 [novikov_armor_5b]:novikov_armor_5a
 give            = cs_exo_outfit
-take            = cs_exolight_outift,prt_o_support_1,1,heavy_sewing_thread,2,prt_i_copper,2,exo_repair_kit,2
+take            = cs_exolight_outift,prt_o_support_1:1,heavy_sewing_thread,2,prt_i_copper,2,exo_repair_kit,2
 goodwill        = 1000
 desc            = st_novikov_5b
 
@@ -107,7 +115,7 @@ postcondition   = barter_core.post_std
 type            = anyOf
 give            = kerosene
 give_meta       = 1
-take            = mutant_part_dog_meat,2,mutant_part_psevdodog_meat,1
+take            = mutant_part_dog_meat:2,mutant_part_psevdodog_meat:1
 repeat          = restock
 limit           = 3
 desc            = st_librarian_fuel
@@ -116,12 +124,10 @@ desc_done       = st_librarian_fuel_done
 [librarian_gas2]:librarian_gas
 give            = explo_jerrycan_fuel
 give_meta       = 2
-take            = mutant_part_flesh_meat,2,mutant_part_boar_chop,2
+take            = mutant_part_flesh_meat:2,mutant_part_boar_chop:2
 
-[librarian_gas3]:librarian_gas
+[librarian_gas3]:librarian_gas2
 give            = explo_balon_gas
-give_meta       = 2
-take            = mutant_part_flesh_meat,2,mutant_part_boar_chop,2
 
 ;  kalancha
 [kalancha_medicine]
@@ -130,7 +136,7 @@ precondition    = barter_core.pre_std
 precond_text    = barter_core.str_std
 postcondition   = barter_core.post_std
 give            = lead_box
-take            = antibio_chlor,1,antibio_sulfad,full
+take            = antibio_chlor:1,antibio_sulfad:full
 repeat          = restock
 limit           = 2
 desc            = st_kalancha_meds
@@ -140,8 +146,8 @@ desc_done       = st_kalancha_meds_done
 precondition    = barter_core.pre_std
 postcondition   = barter_core.post_std
 give            = af_iam
-take            = antibio_chlor,2,antibio_sulfad,6,akvatab,full
+take            = antibio_chlor:2,antibio_sulfad:6,akvatab:full
 
 [kalancha_medicine3]:kalancha_medicine
 give            = af_surge
-take            = antibio_chlor,2,antibio_sulfad,6,tetanus,1
+take            = antibio_chlor:2,antibio_sulfad:6,tetanus:1

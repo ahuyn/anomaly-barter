@@ -199,7 +199,7 @@ function UIBarter:InitInventory(n)
 		local prev_rank = nil
 		for k,v in pairs(self.barters) do
 			-- custom cell container supports adding 'newlines' which will force subsequent items to start occupying the next line
-			-- default behavior segments based on goodwill
+			-- default behavior segments based on sort rank
 			if not prev_rank then prev_rep = v.sort_rank end 
 			if prev_rank ~= v.sort_rank then
 				inv[#inv+1] = "newline"
