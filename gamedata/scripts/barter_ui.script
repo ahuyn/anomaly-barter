@@ -19,7 +19,6 @@ function start()
 	if (hud) then
 		hide_hud_inventory()
 	end
-	printf("Starting barter UI")
 	if (not GUI) then
 		GUI = UIBarter()
 	end
@@ -175,8 +174,11 @@ function UIBarter:Reset()
 	self.CC[2]:Show(to_show)
 	
 	-- Set npc face
-	self.box_item_main:InitTexture( npc:character_icon() )
-	
+	if npc:section() == "m_trader" then
+		self.box_item_main:InitTexture( "ui_saff" )
+	else
+		self.box_item_main:InitTexture( npc:character_icon() )
+	end
 	-- Set npc trader name
 	self.cap_menu:SetText(gc(npc:character_name()))
 	

@@ -17,19 +17,19 @@ get_config = barter_mcm.get_config
 local dbg_log
 function print_dbg(msg, ...)
     
-		-- printf("barter | %s | " .. msg, time_global(), ...)
-    if not mcm_log then
-        printf("![AC] " .. msg, ...)
-    elseif not ui_mcm.MCM_DEBUG then -- use MCM's debug log setting
-        return
-    else
-        if not dbg_log then
-            dbg_log = mcm_log.new("![AC]")
+-- printf("barter | %s | " .. msg, time_global(), ...)
+    if get_config("debug") or false then
+        dbg_log = dbg_log or mcm_log and mcm_log.new("DBG")
+        if dbg_log then
             dbg_log.enabled = true
+            dbg_log:log( text , ...)
+        else
+            printf( "barter: | %s |  "..text ,time_global(), ...)
         end
-        if dbg_log then dbg_log:log(msg, ...) end
     end
+    return nil
 end
+
 function get_desc(name)
     local desc = "desc"
     if ini_barters:r_string_ex(name, "repeat") and ini_barters:r_string_ex(name, "desc_done") and not check_limit(name) then
@@ -122,7 +122,6 @@ end
 function barter_get_data(name)
     -- eval precond
     local allowed = eval_barter(name, "precondition")
-    -- if ini_barters:r_bool_ex(name, "hidden") then return end
     -- eval items
     local data = {}
     data.name = name
@@ -158,16 +157,20 @@ function barter_get_data(name)
             return
         end
 
-        if item.condition and item:condition() and math.ceil(item:condition()*100) < barter_mcm.get_config("cond") then
+        if item.condition then
+            local cond_adj = math.ceil(item:condition()*100)
+            if SYS_GetParam(item:section(), "cond_part") and cond_adj <= barter_mcm.get_config("cond_part") then return 
+            elseif cond_adj <= barter_mcm.get_config("cond") then
             -- validate max condition
-            return
+            return end
         end
 
         local has_parts = ini_parts:r_string_ex("con_parts_list",sec)
         if has_parts then
             local parts = item_parts.get_parts_con(item, nil, true)
+            local part_cond = barter_mcm.get_config("cond_part")
             for k,v in pairs(parts) do
-                if v < 60 then return end
+                if v <= cond_part then return end
             end
         end
         
@@ -375,9 +378,12 @@ function check_goodwill(name)
     -- return true
     local faction = ini_barters:r_string_ex(name, "faction")
     if not faction then return true end
+    faction = str_explode(faction, ",")
     local rep = ini_barters:r_float_ex(name, "goodwill") or 0
-
-    return relation_registry.community_goodwill(faction, AC_ID) >= rep
+    for i,fac in pairs(faction) do
+        if relation_registry.community_goodwill(fac, AC_ID) < rep then return false end
+    end
+    return true
 end
 
 -- function check_supply_lv(name)
@@ -419,7 +425,7 @@ end
 function kill_mutant(name)
     local count = ini_barters:r_string_ex(name, "kill_cnt")
     if count then
-        local current = game_statistics.get_statistic("killed_monsters")
+        local current = game_statistics.get_statistic_count("killed_monsters")
         return current < count
     end
 end
@@ -505,13 +511,18 @@ local function parse_barters()
         print_dbg("Parsing barter %s", name)
         local npc = ini_barters:r_string_ex(name, "trader")
         local give = ini_barters:r_string_ex(name, "give")
+        local addon = ini_barters:r_string_ex(name, "addon")
+        if addon and not _G[addon] then 
+            print_dbg("Barter %s requires addon %s", addon)
+            return 
+        end
         if not give then 
             print_dbg("Barter %s has no give item", name)
             return 
         end
         give = str_explode(give, ":")
         if not give[1] or (give[1] ~= "money" and not ini_sys:section_exist(give[1])) then 
-            print_dbg("Barter %s attempted to add nonexistant give item %s", name, give)
+            print_dbg("Barter %s attempted to add nonexistant give item %s", name, give[1])
             return 
         end
         give_t = {
