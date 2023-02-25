@@ -110,7 +110,7 @@ function get_barter_list(npc, random)
     for k,v in pairs(trader_to_barter[name]) do
         print_dbg("Loading data for trade %s", v)
         local data = barter_get_data(v)
-        if data then table.insert(barter_list, data) end
+        if data and eval_barter(v, "showcondition") then table.insert(barter_list, data) end
     end
 
     table.sort(barter_list, sort_func)
@@ -266,7 +266,7 @@ function str_goodwill(name)
 end
 
 function str_mutant(name)
-    local count = ini_barters:r_string_ex(name, "kill_cnt")
+    local count = ini_barters:r_float_ex(name, "kill_cnt")
     if count then
         local current = game_statistics.get_statistic("killed_monstesr")
         local clr = current < count and clr_r or clr_g
@@ -506,16 +506,25 @@ local function parse_barterstring(str)
     return t
 end
 
+function check_addon(addon)
+    if not addon then return true end
+    if addon:sub(1, 1) == "!" and _G[addon] then
+        print_dbg("Barter %s requires absence of addon %s", addon)
+        return false
+    elseif not _G[addon] then 
+        print_dbg("Barter %s requires addon %s", addon)
+        return false
+    end
+    return true
+end
+
 local function parse_barters()
     ini_barters:section_for_each(function(name)
         print_dbg("Parsing barter %s", name)
         local npc = ini_barters:r_string_ex(name, "trader")
         local give = ini_barters:r_string_ex(name, "give")
         local addon = ini_barters:r_string_ex(name, "addon")
-        if addon and not _G[addon] then 
-            print_dbg("Barter %s requires addon %s", addon)
-            return 
-        end
+        if not check_addon(addon) then return end
         if not give then 
             print_dbg("Barter %s has no give item", name)
             return 
