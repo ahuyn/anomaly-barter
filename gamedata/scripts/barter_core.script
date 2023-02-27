@@ -17,17 +17,17 @@ get_config = barter_mcm.get_config
 local dbg_log
 function print_dbg(msg, ...)
     
--- printf("barter | %s | " .. msg, time_global(), ...)
-    if get_config("debug") or false then
-        dbg_log = dbg_log or mcm_log and mcm_log.new("DBG")
-        if dbg_log then
-            dbg_log.enabled = true
-            dbg_log:log( text , ...)
-        else
-            printf( "barter: | %s |  "..text ,time_global(), ...)
-        end
-    end
-    return nil
+printf("barter | %s | " .. msg, time_global(), ...)
+    -- if get_config("debug") or false then
+    --     dbg_log = dbg_log or mcm_log and mcm_log.new("DBG")
+    --     if dbg_log then
+    --         dbg_log.enabled = true
+    --         dbg_log:log( text , ...)
+    --     else
+    --         printf( "barter: | %s |  "..text ,time_global(), ...)
+    --     end
+    -- end
+    -- return nil
 end
 
 function get_desc(name)
@@ -423,7 +423,7 @@ function pre_std(name)
 end
 
 function kill_mutant(name)
-    local count = ini_barters:r_string_ex(name, "kill_cnt")
+    local count = ini_barters:r_float_ex(name, "kill_cnt")
     if count then
         local current = game_statistics.get_statistic_count("killed_monsters")
         return current < count
@@ -508,14 +508,11 @@ end
 
 function check_addon(addon)
     if not addon then return true end
-    if addon:sub(1, 1) == "!" and _G[addon] then
-        print_dbg("Barter %s requires absence of addon %s", addon)
-        return false
-    elseif not _G[addon] then 
-        print_dbg("Barter %s requires addon %s", addon)
-        return false
+    if addon:sub(1, 1) == "!" then
+        return not _G[addon:sub(2)]
+    else
+        return _G[addon]
     end
-    return true
 end
 
 local function parse_barters()
@@ -524,7 +521,10 @@ local function parse_barters()
         local npc = ini_barters:r_string_ex(name, "trader")
         local give = ini_barters:r_string_ex(name, "give")
         local addon = ini_barters:r_string_ex(name, "addon")
-        if not check_addon(addon) then return end
+        if not check_addon(addon) then 
+            print_dbg("Barter %s failed check for addon %s", name, addon)
+            return
+         end
         if not give then 
             print_dbg("Barter %s has no give item", name)
             return 
