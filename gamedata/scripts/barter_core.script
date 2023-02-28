@@ -268,7 +268,7 @@ end
 function str_mutant(name)
     local count = ini_barters:r_float_ex(name, "kill_cnt")
     if count then
-        local current = game_statistics.get_statistic("killed_monstesr")
+        local current = game_statistics.get_statistic_count("killed_monsters")
         local clr = current < count and clr_r or clr_g
         return gc(faction) .. " " .. gc("st_mutants_killed") .. " " .. clr ..  current .. "/" .. count .. clr_2
     end
