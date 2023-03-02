@@ -2,15 +2,22 @@
 <string_table>
 
     <string id="st_forester_artifacts">
-        <text>I have some assorted artifacts if you're interested. I don't need much - the house gets awfully cold and drafty. Could you bring me a few things to help keep an old man warm?</text>
+        <text>My back really hurts. I could use a nice warm artifact or two to soothe it. Could you bring me a few things?</text>
     </string>
     <string id="st_forester_artifacts_done">
-        <text>Ahh, that's much better. Thank you.</text>
+        <text>Ahh, that's much better. Please take this for your trouble.</text>
     </string>
 
-    <string id="st_forester_artifact_therm">
-        <text>There is one thing, actually. I would like to find some thermal artifacts to help make some hot water, but I can't find any in this area. I do have this nice Goldfish though - could you bring me something suitable in exchange?</text>
+    <string id="st_forester_tea">
+        <text>Nothing beats a cup of tea on a chilly autumn night. My friend Beard in the Skadovsk makes a special brew - I'll give you this complicated shotgun for some. I have my trusty hunting rifle and don't need anything else.</text>
     </string>
 
+    <string id="st_forester_salmon">
+        <text>I do dearly miss the taste of smoked meats. I'll trade you this gun I found from a strange group of men in exchange for some salmon and sausage. I can't use this anyway, I've never seen these kinds of bullets in my life.</text>
+    </string>
+
+    <string id="st_forester_pills">
+        <text>It's getting harder for me to fall asleep as an old man. Can you bring me some medicine? I'll give you this strange pistol that uses very small bullets.</text>
+    </string>
 
 </string_table>

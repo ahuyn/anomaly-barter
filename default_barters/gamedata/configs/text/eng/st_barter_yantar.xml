@@ -10,7 +10,7 @@
         <text>Hey stalker, today's your lucky day. We got a new shipment of Berills and seems like there was a discrepancy. We have one left over, as you see. It can be yours..for a price.</text>
     </string>
     <string id="st_spirit_vodka_skat">
-        <text>Hey stalker, I've been hearing about the good work you've done for the eggheads here. Long story short - some specops guy got his leg blown off from a Monolith RPG not too long ago, and he's left his set of armor with us. I just had to sew on one pants leg, and it's good as new! You know the drill...bottles up front.</text>
+        <text>Hey stalker, I've been hearing about the good work you've done for the scientists here. Long story short - some specops guy accidentally got electrocuted, and he's left his set of armor with us. If you don't mind the smell of burnt hair, it'll serve you really well. You know the drill...bottles up front.</text>
     </string>
     <string id="st_spirit_vodka_done">
         <text>Thanks, stalker. We'll toast to you.</text>
@@ -21,6 +21,10 @@
     </string>
 
     <string id="st_sakharov_parts">
-        <text>As an unofficial part of the field sample compensation program, I am distributing a limited number of certain medicines. Should you find yourself in need of certain .</text>
+        <text>As an unofficial part of the sample collection compensation program, I have put up for exchange a limited selection of our field medical supplies. Should you find yourself in possession of rare mutant samples, we will gladly exchange some of our medical items for them.</text>
+    </string>
+    
+    <string id="st_sakharov_parts_done">
+        <text>Excellent work, stalker. Make full use of those supplies.</text>
     </string>
 </string_table>

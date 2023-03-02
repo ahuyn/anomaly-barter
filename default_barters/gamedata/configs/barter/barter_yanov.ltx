@@ -1,0 +1,65 @@
+
+[herman_parts]
+trader          = jup_b6_scientist_nuclear_physicist
+precondition    = barter_core.pre_std
+precond_text    = barter_core.str_std
+postcondition   = barter_core.post_std
+type            = anyOf
+give            = antirad
+take            = mutant_part_boar_leg:1,mutant_part_psevdodog_tail:1
+repeat          = restock
+limit           = 4
+sort_rank       = 1
+desc            = st_herman_parts
+desc_done       = st_generic_done
+
+[herman_parts2]:herman_parts
+give            = drug_booster
+take            = mutant_part_heart_chimera,mutant_part_chimera_claw:2
+
+[herman_parts3]:herman_parts
+give            = medkit_scientic
+take            = mutant_part_controller_glass,mutant_part_controller_hand,mutant_part_burer_hand:2
+limit           = 3
+sort_rank       = 2
+
+[herman_parts4]:herman_parts
+give            = stimpack_scientic
+take            = mutant_part_controller_glass,mutant_part_controller_hand,mutant_part_burer_hand:2
+limit           = 3
+sort_rank       = 2
+
+[herman_parts5]:herman_parts
+give            = adrenalin
+take            = mutant_part_pseudogigant_hand,mutant_part_pseudogigant_eye,mutant_part_chimera_kogot
+limit           = 1
+sort_rank       = 3
+
+[herman_parts6]:herman_parts
+give            = drug_anabiotic
+take            = mutant_part_burer_hand,mutant_part_brain_burer
+limit           = 2
+sort_rank       = 3
+
+[nitro_parts]
+trader          = jup_b217_stalker_tech
+precondition    = barter_core.pre_std
+precond_text    = barter_core.str_std
+postcondition   = barter_core.post_std
+type            = anyOf
+give            = sewing_kit_b:2
+take            = prt_i_copper:4,prt_i_resistors:4,prt_i_transistors:3,prt_i_capacitors:3
+repeat          = restock
+limit           = 4
+sort_rank       = 1
+desc            = st_nitro_parts
+desc_done       = st_generic_done
+
+[nitro_parts2]:nitro_parts
+give            = sewing_kit_a:1
+
+[nitro_parts3]:nitro_parts
+give            = solvent
+
+[nitro_parts4]:nitro_parts
+give            = cleaning_kit_r5:2

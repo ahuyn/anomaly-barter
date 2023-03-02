@@ -4,7 +4,7 @@
 [screw_vz61]
 trader          = mil_smart_terrain_7_7_freedom_mechanic_stalker
 give            = wpn_vz61_freedom
-take            = wpn_vz61:1,marijuana:1
+take            = wpn_vz61,marijuana
 precondition    = barter_core.pre_std
 precond_text    = barter_core.str_std
 postcondition   = barter_core.post_std
@@ -36,8 +36,6 @@ precond_text    = barter_core.str_std
 postcondition   = barter_core.post_std
 repeat          = restock
 limit           = 4
-faction         = freedom
-goodwill        = 200
 desc            = st_screw_ied
 desc_done       = st_screw_ied_done
 [screw_ied2]:screw_ied
@@ -60,40 +58,53 @@ precond_text    = barter_core.str_std
 postcondition   = barter_core.post_std
 repeat          = restock
 limit           = 2
-faction         = freedom
-goodwill        = 100
 desc            = st_skinflint_lottery
 desc_done       = st_skinflint_lottery_done
 
 [skinflint_lottery2]:skinflint_lottery
 give            = ammo_7.62x51_fmj
 take            = monolith_patch:5
+faction         = freedom
 goodwill        = 300
 
-[skinflint_lottery2a]:skinflint_lottery
+[skinflint_lottery2a]:skinflint_lottery2
 give            = ammo_5.56x45_ap
 take            = monolith_patch:5
 goodwill        = 300
 
-[skinflint_lottery3]:skinflint_lottery
+[skinflint_lottery3]:skinflint_lottery2
 give            = ammo_magnum_300
 take            = monolith_patch:8
 goodwill        = 500
 
-[skinflint_lottery3a]:skinflint_lottery
+[skinflint_lottery3a]:skinflint_lottery2
 give            = ammo_7.62x51_ap
 take            = monolith_patch:8
 goodwill        = 300
 
-[skinflint_lottery4]:skinflint_lottery
+[skinflint_lottery4]:skinflint_lottery2
 give            = wpn_colt1911_modern
 take            = monolith_patch:10
 repeat          = fixed
 limit           = 1
-goodwill        = 200
+faction         = freedom
+goodwill        = 150
+
+[skinflint_lottery4a]:skinflint_lottery2
+give            = wpn_cz75
+take            = monolith_patch:10
+repeat          = fixed
+limit           = 1
+faction         = freedom
+goodwill        = 150
 
 [skinflint_lottery5]:skinflint_lottery4
 give            = wpn_vz61
+take            = monolith_patch:15
+goodwill        = 300
+
+[skinflint_lottery5a]:skinflint_lottery4
+give            = wpn_mp5_custom
 take            = monolith_patch:15
 goodwill        = 300
 
@@ -121,8 +132,8 @@ goodwill        = 800
 
 [solid_supplies] ; med exchange
 trader          = mil_freedom_medic
-give            = antibio_sulfad:2
-take            = morphine:1
+give            = antibio_sulfad:3
+take            = morphine
 precondition    = barter_core.pre_std
 precond_text    = barter_core.str_std
 postcondition   = barter_core.post_std
@@ -135,8 +146,8 @@ desc_done       = st_generic_done
 give            = antibio_chlor:2
 take            = jgut:1
 [solid_supplies3]:solid_supplies
-give            = antirad:2
+give            = antirad:3
 take            = medkit_army:1
 [solid_supplies4]:solid_supplies
-give            = drug_radioprotector:2
+give            = drug_radioprotector:3
 take            = stimpack_army:1

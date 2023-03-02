@@ -3,14 +3,14 @@
     
 
     <string id="st_petrenko_trophies">
-        <text>Greetings, stalker. Here at Duty we reward all who help us in our endeavor to keep the Zone free of mutant scum. Bring me proof that you've put down some monsters, and we'll restock your ammunition to show our appreciation.</text>
+        <text>Here at Duty we reward all who help us in our endeavor to keep the Zone free of mutant scum. Bring me proof that you've put down some monsters, and we'll restock your ammunition to show our appreciation.</text>
     </string>
     <string id="st_petrenko_trophies_done">
         <text>Thank you for doing your part to destroy the Zone.</text>
     </string>
 
     <string id="st_petrenko_artifacts">
-        <text>Greetings, stalker. Here at Duty we find our fair share of artifacts. We have no use for these things, and will gladly exchange them for high quality weapons.</text>
+        <text>Here at Duty we find our fair share of artifacts. We have no use for these things, and will gladly exchange them for high quality weapons.</text>
     </string>
     <string id="st_petrenko_artifacts_done">
         <text>Excellent. My men will be pleased.</text>

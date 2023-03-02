@@ -105,10 +105,10 @@ desc            = st_spooner_vityaz_done
 ; desc            = st_spooner_nvg
 ; desc            = st_spooner_nvg_done
 
-[army_mech_backpack]
+[army_mech_nvg]
 trader          = agr_smart_terrain_1_6_army_mechanic_stalker
-give            = equ_military_pack
-take            = toolkit_r5:4,heavy_repair_kit:4
+give            = device_torch_nv_2
+take            = cleaning_kit_p:6,cleaning_kit_r5:6,cleaning_kit_r7:6
 precondition    = barter_core.pre_std
 precond_text    = barter_core.str_std
 postcondition   = barter_core.post_std
@@ -116,3 +116,16 @@ repeat          = fixed
 limit           = 1
 desc            = st_armytech
 desc            = st_armytech_done
+
+[army_mech_sidearm]:army_mech_nvg
+give            = wpn_gsh18
+take            = glue_e,glue_a
+
+[army_mech_ammo]:army_mech_nvg
+give            = ammo_12.7x55_fmj
+take            = sewing_kit_a:2
+limit           = 5
+
+[army_mech_backpack]:army_mech_nvg
+give            = equ_military_pack
+take            = toolkit_r5:4,heavy_repair_kit:4

@@ -2,12 +2,18 @@
 <string_table>
     
     <string id="st_hog_trade">
-        <text>My hands won't stop shaking for some reason. Can't work. Got anything to smoke, man? I'll give you some of this repair stuff I have.</text>
+        <text>Fucking hands won't stop shaking for some reason. Can't work. Got anything to smoke, man? I'll give you some of this repair stuff I have.</text>
     </string>
     <string id="st_hog_trade_done">
         <text>That's better...thank you.</text>
     </string>
 
     
+    <string id="st_aslan_lottery">
+        <text>We.</text>
+    </string>
+    <string id="st_aslan_lottery_done">
+        <text>That's better...thank you.</text>
+    </string>
 
 </string_table>

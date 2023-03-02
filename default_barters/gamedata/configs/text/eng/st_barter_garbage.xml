@@ -31,12 +31,12 @@
         <text>killed mutants:</text>
     </string>
     
-    <string id="st_flea_scrap">
-        <text>We don't really have much in the way of stuff to barter here, unless you want random collections of parts from the workshops. Do you have any radiation medicine, actually? The diggers aren't doing so well.</text>
+    <string id="st_flea_containers">
+        <text>The diggers are having good luck finding artifacts, but not so much luck moving them around. Can you bring us some containers?</text>
     </string>
     
-    <string id="st_flea_guns">
-        <text>The diggers are tired of being shit on. There's a group of bandits near one of our dig sites that keeps taking whatever we pull out of the ground. To hell with them! Bring some weapons for us to fight the bastards off, we'll give you some of our good stuff.</text>
+    <string id="st_flea_artifacts">
+        <text>Looking to swap artifacts? You came to the right place.</text>
     </string>
     
 </string_table>
