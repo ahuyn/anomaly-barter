@@ -407,7 +407,8 @@ end
 
 function check_info(name)
     local info = ini_barters:r_string_ex(name, "has_info")
-    if info then info = str_explode(info, ",") end
+    if info then info = str_explode(info, ",") 
+    else return true end
     for i,v in pairs(info) do
         if not db.actor:has_info(v) then return false end
     end

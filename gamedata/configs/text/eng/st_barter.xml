@@ -67,8 +67,11 @@
         <text>Take Weapon Condition Minimum</text>
     </string>
     <string id="ui_mcm_barter_cond_desc">
-        <text>Minimum required condition for player-provided weapons in a barter. \n \n
-            For Parts Overhaul users, a hard requirement of 60% minimum condition for ALL parts is required.
+        <text>Minimum required condition for player-provided condition items (weapons, outfits) in a barter.
+        </text>
+    </string>
+    <string id="ui_mcm_barter_cond_part_desc">
+        <text>Minimum required condition for player-provided part items and parts in items (e.g. weapon, outfit parts) both standalone and as part of a larger item.
         </text>
     </string>
     
