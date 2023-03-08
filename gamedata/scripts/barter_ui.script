@@ -32,12 +32,12 @@ end
 
 function ui_inventory.UIInventory:InitBarterButton()
 	self.npc_barter_btn = self.xml:Init3tButton("npc:trade_delimiter:trade_buy_button", self.npc_trade)
-
+	local weight = self.npc_trade_weight:GetWndPos()
+	-- printf("trade button at %s %s, delimter at %s %s", pos.x, pos.y, rcoord.x, rcoord.y)
 	local pos = self.npc_barter_btn:GetWndPos()
-	local w = self.npc_barter_btn:GetWidth()
 
 	self.npc_barter_btn:SetWndPos(vector2():set(
-		pos.x + w + 10, -- TODO: Add sliders in MCM to adjust button position
+		weight.x + 20 , -- TODO: Add sliders in MCM to adjust button position
 		pos.y
 	))
 

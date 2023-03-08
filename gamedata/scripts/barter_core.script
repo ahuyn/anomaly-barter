@@ -170,7 +170,7 @@ function barter_get_data(name)
             local parts = item_parts.get_parts_con(item, nil, true)
             local part_cond = barter_mcm.get_config("cond_part")
             for k,v in pairs(parts) do
-                if v <= part_cond then return end
+                if string.find(v, "prt_") and v <= part_cond then return end
             end
         end
         
