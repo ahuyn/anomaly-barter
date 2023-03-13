@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="windows-1251"?>
+<string_table>
+    
+    <string id="st_meeker_weapons">
+        <text>We've acquired a cache of some high-quality weapons from our...business partners. Obviously we were planning on reselling them to our other contacts but in the time being we're in a bit of a pinch supply-wise. Help us with our supply issue and we'll spare you some of the lower end stock.</text>
+    </string>
+    <string id="st_meeker_weapons_done">
+        <text>Thanks. Now get out.</text>
+    </string>
+
+    <string id="st_yar_parts">
+        <text>This place is definitely no resort. Lots of our guys have been able to salvage some 'lightly used' Monolith weaponry</text>
+    </string>
+</string_table>

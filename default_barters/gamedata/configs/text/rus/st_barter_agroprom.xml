@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="windows-1251"?>
+<string_table>
+    
+    <string id="st_spooner_supplies">
+        <text>There's always a need for supplies for the troops that command doesn't prioritize for us. If you can help supply some, we'll see about giving you some spare munitions or medical supplies.</text>
+    </string>
+    <string id="st_spooner_supplies_done">
+        <text>Thanks. Keep it quiet, ok?</text>
+    </string>
+
+    <string id="st_spooner_vityaz">
+        <text>There's a special request from one of the commanding officers. He's looking for a little nose candy, and he's putting up his submachine gun. It's one of the newer ones, and as far as I'm concerned it's never been used, so should make for a good deal.</text>
+    </string>
+    <string id="st_spooner_vityaz_done">
+        <text>Thanks. Enjoy!</text>
+    </string>
+
+
+    <string id="st_spooner_trophy">
+        <text>Some of the higher ups are looking for trophies to take home. We can't officially take artifacts home, as those have to be turned over to the Ministry of Science, and smuggling isn't worth it with the new crackdown. Instead we're looking for some cool Western guns now - I hear those Mercenaries have Western weapons! With rails! Bring me some.</text>
+    </string>
+    <string id="st_spooner_trophy_done">
+        <text>Cool! Here's something from the arsenal.</text>
+    </string>
+
+    <string id="st_armytech">
+        <text>This fucking Zone! All of our equipment goes to shit before our eyes! We've burned through almost all of our cleaning supplies keeping our damn weapons operational, and every other day patrols show up with rips, tears, burned clothing and other crap! Look, if you can get me some extra repair material, I'll make it up to you somehow. Can you help me out?</text>
+    </string>
+    <string id="st_armytech_done">
+        <text>Great, this'll last us a bit longer. Here's some surplus equipment, no one's using it anyway.</text>
+    </string>
+    <string id="st_armytech_arty_done">
+        <text>Great, this'll last us a bit longer. One of the scientists told us to hold onto this, but they never came back for it, maybe you'll find it useful.</text>
+    </string>
+</string_table>

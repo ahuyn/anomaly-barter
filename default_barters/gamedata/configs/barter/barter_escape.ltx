@@ -72,7 +72,7 @@ postcondition   = barter_core.post_std
 repeat          = restock
 limit           = 3
 faction         = stalker
-goodwill        = 50
+goodwill        = 100
 desc            = st_loris_generic
 desc_done       = st_loris_generic_done
 
@@ -111,3 +111,23 @@ give            = glue_b
 
 [xenotech_scrap_thread]:xenotech_scrap_oil
 give            = sewing_thread
+
+
+[xenotech_mp5]
+trader          = esc_smart_terrain_5_7_loner_mechanic_stalker
+give            = wpn_mp5
+take            = cleaning_kit_p:2,toolkit_p:1,prt_w_gas_tube_11,1
+precondition    = barter_core.pre_std
+precond_text    = barter_core.str_std
+postcondition   = barter_core.post_std
+repeat          = fixed
+limit           = 1
+faction         = stalker
+goodwill        = 100
+desc            = st_xenotech_gun
+desc_done       = st_xenotech_done
+
+[xenotech_headlamp]:xenotech_mp5
+give            = device_torch
+take            = headlamp,welding_goggles,prt_i_copper:2,batteries_dead
+desc            = st_xenotech_lamp

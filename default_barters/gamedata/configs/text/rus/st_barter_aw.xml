@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="windows-1251"?>
+<string_table>
+    
+    <string id="st_solid_supplies">
+        <text>With all the fighting that goes down by the Barrier and the shape of the recon teams that come back, we need good medical supplies. Band-aids won't cut it - we need tourniquets, trauma kits and hemostatics. All we have here is fucking cold medicine and antirad! Can we rely on you?</text>
+    </string>
+    <string id="st_solid_supplies_done">
+        <text>Your help is appreciated, man. We gotta keep our boys alive.</text>
+    </string>
+
+    <string id="st_skinflint_lottery">
+        <text>We got a real problem with Monolith. Something's gotten them riled up, I got no idea what. Stack some of their bodies on my behalf and I'll reward you with choice goodies.</text>
+    </string>
+    <string id="st_skinflint_lottery_done">
+        <text>Good work. Keep em coming.</text>
+    </string>
+    
+    <string id="st_screw_ied">
+        <text>I'm planning on setting up a minefield around the Barrier. Those rock worshippers come through, they'll be blown to kingdom come! I'll take any explosives off your hands and give you something to fix your suit.</text>
+    </string>
+    <string id="st_screw_ied_done">
+        <text>Sweet, these will do nicely.</text>
+    </string>
+
+    <string id="st_screw_paint">
+        <text>Nice gun! You know what would make it cooler? Some Freedom upgrades, that's what! Give it here, and pass the spliff, too.</text>
+    </string>
+    <string id="st_screw_paint_done">
+        <text>Pleasure doing business.</text>
+    </string>
+
+</string_table>

@@ -27,7 +27,8 @@ precondition    = barter_core.pre_std
 precond_text    = barter_core.str_std
 postcondition   = barter_core.post_std
 give            = cigarettes:2
-take            = gun_oil_ru_d
+take            = gun_oil_ru_d,gun_oil_ru
+type            = anyOf
 repeat          = restock
 limit           = 3
 desc            = st_spore_repair
@@ -36,12 +37,10 @@ desc_done       = st_spore_repair_done
 [spore_cleaning2]:spore_cleaning
 give            = cigar1:2
 take            = cleaning_kit_p,cleaning_kit_s
-type            = anyOf
 
 [spore_cleaning3]:spore_cleaning
 give            = cigar3:4
 take            = cleaning_kit_r7,cleaning_kit_r5
-type            = anyOf
 limit           = 1
 
 ; novikov
@@ -78,7 +77,7 @@ desc            = st_novikov_2b
 precondition    = barter_core.pre_std,barter_core.check_toolkit3
 precond_text    = barter_core.str_std,barter_core.str_toolkit3
 give            = cs_stalker_proto_exo_outfit
-take            = cs_stalker_outfit:1,prt_o_support_1:1,heavy_sewing_thread:2,exo_repair_kit:1
+take            = cs_stalker_outfit,prt_o_support_1,heavy_sewing_thread:1,prt_i_copper:2,exo_repair_kit:1,vodka
 goodwill        = 400
 desc            = st_novikov_2c
 
@@ -86,7 +85,7 @@ desc            = st_novikov_2c
 precondition    = barter_core.pre_std,barter_core.check_toolkit2
 precond_text    = barter_core.str_std,barter_core.str_toolkit2
 give            = cs_scientific_outfit
-take            = cs_nbc_outfit,helm_protective,medium_repair_kit:1,prt_i_copper:2,prt_o_retardant_16,prt_o_retardant_2,af_freon
+take            = cs_nbc_outfit,medium_repair_kit:1,prt_i_copper:2,prt_i_plastic:2,prt_o_retardant_16,prt_o_retardant_2,af_freon
 goodwill        = 400
 has_info        = novikov_armor2
 give_info       = novikov_armor3
@@ -109,7 +108,7 @@ desc            = st_novikov_4a
 precondition    = barter_core.pre_std,barter_core.check_toolkit3
 precond_text    = barter_core.str_std,barter_core.str_toolkit3
 give            = cs_exolight_outfit
-take            = cs_heavy_outfit:1,helm_exo:1,af_plates_up:1,heavy_repair_kit:2,prt_o_ballistic_6:1,prt_o_ballistic_15:1,heavy_sewing_thread:1
+take            = cs_heavy_outfit:1,af_plates_up:1,heavy_repair_kit:2,prt_o_ballistic_6:1,prt_o_ballistic_15:1,heavy_sewing_thread:1
 goodwill        = 800
 desc            = st_novikov_4b
 
@@ -117,14 +116,14 @@ desc            = st_novikov_4b
 precondition    = barter_core.pre_std,barter_core.check_toolkit3
 precond_text    = barter_core.str_std,barter_core.str_toolkit3
 give            = cs_scientific_outfit_good
-take            = cs_scientific_outfit:1,medium_repair_kit:2,af_cristall_flower_af_iam:1,kerosene:1
+take            = cs_scientific_outfit:1,medium_repair_kit:2,af_cristall_flower_af_iam,af_sparkler_af_iam,kerosene:1
 goodwill        = 1000
 has_info        = novikov_armor4
 desc            = st_novikov_5a
 
 [novikov_armor_5b]:novikov_armor_5a
 give            = cs_exo_outfit
-take            = cs_exolight_outfit,prt_o_support_1,heavy_sewing_thread:2,prt_i_copper:2,exo_repair_kit:2
+take            = cs_exolight_outfit,prt_o_support_1,heavy_sewing_thread:2,prt_i_copper:2,exo_repair_kit:2,vodka
 goodwill        = 1000
 desc            = st_novikov_5b
 
