@@ -346,7 +346,7 @@ function UIBarter:OnBarter()
 	local obj_1 = self.CC[1]:GetCell_Selected()
 	local obj_2 = self.CC[2]:GetCell_Selected()
 	
-	do_barter(self.barters[self.selected].name, self.barters[self.selected].take_items, obj_2 and obj_2.indx)
+	do_barter(self.barters[self.selected].name, self.barters[self.selected].give, self.barters[self.selected].take_items, obj_2 and obj_2.indx)
 	-- consider resetting ui?
 	self.CC[1]:Reset()
 	CreateTimeEvent("barter", math.random(69), 0, function()

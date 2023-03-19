@@ -5,7 +5,8 @@ trader_to_barter = {}
 -- track existing data when it comes to barters that have been partially completed n such, need to be reloaded, etc
 barter_mdata = {
     fixed = {}, -- limited
-    restock = {} -- resets on restock
+    restock = {}, -- resets on restock
+    give_items = {} -- locks the current give item if there is a pool
 }
 
 local ini_barters = ini_file("barter\\importer.ltx")
@@ -96,7 +97,6 @@ function sort_func(a, b)
     local b_limit = ini_barters:r_float_ex(b.name, "limit") or 0
     if a_limit ~= b_limit then return a_limit > b_limit end
     -- cost
-    
     return (SYS_GetParam(2, a.give.sec, "cost") * a.give.amt) > (SYS_GetParam(2, b.give.sec, "cost") * b.give.amt)
 
 end
@@ -118,16 +118,18 @@ function get_barter_list(npc, random)
     return barter_list
 end
 
+local function load_barter_data(name)
+end
+
 -- for a given barter, return data on barter eligibility and what items are taken
 function barter_get_data(name)
     -- eval precond
     local allowed = eval_barter(name, "precondition")
     -- eval items
     local data = {}
+    copy_table(data, barters[name])
+    data.give = get_give_item(name)
     data.name = name
-    data.give = barters[name].give
-    data.take = barters[name].take
-    data.type = barters[name].type
     -- sort rank is important as newlines will be inserted in differences between sort rank
     data.sort_rank = ini_barters:r_float_ex(name, "sort_rank") or ini_barters:r_float_ex(name, "goodwill") or 0
     data.amt = data.limit and get_barter_amt(name) or nil
@@ -329,7 +331,7 @@ local function remove(item)
 end
 
 -- assume that the player has filled their end of the bargain and wants to execute on the bargain
-function do_barter(name, items, ind)
+function do_barter(name, give, items, ind)
     print_dbg("Performing barter %s, index %s", name, ind)
     if ind and barters[name].type == "anyOf" then
         remove(items[ind])
@@ -338,13 +340,23 @@ function do_barter(name, items, ind)
             remove(v)
         end
     end
-    give = barters[name].give
-    for i=1,give.amt do
-        local meta = {}
-        if give.type then
-            meta[give.type] = give.meta
+    if IsItem("multiuse", give.sec) then
+        local max_uses = SYS_GetParam(2, give.sec, "max_uses")
+        local count = give.amt or max_uses
+        while count > 0 do
+            local uses = clamp(count - max_uses, 0, max_uses)
+            alife_create_item(give.sec, db.actor, {["uses"] = uses})
+            count = clamp(count - max_uses, 0, count)
         end
-        alife_create_item(give.sec, db.actor, meta)
+    else
+        local amt = give.amt or 1
+        for i=1,amt do
+            local meta = {}
+            if give.type then
+                meta[give.type] = give.meta
+            end
+            alife_create_item(give.sec, db.actor, meta)
+        end
     end
     eval_barter(name, "postcondition")
 end
@@ -401,7 +413,7 @@ function check_limit(name)
     local barter_amt = get_barter_amt(name)
     if not barter_amt then return end
 
-    local limit = ini_barters:r_float_ex(name, "limit")
+    local limit = barters[name].limit--ini_barters:r_float_ex(name, "limit")
     return barter_amt < limit
 end
 
@@ -483,11 +495,14 @@ function trader_on_restock(npc)
     
     if not barter_mdata.fixed then barter_mdata.fixed = {} end
     if not barter_mdata.restock then barter_mdata.restock = {} end
+    if not barter_mdata.give_items then barter_mdata.give_items = {} end
     
     for k,v in pairs(trader_to_barter[sec]) do
         if barter_mdata.restock[v] then
+            -- also rotate items
             barter_mdata.restock[v] = 0
         end
+        barter_mdata.give_items[v] = false
     end
 end
 
@@ -516,7 +531,41 @@ function check_addon(addon)
     end
 end
 
-local function parse_barters()
+function get_give_item(name)
+    local to_give = ini_barters:r_string_ex(name, "give")
+    to_give = str_explode(to_give, ",")
+    local give
+    if #to_give > 1 then
+        -- search up cached if exists, select and cache if not
+        if not barter_mdata.give_items then barter_mdata.give_items = {} end
+        if not barter_mdata.give_items[name] then barter_mdata.give_items[name] = to_give[math.random(#to_give)] end
+        give = barter_mdata.give_items[name] 
+    else
+        give = to_give[1]
+    end
+    give = str_explode(give, ":")
+    give_t = {
+        sec = give[1]
+    }
+    if IsItem("multiuse", give_t.sec) then
+        give_t.amt = tonumber(give[2]) or SYS_GetParam(2, give_t.sec, "max_uses")
+    else
+        give_t.amt = tonumber(give[2]) or 1
+    end
+    local meta = ini_barters:r_float_ex(name, "give_meta")
+    if meta then
+        give_t.meta = meta
+        if IsItem("ammo", give_t.sec) and give_t.meta <= SYS_GetParam(2, give_t.sec, "box_size") then
+            give_t.type = "ammo"
+        elseif (IsItem("outfit", give_t.sec) or IsItem("helmet", give_t.sec) or (string.find(give_t.sec, "wpn_") and not IsItem("fake_ammo_wpn", give_t.sec))) and give_t.meta <= 100 then
+            give_t.type = "cond"
+        end
+    end
+    return give_t
+end
+
+-- cycle through all barters and load only valid ones in
+local function validate_barters()
     ini_barters:section_for_each(function(name)
         print_dbg("Parsing barter %s", name)
         local npc = ini_barters:r_string_ex(name, "trader")
@@ -530,26 +579,16 @@ local function parse_barters()
             print_dbg("Barter %s has no give item", name)
             return 
         end
-        give = str_explode(give, ":")
-        if not give[1] or (give[1] ~= "money" and not ini_sys:section_exist(give[1])) then 
-            print_dbg("Barter %s attempted to add nonexistant give item %s", name, give[1])
-            return 
-        end
-        give_t = {
-            sec = give[1],
-            amt = tonumber(give[2]) or 1
-        }
-        local meta = ini_barters:r_float_ex(name, "give_meta")
-        if meta then
-            give_t.meta = meta
-            if IsItem("multiuse", give_t.sec) and give_t.meta <= SYS_GetParam(2, give_t.sec, "max_uses") then
-                give_t.type = "uses"
-            elseif IsItem("ammo", give_t.sec) and give_t.meta <= SYS_GetParam(2, give_t.sec, "box_size") then
-                give_t.type = "ammo"
-            elseif (IsItem("outfit", give_t.sec) or IsItem("helmet", give_t.sec) or (string.find(give_t.sec, "wpn_") and not IsItem("fake_ammo_wpn", give_t.sec))) and give_t.meta <= 100 then
-                give_t.type = "cond"
+        give = str_explode(give, ",")
+        -- validate each item
+        for k,v in pairs(give) do
+            g = str_explode(v, ":")
+            if not g[1] or (g[1] ~= "money" and not ini_sys:section_exist(g[1])) then 
+                print_dbg("Barter %s attempted to add nonexistant give item %s", name, g[1])
+                return false
             end
         end
+        
         local take = ini_barters:r_string_ex(name, "take")
         if not take then 
             print_dbg("Barter %s has no take items", name)
@@ -563,7 +602,7 @@ local function parse_barters()
             end
         end
         local data = {
-            give = give_t,
+            -- give = give_t,
             take = take,
         }
         local restricted = ini_barters:r_string_ex(name, "restricted")
@@ -573,8 +612,8 @@ local function parse_barters()
         end
 
         data.type = ini_barters:r_string_ex(name, "type") or "allOf"
+        data.limit = ini_barters:r_float_ex(name, "limit")
 
-        data.limit = ini_barters:r_string_ex(name, "limit")
         if not trader_to_barter[npc] then trader_to_barter[npc] = {} end
         table.insert(trader_to_barter[npc], name)
         barters[name] = data
@@ -591,7 +630,7 @@ end
 
 
 function actor_on_first_update()
-    parse_barters()
+    validate_barters()
 end
 
 function on_game_start()
