@@ -26,7 +26,7 @@ trader          = mar_base_owl_stalker_trader
 precondition    = barter_core.pre_std
 precond_text    = barter_core.str_std
 postcondition   = barter_core.post_std
-give            = cigarettes:2
+give            = cigarettes:6
 take            = gun_oil_ru_d,gun_oil_ru
 type            = anyOf
 repeat          = restock
@@ -35,11 +35,11 @@ desc            = st_spore_repair
 desc_done       = st_spore_repair_done
 
 [spore_cleaning2]:spore_cleaning
-give            = cigar1:2
+give            = cigar1:6
 take            = cleaning_kit_p,cleaning_kit_s
 
 [spore_cleaning3]:spore_cleaning
-give            = cigar3:4
+give            = cigar3:12
 take            = cleaning_kit_r7,cleaning_kit_r5
 limit           = 1
 
@@ -134,8 +134,7 @@ precondition    = barter_core.pre_std
 precond_text    = barter_core.str_std,barter_core.str_any
 postcondition   = barter_core.post_std
 type            = anyOf
-give            = kerosene
-give_meta       = 1
+give            = kerosene:1
 take            = mutant_part_dog_meat:2,mutant_part_psevdodog_meat:1
 repeat          = restock
 limit           = 3
@@ -143,8 +142,7 @@ desc            = st_librarian_fuel
 desc_done       = st_librarian_fuel_done
 
 [librarian_gas2]:librarian_gas
-give            = explo_jerrycan_fuel
-give_meta       = 2
+give            = explo_jerrycan_fuel:2
 take            = mutant_part_flesh_meat:2,mutant_part_boar_chop:2
 
 [librarian_gas3]:librarian_gas2

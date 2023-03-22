@@ -29,4 +29,11 @@
         <text>Pleasure doing business.</text>
     </string>
 
+    <string id="st_screw_mask">
+        <text>Hey, I can combine these two pieces of equipment for you. Need to make a few changes to the helmet to accommodate the mask, but it's not a big deal.</text>
+    </string>
+    <string id="st_screw_mask_done">
+        <text>Pleasure doing business.</text>
+    </string>
+
 </string_table>

@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="windows-1251"?>
+
+<string_table>
+    <string id="st_bear_part1">
+        <text>Round LED Screen</text>
+    </string>
+    <string id="st_bear_part1_desc">
+        <text>Round display screen with green LED elements. The surface is scuffed slightly but the electronic components are still in working order. This one is a new replacement screen still in box. One of the required components for the 'Bear' Detector.</text>
+    </string>
+    <string id="st_bear_part2">
+        <text>Directional Particle Scanner</text>
+    </string>
+    <string id="st_bear_part2_desc">
+        <text>Electronic device using three particle analysis tubes that, when powered by a constant current, passively scans the surrounding area for the presence of distorted particle movement, indicating the presence of an artifact. This particular chip design is dated to 2006, and the detection chambers are relatively primitive compared to more modern designs. Still, any semi-skilled electrical engineer can reproduce the board pattern, which keeps the Bear Detector very popular.</text>
+    </string>
+    <string id="st_veles_part1">
+        <text>High-Definition LED Screen</text>
+    </string>
+    <string id="st_veles_part1_desc">
+        <text>High-definition 480p LED screen used in the Veles Detector. Screen is coated with a matte protector to facilitate readability in the field. This screen even comes with 8-bit color support, though only two colors are used.</text>
+    </string>
+    <string id="st_veles_part2">
+        <text>Particle Sensor Array</text>
+    </string>
+    <string id="st_veles_part2_desc">
+        <text>Advanced particle sensor array using detection tubes manufactured to much higher tolerances. .</text>
+    </string>
+    <string id="st_veles_part3">
+        <text>Detector Motherboard</text>
+    </string>
+    <string id="st_veles_part3_desc">
+        <text>Central processor for the Veles Detector. These are professionally manufactured in Ukrainian factories and assembled into the entire detector before arriving in the Zone. Likely this motherboard came from a salvaged Veles detector. Similar to the memory store, special hardening is applied to the chip that increases its resistance to extreme operating conditions.</text>
+    </string>
+    <string id="st_veles_part4">
+        <text>Hardened Memory Drive</text>
+    </string>
+    <string id="st_veles_part4_desc">
+        <text>16MB of internal memory. Unlike traditional computer hard drives or SSDs, detector memory storage is designed specially to both minimize access latency and be resistant to extreme temperatures, radiation, and sudden electrical surges that would render most traditional storge corrupted or destroyed, at the cost of storage size. Still, 16MB is more than enough, and the default firmware and artifact information only takes up 4.4MB.</text>
+    </string>
+    <string id="st_svarog_part1">
+        <text>'Svarog' Memory Firmware</text>
+    </string>
+    <string id="st_svarog_part1_desc">
+        <text>Special pen drive containing additional data and the firmware rquired to interpret it. When plugged into the detector, the device prompts for installation which is triggered by the user manually. Upgrades a Veles detector with expanded detection criteria as well as drivers to make use of new hardware. </text>
+    </string>
+    <string id="st_svarog_part2">
+        <text>Coprocessor Array</text>
+    </string>
+    <string id="st_svarog_part2_desc">
+        <text>Modular chip that augments a detector's processing power. Effectively increases clock speed by 40%, enabling the detector to handle the more complex calculations required to detect, classify, position and display complex anomaly fields.</text>
+    </string>
+    <string id="st_svarog_part3">
+        <text>Anomaly Detection Sensors</text>
+    </string>
+    <string id="st_svarog_part3_desc">
+        <text>16MB of internal memory. Unlike traditional computer hard drives or SSDs, detector memory storage is designed specially to both minimize access latency and be resistant to extreme temperatures, radiation, and sudden electrical surges that would render most traditional storge corrupted or destroyed, at the cost of storage size. Still, 16MB is more than enough, and the default firmware and artifact information only takes up 4.4MB</text>
+    </string>
+</string_table>

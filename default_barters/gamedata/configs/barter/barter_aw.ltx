@@ -26,27 +26,32 @@ take            = wpn_aug:1,marijuana:3
 goodwill        = 400
 sort_rank       = 3
 
+[screw_mask]:screw_vz61
+give            = helm_ach7ex
+take            = helm_ach7,helm_respirator,helmet_repair_kit:1
+goodwill        = 0
+sort_rank       = 10
+
 [screw_ied]
 trader          = mil_smart_terrain_7_7_freedom_mechanic_stalker
 give            = sewing_kit_a
-give_meta       = 2
-take            = ied_new:1
+take            = ied_new:2
 precondition    = barter_core.pre_std
 precond_text    = barter_core.str_std
 postcondition   = barter_core.post_std
-repeat          = restock
-limit           = 4
+repeat          = fixed
+limit           = 2
 desc            = st_screw_ied
 desc_done       = st_screw_ied_done
+
 [screw_ied2]:screw_ied
-give            = sewing_kit_b
-give_meta       = 4
+give            = glue_e
 take            = ied_rpg_new:1
+limit           = 3
 
 [screw_ied3]:screw_ied
-give            = sewing_kit_h
-give_meta       = 2
-take            = ied_rpg_new:1,ied_new:1
+give            = heavy_repair_kit
+take            = ied_rpg_new:2,ied_new:2
 
 ; skinflint
 [skinflint_lottery] ; patches

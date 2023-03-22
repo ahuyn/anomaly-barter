@@ -70,6 +70,9 @@
         <text>Minimum required condition for player-provided condition items (weapons, outfits) in a barter.
         </text>
     </string>
+    <string id="ui_mcm_barter_cond_part">
+        <text>Part Condition Minimum</text>
+    </string>
     <string id="ui_mcm_barter_cond_part_desc">
         <text>Minimum required condition for player-provided part items and parts in items (e.g. weapon, outfit parts) both standalone and as part of a larger item.
         </text>

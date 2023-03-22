@@ -18,8 +18,11 @@
     <string id="st_hunter_toz">
         <text>Are you really trying to hunt with that thing? You're going to end up wasting ammo just to bring down a pig! A hunter can't really hunt effectively without a good rifle, so, bring me the pelt of a boar and I'll give you a good rifle.</text>
     </string>
-    <string id="st_hunter_toz_done">
+    <string id="st_hunter_done">
         <text>Good work. Here you go.</text>
+    </string>
+    <string id="st_hunter_mp412">
+        <text>I can always use some good food to eat. I can't leave this place though, the hunters here rely on me for supplies. Are you a half decent cook? Bring me some decent food and I'll give you this hunting pistol.</text>
     </string>
     <string id="st_hunter_tozcer">
         <text>I have a spot missing in my trophy collection - a Chimera's hide, horns and claws. I trust if you can get it for me, I'll bequeath you my personal shotgun.</text>

@@ -1,14 +1,26 @@
-; [hog_smokes]
-; trader          = cit_killers_merc_mechanic_stalker
-; give            = ammo_5.56x45_fmj
-; take            = monolith_patch,3
-; type            = anyOf
-; precondition    = barter_core.pre_std
-; precond_text    = barter_core.str_std
-; postcondition   = barter_core.post_std
-; repeat          = restock
-; limit           = 2
-; faction         = freedom
-; goodwill        = 100
-; desc            = st_screw_lottery
-; desc_done       = st_screw_lottery_done
+[hog_repair]
+trader          = cit_killers_merc_mechanic_stalker
+give            = glue_a
+take            = gun_oil_ru,gun_oil_ru_d
+type            = anyOf
+precondition    = barter_core.pre_std
+precond_text    = barter_core.str_std
+postcondition   = barter_core.post_std
+repeat          = restock
+limit           = 3
+desc            = st_hog_repair
+desc_done       = st_hog_repair_done
+
+[hog_repair2]:hog_repair
+give            = sewing_kit_b
+take            = gun_oil,solvent:1
+type            = allOf
+
+[hog_repair3]:hog_repair
+give            = sewing_kit_h:2
+take            = cleaning_kit_r5,cleaning_kit_r7
+
+[hog_repair4]:hog_repair
+give            = medium_repair_kit
+take            = cleaning_kit_u
+
