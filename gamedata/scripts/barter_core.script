@@ -161,7 +161,7 @@ function barter_get_data(name)
 
         if item.condition then
             local cond_adj = math.ceil(item:condition()*100)
-            if SYS_GetParam(item:section(), "cond_part") and cond_adj <= barter_mcm.get_config("cond_part") then return 
+            if SYS_GetParam(1, item:section(), "cond_part") and cond_adj <= barter_mcm.get_config("cond_part") then return 
             elseif cond_adj <= barter_mcm.get_config("cond") then
             -- validate max condition
             return end
@@ -344,7 +344,7 @@ function do_barter(name, give, items, ind)
         local max_uses = SYS_GetParam(2, give.sec, "max_uses")
         local count = give.amt or max_uses
         while count > 0 do
-            local uses = clamp(count - max_uses, 0, max_uses)
+            local uses = clamp(count, 0, max_uses)
             alife_create_item(give.sec, db.actor, {["uses"] = uses})
             count = clamp(count - max_uses, 0, count)
         end
