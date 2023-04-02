@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="windows-1251"?>
+<string_table>
+    <string id="st_ui_mm_barter">
+        <text>Бартер</text>
+    </string>
+
+    <string id="st_barter_anyOf">
+        <text>Виберете предмет для бартера.</text>
+    </string>
+    <string id="st_barter_goodwill">
+        <text>треб. репутация </text>
+    </string>
+    <string id="st_barter_limit">
+        <text>лимит</text>
+    </string>
+    <string id="st_barter_info">
+        <text>требуется предыдущий бартер</text>
+    </string>
+    <string id="st_barter_toolkit1">
+        <text>технику нужны инструменты для грубой работы</text>
+    </string>
+    <string id="st_barter_toolkit2">
+        <text>технику нужны инструменты для тонкой работы</text>
+    </string>
+    <string id="st_barter_toolkit3">
+        <text>технику нужны инструменты для калибровки</text>
+    </string>
+
+    <string id="st_barter_uses">
+        <text>Предметы: </text>
+    </string>
+    <string id="st_barter_ammo">
+        <text>Патроны: </text>
+    </string>
+    <string id="st_barter_cond">
+        <text>состояние: %</text>
+    </string>
+
+    <string id="st_barter_restock">
+        <text>(обновился при пополнении)</text>
+    </string>
+    <string id="st_barter_fixed">
+        <text>(не обновился)</text>
+    </string>
+	<string id="st_ui_itm_barter_base">
+		<text>Доступные бартеры</text>
+	</string>
+	<string id="st_ui_itm_barter_support">
+		<text>Необходимы предметы</text>
+	</string>
+	<string id="st_ui_barter_rules">
+		<text>Основные правила бартера:\n
+            • Состояние предметов должно быть на %s%.\n
+            • Многоразовые предметы должны быть не использованы.\n
+            • Патроны должны быть расфасованы по коробкам. 
+        </text>
+	</string>
+
+    
+    <string id="ui_mcm_menu_barter">
+        <text>Бартер</text>
+    </string>
+    <string id="ui_mcm_barter_title">
+        <text>Anomaly бартер с NPC</text>
+    </string>
+    <string id="ui_mcm_barter_cond">
+        <text>Минимальное состояние предмета</text>
+    </string>
+    <string id="ui_mcm_barter_cond_desc">
+        <text>Минимальное необходимое состояние для предмета, предоставленного игроком (оружие, экипировка) в бартере.
+        </text>
+    </string>
+    <string id="ui_mcm_barter_cond_part">
+        <text>Минимальное состояние детали</text>
+    </string>
+    <string id="ui_mcm_barter_cond_part_desc">
+        <text>Минимальное необходимое условие для предметов деталей, предоставляемых игроком, и частей в предметах (например, оружие, детали экипировки) как отдельно, так и как часть более крупного предмета.
+        </text>
+    </string>
+    
+    <string id="ui_mcm_barter_debug">
+        <text>Дебаг</text>
+    </string>
+
+    <string id="st_dot">
+        <text>•</text>
+    </string>
+</string_table>
