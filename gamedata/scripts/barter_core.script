@@ -18,17 +18,17 @@ get_config = barter_mcm.get_config
 local dbg_log
 function print_dbg(msg, ...)
     
-printf("barter | %s | " .. msg, time_global(), ...)
-    -- if get_config("debug") or false then
-    --     dbg_log = dbg_log or mcm_log and mcm_log.new("DBG")
-    --     if dbg_log then
-    --         dbg_log.enabled = true
-    --         dbg_log:log( text , ...)
-    --     else
-    --         printf( "barter: | %s |  "..text ,time_global(), ...)
-    --     end
-    -- end
-    -- return nil
+-- printf("barter | %s | " .. msg, time_global(), ...)
+    if get_config("debug") or false then
+        dbg_log = dbg_log or mcm_log and mcm_log.new("DBG")
+        if dbg_log then
+            dbg_log.enabled = true
+            dbg_log:log( text , ...)
+        else
+            printf( "barter: | %s |  "..text ,time_global(), ...)
+        end
+    end
+    return nil
 end
 
 function get_desc(name)
