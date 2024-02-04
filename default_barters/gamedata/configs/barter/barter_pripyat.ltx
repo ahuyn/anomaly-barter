@@ -1,31 +1,41 @@
-; mercs
-[meeker_wep1]
-trader          = pri_special_trader_mlr
-give            = wpn_colt1911_custom
-take            = flask:9,mineral_water:4,tea:3
-precondition    = barter_core.pre_std
-precond_text    = barter_core.str_std
-postcondition   = barter_core.post_std
-repeat          = fixed
-limit           = 1
-sort_rank       = 1
-desc            = st_meeker_weapons
-desc_done       = st_meeker_weapons_done
+; ; mercs
+; [meeker_wep1]
+; trader          = pri_special_trader_mlr
+; give            = wpn_colt1911_custom
+; take            = flask:9,mineral_water:4,tea:3
+; repeat          = fixed
+; limit           = 1
+; sort_rank       = 1
+; desc            = st_meeker_weapons
+; desc_done       = st_meeker_weapons_done
 
-[meeker_wep2]:meeker_wep1
-give            = wpn_g36
-take            = tushonka:3,conserva:5
-sort_rank       = 2
+; [meeker_wep2]:meeker_wep1
+; give            = wpn_g36
+; take            = tushonka:3,conserva:5
+; sort_rank       = 2
 
-[meeker_wep3]:meeker_wep1
-give            = wpn_galil_modern
-take            = mre,chili:4
-sort_rank       = 2
+; [meeker_wep3]:meeker_wep1
+; give            = wpn_galil_modern
+; take            = mre,chili:4
+; sort_rank       = 2
 
-[meeker_wep4]:meeker_wep1
-give            = wpn_l96a1m
-take            = ration_ukr:12
-sort_rank       = 3
+; [meeker_wep4]:meeker_wep1
+; give            = wpn_l96a1m
+; take            = ration_ukr:12
+; sort_rank       = 3
 
-; loners
+; ; loners
 
+; [cashier_scopes]
+; trader          = trader_pri_a15_mlr
+; give            = ammo_5.56x45_ap
+; take            = eot,ac10632
+; repeat          = restock
+; limit           = 2
+; sort_rank       = 1
+; desc            = st_cashier_scopes
+
+
+; [cashier_scopes2]:cashier_scopes
+; give            = ammo_7.62x54_7h14:2
+; take            = 1p29,ps01,pos1m31

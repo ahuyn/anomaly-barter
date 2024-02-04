@@ -2,11 +2,8 @@
 
 [spore_mosin]
 trader          = mar_base_owl_stalker_trader
-precondition    = barter_core.pre_std
-precond_text    = barter_core.str_std
-postcondition   = barter_core.post_std
 give            = wpn_mosin
-take            = af_grid:3
+take            = af_grid,detector_simple,device_flashlight
 repeat          = fixed
 limit           = 1
 faction         = csky
@@ -16,16 +13,14 @@ desc_done       = st_spore_weapons_done
 
 [spore_mp133]:spore_mosin
 give            = wpn_mp133
-take            = equ_small_pack:1,af_frames:1
+take            = equ_small_pack,detector_geiger
+
 [spore_type63]:spore_mosin
 give            = wpn_type63
-take            = itm_backpack:3
+take            = itm_backpack,cooking,matches
 
 [spore_cleaning]
 trader          = mar_base_owl_stalker_trader
-precondition    = barter_core.pre_std
-precond_text    = barter_core.str_std
-postcondition   = barter_core.post_std
 give            = cigarettes:6
 take            = gun_oil_ru_d,gun_oil_ru
 type            = anyOf
@@ -43,12 +38,14 @@ give            = cigar3:12
 take            = cleaning_kit_r7,cleaning_kit_r5
 limit           = 1
 
-; novikov
+
+[spore_kits]:spore_cleaning
+give            = cigar3:12
+take            = cleaning_kit_r7,cleaning_kit_r5
+limit           = 2
+
 [novikov_armor1]
 trader          = mar_base_stalker_tech
-precondition    = barter_core.pre_std
-precond_text    = barter_core.str_std
-postcondition   = barter_core.post_std
 give            = cs_stalker_outfit
 take            = cs_novice_outfit:1,af_kevlar:1,boots:1,sewing_thread:2,prt_o_fabrics_2:2
 repeat          = fixed
@@ -116,7 +113,7 @@ desc            = st_novikov_4b
 precondition    = barter_core.pre_std,barter_core.check_toolkit3
 precond_text    = barter_core.str_std,barter_core.str_toolkit3
 give            = cs_scientific_outfit_good
-take            = cs_scientific_outfit:1,medium_repair_kit:2,af_cristall_flower_af_iam,af_sparkler_af_iam,kerosene:1
+take            = cs_scientific_outfit:1,medium_repair_kit:2,af_cristall_flower_af_iam,af_electra_sparkler_af_iam,kerosene:1
 goodwill        = 1000
 has_info        = novikov_armor4
 desc            = st_novikov_5a
@@ -134,7 +131,7 @@ precondition    = barter_core.pre_std
 precond_text    = barter_core.str_std,barter_core.str_any
 postcondition   = barter_core.post_std
 type            = anyOf
-give            = kerosene:1
+give            = explo_balon_gas:2
 take            = mutant_part_dog_meat:2,mutant_part_psevdodog_meat:1
 repeat          = restock
 limit           = 3
@@ -142,18 +139,14 @@ desc            = st_librarian_fuel
 desc_done       = st_librarian_fuel_done
 
 [librarian_gas2]:librarian_gas
-give            = explo_jerrycan_fuel:2
+give            = explo_jerrycan_fuel:4
 take            = mutant_part_flesh_meat:2,mutant_part_boar_chop:2
 
-[librarian_gas3]:librarian_gas2
-give            = explo_balon_gas
+
 
 ;  kalancha
 [kalancha_medicine]
 trader          = mar_smart_terrain_base_doctor
-precondition    = barter_core.pre_std
-precond_text    = barter_core.str_std
-postcondition   = barter_core.post_std
 give            = lead_box
 take            = antibio_chlor,antibio_sulfad:full
 repeat          = restock

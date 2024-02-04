@@ -2,24 +2,24 @@
 <string_table>
     
     <string id="st_kalancha_meds">
-        <text>Swamp living tends to take its toll on us. Many of our members are coming down with illness owing to staying out late on recon and having to deal with the cold and wet. If you can help us with getting some over the counter medicine, we'll provide you some of the surplus scientific equipment we have.</text>
+        <text>Swamp living tends to take its toll on us. Many of our people are coming down with illness owing to staying out late on recon and having to deal with the cold and wet. If you can help us with getting some over the counter medicine, we'll provide you some of the surplus scientific equipment we have.</text>
     </string>
     <string id="st_kalancha_meds_done">
         <text>Your help is appreciated, stalker.</text>
     </string>
     
     <string id="st_librarian_fuel">
-        <text>One of the anomalies in this swamp, I won't say which one, seems to produce a continuous, but small, amount of fuel. How it works is a faction secret, but it solves our fuel needs permanently. If you can bring us some meat, we'll be happy to trade.</text>
+        <text>We've managed to restart the old pumping station and we can draw out a decent supply of natural gas. If you can bring us some meat, we'll be happy to trade.</text>
     </string><string id="st_librarian_fuel_done">
         <text>Your help is appreciated, man. We gotta keep our boys alive.</text>
     </string>
 
     
     <string id="st_spore_weapons">
-        <text>Trekking out of these swamps is a pain for our couriers, especially those who have to carry a lot of gear. If you can get us some equipment to lighten our load, I'll give you some old weapons we have laying around.</text>
+        <text>There's a lot of territory to cover in these swamps, and we need a steady supply of equipment to stay effective in the field. If you can bring some gear for us, I'll give you a refurbished weapon.</text>
     </string>
     <string id="st_spore_weapons_done">
-        <text>Your help is appreciated, man. We gotta keep our boys alive.</text>
+        <text>Thanks, this will come in handy.</text>
     </string>
     
     <string id="st_spore_repair">

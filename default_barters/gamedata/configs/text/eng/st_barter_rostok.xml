@@ -3,18 +3,12 @@
     
 
     <string id="st_petrenko_trophies">
-        <text>Here at Duty we reward all who help us in our endeavor to keep the Zone free of mutant scum. Bring me proof that you've put down some monsters, and we'll restock your ammunition to show our appreciation.</text>
+        <text>Here at Duty we reward all who help us in our endeavor to keep the Zone free of scum. Bring me proof of doing your part, and we'll restock your ammunition to show our appreciation.</text>
     </string>
     <string id="st_petrenko_trophies_done">
         <text>Thank you for doing your part to destroy the Zone.</text>
     </string>
 
-    <string id="st_petrenko_artifacts">
-        <text>Here at Duty we find our fair share of artifacts. We have no use for these things, and will gladly exchange them for high quality weapons.</text>
-    </string>
-    <string id="st_petrenko_artifacts_done">
-        <text>Excellent. My men will be pleased.</text>
-    </string>
 
     <string id="st_mangun_parts">
         <text>Hello, stalker. Can I ask your help? Good parts are rare to come by these days. Help me fix up these weapons and I'll let you have a few things from my stores.</text>
@@ -24,11 +18,7 @@
         <text>We have plenty of food, but we're running out of fuel to cook and keep the generators on. If you can bring some to me, I'll give you some goods.</text>
     </string>
     
-    <string id="st_barman_arty">
-        <text>I run a charity for stalkers, you know. If you're lucky and find some artifacts, great! I'll take them off your hands and give you some good equipment in exchange.</text>
-    </string>
-    
     <string id="st_asp_smokes">
-        <text>Got anything to smoke? I know, I know - health, now do you want some medical supplies or not?.</text>
+        <text>Got anything to smoke?</text>
     </string>
 </string_table>

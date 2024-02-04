@@ -12,12 +12,9 @@
     <string id="st_dv_drugs">
         <text>We knocked off a medical box not too long ago from some eggheads. Give the boys something to psych them up for the next hit and we'll give you some of the goods.</text>
     </string>
-    <string id="st_dv_drugs_done">
-        <text>Great, thanks.</text>
-    </string>
 
     <string id="st_dv_silencer">
-        <text>Can you bring me some silencers, bro? The guys want to hit some camps without bringing too much attention.</text>
+        <text>Keeping things quiet for us is important, obviously. To that end we're willing to trade some of our stuff to get our hands on suppressors.</text>
     </string>
     
     

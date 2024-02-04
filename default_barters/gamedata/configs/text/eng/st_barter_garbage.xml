@@ -2,21 +2,21 @@
 <string_table>
     
     <string id="st_hunter_meat">
-        <text>Stalker, have you had mutant meat? I know it's not that great, but I've got some contacts on the outside who will pay a pretty penny for some salted, seasoned mutant jerky. The more exotic, the better, eh? So if you bring me meat, I'll be sure to keep you supplied with the means to keep bringing in meat, if you know what I mean.</text>
+        <text>Have you had mutant meat? I know it's not that great, but I've got some contacts on the outside who will pay a pretty penny for some salted, seasoned mutant jerky. The more exotic, the better, eh? So if you bring me meat, I'll be sure to keep you supplied with the means to keep bringing in meat, if you know what I mean.</text>
     </string>
     <string id="st_hunter_meat_done">
         <text>Thanks, stalker. I've got enough of this type for now.</text>
     </string>
     
     <string id="st_hunter_knife">
-        <text>You don't look like you're equipped to hunt. I have a spare hunting knife - prove to me you're at least capable of killing a Flesh or something and it's yours.</text>
+        <text>Want to make a living hunting? First you need a good knife. I have an extra knife, it can be yours if you complete a simple task.</text>
     </string>
     <string id="st_hunter_knife_done">
         <text>Not bad. Here you go.</text>
     </string>
 
     <string id="st_hunter_toz">
-        <text>Are you really trying to hunt with that thing? You're going to end up wasting ammo just to bring down a pig! A hunter can't really hunt effectively without a good rifle, so, bring me the pelt of a boar and I'll give you a good rifle.</text>
+        <text>Nice work with the Fleshes. Ready for another challenge? Try to take down a few Boars and bring me the proof</text>
     </string>
     <string id="st_hunter_done">
         <text>Good work. Here you go.</text>
@@ -25,7 +25,7 @@
         <text>I can always use some good food to eat. I can't leave this place though, the hunters here rely on me for supplies. Are you a half decent cook? Bring me some decent food and I'll give you this hunting pistol.</text>
     </string>
     <string id="st_hunter_tozcer">
-        <text>I have a spot missing in my trophy collection - a Chimera's hide, horns and claws. I trust if you can get it for me, I'll bequeath you my personal shotgun.</text>
+        <text>I heard you're quite the hunter, stalker. I have a special request from a client to bring back some rare mutant trophies. The client is offering a customized hunting rifle as a reward.</text>
     </string>
     <string id="st_hunter_tozcer_done">
         <text>Excellent work! Here you go, use her well.</text>
@@ -34,8 +34,8 @@
         <text>killed mutants:</text>
     </string>
     
-    <string id="st_flea_containers">
-        <text>The diggers are having good luck finding artifacts, but not so much luck moving them around. Can you bring us some containers?</text>
+    <string id="st_flea_upgrades">
+        <text>Got some junk you don't need? You came to the right place.</text>
     </string>
     
     <string id="st_flea_artifacts">

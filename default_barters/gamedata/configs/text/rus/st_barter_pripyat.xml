@@ -11,4 +11,10 @@
     <string id="st_yar_parts">
         <text>This place is definitely no resort. Lots of our guys have been able to salvage some 'lightly used' Monolith weaponry</text>
     </string>
+    <string id="st_cashier_suits">
+        <text>Situation here is no joke. We've been able to find a lot of good material around here, but there's a lot of tough close quarters combat. If you have anything that works well for close encounters, we'd appreciate it a lot.</text>
+    </string>
+    <string id="st_cashier_suits2">
+        <text>We ended up being able to ambush a squad of Monolith successfully. Got some good stuff.</text>
+    </string>
 </string_table>

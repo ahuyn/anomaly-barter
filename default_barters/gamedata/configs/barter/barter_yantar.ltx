@@ -1,9 +1,6 @@
 ; Spirit
 [spirit_vodka1]
 trader          = yan_povar_army_mlr
-precondition    = barter_core.pre_std
-precond_text    = barter_core.str_std
-postcondition   = barter_core.post_std
 give            = ammo_5.45x39_fmj:2
 take            = vodka:6
 repeat          = restock
@@ -59,20 +56,18 @@ desc            = st_spirit_vodka_skat
 [peregrine_plate1]
 trader          = mechanic_army_yan_mlr
 addon           = !armor_inserts
-precondition    = barter_core.pre_std
-precond_text    = barter_core.str_std
-postcondition   = barter_core.post_std
 give            = af_kevlar
 take            = bread:4,sausage:2
 repeat          = fixed
 limit           = 1
 desc            = st_peregrine_food
-desc_done       = st_generic_done
 
 [peregrine_plate2]:peregrine_plate1
 addon           = !armor_inserts
 give            = af_plates
 take            = chocolate,protein:2
+
+
 
 
 [peregrine_plate1_oao]:peregrine_plate1
@@ -107,9 +102,6 @@ take            = chocolate,protein
 ; sakharov - parts for drugs
 [sakharov_parts]
 trader          = yan_stalker_sakharov
-precondition    = barter_core.pre_std
-precond_text    = barter_core.str_std
-postcondition   = barter_core.post_std
 type            = anyOf
 give            = antirad
 take            = mutant_part_boar_leg:1,mutant_part_psevdodog_tail:1
@@ -117,7 +109,6 @@ repeat          = restock
 limit           = 4
 sort_rank       = 1
 desc            = st_sakharov_parts
-desc_done       = st_generic_done
 
 [sakharov_parts2]:sakharov_parts
 give            = drug_booster
@@ -126,13 +117,13 @@ take            = mutant_part_heart_chimera,mutant_part_chimera_claw:2
 [sakharov_parts3]:sakharov_parts
 give            = medkit_scientic
 take            = mutant_part_controller_glass,mutant_part_controller_hand,mutant_part_burer_hand:2
-limit           = 3
+limit           = 2
 sort_rank       = 2
 
 [sakharov_parts4]:sakharov_parts
 give            = stimpack_scientic
 take            = mutant_part_controller_glass,mutant_part_controller_hand,mutant_part_burer_hand:2
-limit           = 3
+limit           = 1
 sort_rank       = 2
 
 [sakharov_parts5]:sakharov_parts
@@ -146,3 +137,12 @@ give            = drug_anabiotic
 take            = mutant_part_burer_hand,mutant_part_brain_burer
 limit           = 2
 sort_rank       = 3
+
+[sakharov_suit]:sakharov_parts
+give            = ecolog_outfit_orange
+take            = af_bracelet,af_dummy_battery,af_vyvert
+type            = allOf
+repeat          = fixed
+limit           = 1
+sort_rank       = 4
+desc            = st_sakharov_suit

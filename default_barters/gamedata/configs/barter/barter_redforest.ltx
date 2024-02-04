@@ -2,35 +2,9 @@
 trader          = m_lesnik
 give            = wpn_knife3
 take            = af_cristall,af_soul
-precondition    = barter_core.pre_std
-precond_text    = barter_core.str_std
-postcondition   = barter_core.post_std
 repeat          = fixed
 limit           = 1
 give_info       = help_forester
 desc            = st_forester_artifacts
 desc_done        = st_forester_done
 
-[forester_tea]
-trader          = m_lesnik
-give            = wpn_vepr
-take            = tea
-precondition    = barter_core.pre_std
-precond_text    = barter_core.str_std
-showcondition   = barter_core.check_info
-postcondition   = barter_core.post_std
-repeat          = fixed
-limit           = 1
-has_info        = help_forester
-desc            = st_forester_tea
-desc_done       = st_forester_done
-
-[forester_salmon]:forester_tea
-give            = wpn_val_modern
-take            = salmon,sausage
-desc            = st_forester_salmon
-
-[forester_]:forester_tea
-give            = wpn_fn57
-take            = drug_sleepingpills:10
-desc            = st_forester_pills

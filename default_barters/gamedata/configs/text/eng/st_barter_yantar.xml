@@ -17,14 +17,14 @@
     </string>
 
     <string id="st_peregrine_food">
-        <text>The vodka isn't all for drinking, you know - it's really useful to sanitize tools. Either way, being out here is boring without something to snack on. Bring me something and I'll slip you some armor inserts.</text>
+        <text>I spend all day here tinkering with scientist equipment, and no one thought of bringing anything good to eat. Bring me something tasty and I'll share some equipment with you.</text>
     </string>
 
     <string id="st_sakharov_parts">
         <text>As an unofficial part of the sample collection compensation program, I have put up for exchange a limited selection of our field medical supplies. Should you find yourself in possession of rare mutant samples, we will gladly exchange some of our medical items for them.</text>
     </string>
     
-    <string id="st_sakharov_parts_done">
-        <text>Excellent work, stalker. Make full use of those supplies.</text>
+    <string id="st_sakharov_suit">
+        <text>One of our field operatives was lost following a teleportation mishap. His suit is intact. I understand that these suits are quite valuable here, so I am offering a fair price for it.</text>
     </string>
 </string_table>

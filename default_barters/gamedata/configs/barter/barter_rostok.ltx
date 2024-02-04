@@ -3,11 +3,8 @@
 [petrenko_ammo1] ; ammo for trophies
 trader          = bar_dolg_general_petrenko_stalker
 give            = ammo_9x18_pmm
-take            = mutant_part_dog_tail:1,mutant_part_flesh_eye:1,mutant_part_tushkano_head:2
+take            = mutant_part_dog_tail:1,mutant_part_flesh_eye:1,mutant_part_cat_claw:1,mutant_part_tushkano_head:2,bandit_patch:2
 type            = anyOf
-precondition    = barter_core.pre_std
-precond_text    = barter_core.str_std,barter_core.str_any
-postcondition   = barter_core.post_std
 repeat          = restock
 limit           = 4
 desc            = st_petrenko_trophies
@@ -20,7 +17,7 @@ give            = ammo_7.62x25_p
 precondition    = barter_core.pre_std
 precond_text    = barter_core.str_std
 give            = ammo_5.45x39_fmj
-take            = mutant_part_psevdodog_tail:1,mutant_part_boar_leg:2,mutant_part_snork_mask:1
+take            = mutant_part_psevdodog_tail:1,mutant_part_boar_leg:2,mutant_part_lurker_tail:1,mutant_part_snork_mask:1,bandit_patch:3,freedom_patch:2
 faction         = dolg
 goodwill        = 200
 
@@ -32,7 +29,7 @@ give            = grenade_rgd5
 
 [petrenko_ammo5]:petrenko_ammo3
 give            = ammo_9x39_pab9
-take            = mutant_part_krovosos_jaw:1,mutant_part_psysucker_hand:1
+take            = mutant_part_krovosos_jaw:1,mutant_part_psysucker_hand:1,freedom_patch:4
 goodwill        = 400
 
 [petrenko_ammo6]:petrenko_ammo5
@@ -56,9 +53,6 @@ give            = ammo_og-7b
 trader          = bar_visitors_stalker_mechanic
 give            = cleaning_kit_p:2
 take            = prt_w_p_barrel_1:1,prt_w_p_trigger_3:1,prt_w_p_spring_1:1
-precondition    = barter_core.pre_std
-precond_text    = barter_core.str_std
-postcondition   = barter_core.post_std
 repeat          = restock
 limit           = 1
 desc            = st_mangun_parts
@@ -92,16 +86,31 @@ take            = prt_w_barrel_7:1,prt_w_barrel_8:2,prt_w_trigger_components_2:2
 [asp_smokes]
 trader          = bar_dolg_medic
 type            = anyOf
-precondition    = barter_core.pre_std
-precond_text    = barter_core.str_std
-postcondition   = barter_core.post_std
 give            = stimpack
 take            = cigarettes:full,cigarettes_lucky:full,cigarettes_russian:full
 repeat          = restock
 limit           = 5
 desc            = st_asp_smokes
-desc_done       = st_generic_thanks
 
 [asp_smokes2]:asp_smokes
 give            = stimpack_army
 take            = cigar1:full,cigar2:full,cigar3:full
+
+[barkeep_fuel]
+trader          = bar_visitors_barman_stalker_trader
+type            = anyOf
+give            = bread
+take            = charcoal:2,explo_balon_gas:1,explo_jerrycan_fuel:1
+repeat          = restock
+limit           = 5
+desc            = st_barman_fuel
+
+[barkeep_fuel2]:barkeep_fuel
+give            = corn
+take            = charcoal:2,explo_balon_gas:1,explo_jerrycan_fuel:1
+[barkeep_fuel3]:barkeep_fuel
+give            = sausage
+take            = charcoal:2,explo_balon_gas:1,explo_jerrycan_fuel:1
+[barkeep_fuel4]:barkeep_fuel
+give            = nuts
+take            = charcoal,explo_balon_gas:2,explo_jerrycan_fuel:2

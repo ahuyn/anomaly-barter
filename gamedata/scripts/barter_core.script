@@ -21,22 +21,24 @@ function print_dbg(msg, ...)
 -- printf("barter | %s | " .. msg, time_global(), ...)
     if get_config("debug") then
         dbg_log = dbg_log or mcm_log and mcm_log.new("DBG")
-        if dbg_log then
+        if false then --dbg_log then
             dbg_log.enabled = true
-            dbg_log:log( text , ...)
+            dbg_log:log( msg , ...)
         else
-            printf( "barter: | %s |  "..text ,time_global(), ...)
+            printf( "barter: | %s |  "..msg ,time_global(), ...)
         end
     end
     return nil
 end
 
 function get_desc(name)
-    local desc = "desc"
     if ini_barters:r_string_ex(name, "repeat") and ini_barters:r_string_ex(name, "desc_done") and not check_limit(name) then
-        desc = "desc_done"
+        return ini_barters:r_string_ex(name, "desc_done") or "st_generic_done"
+
+    else
+        return ini_barters:r_string_ex(name, "desc") or "st_ui_barter_rules"
+
     end
-    return ini_barters:r_string_ex(name, desc) or "st_ui_barter_rules"
 end
 
 function npc_has_barter(npc)
@@ -55,9 +57,16 @@ function eval_func(f, ...)
     end
 end
 
--- barter name, "precondition"/"postcondition"
+local default_cond_funcs = {
+    ["precondition"] = "barter_core.pre_std",
+    ["postcondition"] = "barter_core.post_std",
+    ["showcondition"] = "barter_core.check_pass",
+}
+
+-- barter name, "precondition"/*showocondition/"postcondition"
 function eval_barter(name, condition)
-    conds = ini_barters:r_string_ex(name, condition) or "barter_core.check_pass"
+    conds = ini_barters:r_string_ex(name, condition)
+    if not conds then conds = default_cond_funcs[condition] or "barter_core.check_pass" end
     conds = str_explode(conds, ",")
     -- short circuit L->R evaluation
     local result = true
@@ -222,7 +231,7 @@ local clr_1  = utils_xml.get_color("ui_gray_2")
 local clr_2  = utils_xml.get_color("ui_gray_1")
 function build_string(name)
     local str = ""
-    local funcs = ini_barters:r_string_ex(name, "precond_text") or ""
+    local funcs = ini_barters:r_string_ex(name, "precond_text") or "barter_core.str_std"
     funcs = str_explode(funcs, ",")
     table.sort(funcs)
     for k,v in pairs(funcs) do

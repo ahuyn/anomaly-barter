@@ -1,17 +1,17 @@
 <?xml version="1.0" encoding="windows-1251"?>
 <string_table>
     
-    <string id="st_sid_jelly_suit">
-        <text>So, today's your lucky day. I have a spare suit lying around - previous owner won't be needing it anymore. I need to make sure if it goes to you it won't find its way back to me again. Show me you're somewhat competent, eh, and I'll hand it over. Think of it as startup capital.</text>
+    <string id="st_sid_jelly">
+        <text>That's a nice little artifact you have there, stalker. Say, you want something stronger than that peashooter of yours? I have a good pre-owned shotgun here, I'll take that artifact off your hands.</text>
     </string>
-    <string id="st_sid_jelly_suit_done">
+    <string id="st_sid_jelly_done">
         <text>Nice work, stalker. Here you go. Be sure to remember your old pal Sid when you become rich, ok?</text>
     </string>
     
-    <string id="st_sid_shotgun">
-        <text>Damn bandits keep undercutting my business. I send couriers out, they get intercepted, I send out envoys, they come back with empty pockets and a limp. Are you able to help me with this problem? Bring me proof of your willingness to..take care of business and I'll give you this gun. Think of it as the start of a long and fruitful relationship.</text>
+    <string id="st_sid_patches">
+        <text>These bandits are proving to be a scourge on my business. Usually they stay away from the Cordon but they're showing up here more, harassing rookies. Show them the door, stalker.</text>
     </string>
-    <string id="st_sid_shotgun_done">
+    <string id="st_sid_patches_done">
         <text>Good work, stalker. There's no shortage of the bastards running around but this will make it a lot easier for you.</text>
     </string>
 
@@ -19,11 +19,11 @@
         <text>I have a great many connections and know the right strings to pull to get some good quality gear. I don't do it for just anyone, though. Bring me something good...smoked salmon...that I can enjoy on my crackers, and we will toast to our newfound partnership.</text>
     </string>
     
-    <string id="st_sid_aks">
-        <text>Some military man pawned off their AK to me. They never made it back, so now I have an extra gun. I have a buyer looking for some high quality ammunition, so let's make a deal.</text>
-    </string>
     <string id="st_sid_hipower">
         <text>One of the rookies came to me asking for a basic detector. He doesn't have much cash but he did have a lot of firepower on him. He's willing to trade this handgun for a basic detector and dosimeter.</text>
+    </string>
+    <string id="st_sid_cigar">
+        <text>The officer at the checkpoint has a taste for fine things. He's offered some good equipment in exchange.</text>
     </string>
 
     <string id="st_loris_ak">
@@ -55,7 +55,7 @@
     </string>
 
     <string id="st_xenotech_gun">
-        <text>Some bandits showed up from the checkpoint last night. We drove them off thankfully, and one of them dropped their machine gun after it jammed on him. It's in pretty bad condition but it's a solid model. I need a few things to fix it up and it can be yours.</text>
+        <text>Some bandits showed up from the checkpoint last night. We drove them off thankfully, and one of them dropped their machine gun after it jammed on him. It's in pretty bad condition but it's a solid model. If you can find a few things to fix it up and it can be yours.</text>
     </string>
     <string id="st_xenotech_done">
         <text>Here you go. Use it well.</text>
@@ -63,6 +63,10 @@
 
     <string id="st_xenotech_lamp">
         <text>Hi, you must be pretty new here. If you plan on doing any exploration at night, it might be a good idea to get a headlamp. I should be able to put one together for you. If you can get me some spare parts, I'll see what I can do.</text>
+    </string>
+
+    <string id="st_outpost_ammo">
+        <text>Can I bum some smokes off you? I'll trade you some of my ammo.</text>
     </string>
 
 </string_table>

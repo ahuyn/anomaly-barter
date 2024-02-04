@@ -4,10 +4,7 @@
 [hunter_knoife] ; one time hunting knife
 trader          = hunter_gar_trader
 give            = wpn_knife3
-take            = hide_flesh
-precondition    = barter_core.pre_std
-precond_text    = barter_core.str_std
-postcondition   = barter_core.post_std
+take            = hide_flesh:3
 repeat          = fixed
 limit           = 1
 sort_rank       = 2
@@ -17,7 +14,8 @@ desc_done       = st_hunter_knife_done
 
 [hunter_toz]:hunter_knoife
 give            = wpn_toz34
-take            = hide_boar
+take            = hide_boar:3
+showcondition   = barter_core.has_info
 has_info        = butcher_knife
 give_info       = butcher_toz
 sort_rank       = 3
@@ -29,8 +27,8 @@ give            = wpn_mp412
 take            = meat_boar_a,meat_flesh_a
 precondition    = barter_core.pre_std,barter_core.kill_mutant
 precond_text    = barter_core.str_std,barter_core.str_mutant
-has_info        = butcher_knife
-give_info       = butcher_toz
+showcondition   = barter_core.has_info
+has_info        = butcher_toz
 sort_rank       = 3
 kill_cnt        = 100
 desc            = st_hunter_mp412
@@ -41,6 +39,7 @@ give            = wpn_toz34_decor
 take            = hide_chimera
 precondition    = barter_core.pre_std,barter_core.kill_mutant
 precond_text    = barter_core.str_std,barter_core.str_mutant
+showcondition   = barter_core.has_info
 faction         = stalker
 goodwill        = 1000
 kill_cnt        = 500
@@ -54,9 +53,6 @@ trader          = hunter_gar_trader
 type            = anyOf
 give            = bandage
 take            = mutant_part_dog_meat:2,mutant_part_flesh_meat:2
-precondition    = barter_core.pre_std
-precond_text    = barter_core.str_std
-postcondition   = barter_core.post_std
 repeat          = restock
 limit           = 6
 sort_rank       = 1
@@ -73,7 +69,7 @@ give            = ammo_12x70_buck
 take            = mutant_part_boar_chop:1,mutant_part_psevdodog_meat:1
 limit           = 4
 
-[hunter_meat_magnum]:hunter_meat_bandage ; meat for buckshot
+[hunter_meat_magnum]:hunter_meat_bandage ; 
 give            = ammo_357_hp_mag
 take            = mutant_part_boar_chop:2,mutant_part_psevdodog_meat:2
 limit           = 2
@@ -83,24 +79,52 @@ give            = cleaning_kit_s
 take            = mutant_part_boar_chop:3,mutant_part_psevdodog_meat:3
 limit           = 1
 
-; flea market?
+; flea market
 
-[flea_containers]
+[flea_upgr_reliability]
 trader          = baraholka_trader
-give            = equ_small_pack
-take            = lead_box
-precondition    = barter_core.pre_std
-precond_text    = barter_core.str_std
-postcondition   = barter_core.post_std
-repeat          = fixed
-limit           = 1
-desc            = st_flea_containers
-desc_done       = st_generic_done
+give            = upgr_w_1_reliability
+take            = upgr_w_1_rpm:2,upgr_w_1_firemode:2,upgr_w_1_recoil:2
+repeat          = restock
+type            = anyOf
+addon           = !kit_binder
+limit           = 2
+desc            = st_flea_upgrades
 
-[flea_containers2]:flea_containers
-give            = device_torch_nv_1
-take            = lead_box,af_iam
+[flea_upgr_rpm]:flea_upgr_reliability
+give            = upgr_w_1_rpm
+take            = upgr_w_1_reliability:2,upgr_w_1_firemode:2,upgr_w_1_recoil:2
 
-[flea_containers3]:flea_containers
-give            = mre
-take            = lead_box:2
+[flea_upgr_recoil]:flea_upgr_reliability
+give            = upgr_w_1_recoil
+take            = upgr_w_1_reliability:2,upgr_w_1_firemode:2,upgr_w_1_rpm:2
+
+[flea_upgr_firemode]:flea_upgr_reliability
+give            = upgr_w_1_firemode
+take            = upgr_w_1_reliability:2,upgr_w_1_rpm:2,upgr_w_1_recoil:2
+
+[flea_upgr_weight]:flea_upgr_reliability
+give            = upgr_w_1_weight
+take            = upgr_w_1_speed:2,upgr_w_1_dispersion:2,upgr_w_1_inertion:2
+
+[flea_upgr_dispersion]:flea_upgr_reliability
+give            = upgr_w_1_dispersion
+take            = upgr_w_1_speed:2,upgr_w_1_weight:2,upgr_w_1_inertion:2
+
+[flea_upgr_inertion]:flea_upgr_reliability
+give            = upgr_w_1_inertion
+take            = upgr_w_1_speed:2,upgr_w_1_dispersion:2,upgr_w_1_weight:2
+
+[flea_upgr_internal]:flea_upgr_reliability
+addon           = kit_binder
+limit           = 3
+give            = upgr_internal_1
+take            = upgr_external_1:2,upgr_optical_1:2
+
+[flea_upgr_external]:flea_upgr_internal
+give            = upgr_external_1
+take            = upgr_optical_1:2,upgr_internal_1:2
+
+[flea_upgr_optical]:flea_upgr_internal
+give            = upgr_optical_1
+take            = upgr_external_1:2,upgr_internal_1:2
