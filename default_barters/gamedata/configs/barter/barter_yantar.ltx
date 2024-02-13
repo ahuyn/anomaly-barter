@@ -84,22 +84,103 @@ repeat          = restock
 limit           = 2
 take            = chocolate,protein
 
+; 3, 4, 5, 6
+[peregrine_parts_pvc1]
+trader          = mechanic_army_yan_mlr
+give            = prt_o_retardant_3
+take            = prt_o_retardant_4:2,prt_o_retardant_5:2,prt_o_retardant_6:2
+repeat          = restock
+type            = anyOf
+limit           = 2
+sort_rank       = 2
+desc            = st_peregrine_parts
 
-; [peregrine_plate3]:peregrine_plate2
-; give            = af_kevlar_up
-; take            = chocolate:3,nuts:3
-; limit           = 1
-; faction         = ecolog
-; goodwill        = 400
+[peregrine_parts_pvc2]:peregrine_parts_pvc1
+give            = prt_o_retardant_4
+take            = prt_o_retardant_3:2,prt_o_retardant_5:2,prt_o_retardant_6:2
 
-; [peregrine_plate4]:peregrine_plate1
-; give            = af_plates_up
-; take            = ration_ukr:full
-; limit           = 1
-; goodwill        = 400
+[peregrine_parts_pvc3]:peregrine_parts_pvc1
+give            = prt_o_retardant_5
+take            = prt_o_retardant_3:2,prt_o_retardant_4:2,prt_o_retardant_6:2
+
+[peregrine_parts_pvc4]:peregrine_parts_pvc1
+give            = prt_o_retardant_6
+take            = prt_o_retardant_3:2,prt_o_retardant_4:2,prt_o_retardant_5:2
+
+; 1, 2, 7, 8
+[peregrine_parts_layer1]:peregrine_parts_pvc1
+give            = prt_o_retardant_1
+take            = prt_o_retardant_2:2,prt_o_retardant_7:2,prt_o_retardant_8:2
+sort_rank       = 3
+
+[peregrine_parts_layer2]:peregrine_parts_layer1
+give            = prt_o_retardant_2
+take            = prt_o_retardant_1:2,prt_o_retardant_7:2,prt_o_retardant_8:2
+
+[peregrine_parts_layer3]:peregrine_parts_layer1
+give            = prt_o_retardant_7
+take            = prt_o_retardant_2:2,prt_o_retardant_1:2,prt_o_retardant_8:2
+
+[peregrine_parts_layer4]:peregrine_parts_layer1
+give            = prt_o_retardant_8
+take            = prt_o_retardant_2:2,prt_o_retardant_7:2,prt_o_retardant_1:2
+
+; 9-12
+[peregrine_parts_p1]:peregrine_parts_pvc1
+give            = prt_o_retardant_9
+take            = prt_o_retardant_10:2,prt_o_retardant_11:2,prt_o_retardant_12:2
+sort_rank       = 4
+
+[peregrine_parts_p2]:peregrine_parts_p1
+give            = prt_o_retardant_10
+take            = prt_o_retardant_9:2,prt_o_retardant_11:2,prt_o_retardant_12:2
+
+[peregrine_parts_p3]:peregrine_parts_p1
+give            = prt_o_retardant_11
+take            = prt_o_retardant_10:2,prt_o_retardant_9:2,prt_o_retardant_12:2
+
+[peregrine_parts_p4]:peregrine_parts_p1
+give            = prt_o_retardant_12
+take            = prt_o_retardant_10:2,prt_o_retardant_11:2,prt_o_retardant_9:2
+
+; 13-16, a 
+[peregrine_parts_a1]:peregrine_parts_pvc1
+give            = prt_o_retardant_13
+take            = prt_o_retardant_14:2,prt_o_retardant_15:2,prt_o_retardant_16:2
+sort_rank       = 5
+
+[peregrine_parts_a2]:peregrine_parts_a1
+give            = prt_o_retardant_14
+take            = prt_o_retardant_13:2,prt_o_retardant_15:2,prt_o_retardant_16:2
+
+[peregrine_parts_a3]:peregrine_parts_a1
+give            = prt_o_retardant_15
+take            = prt_o_retardant_14:2,prt_o_retardant_16:2,prt_o_retardant_16:2
+
+[peregrine_parts_a4]:peregrine_parts_a1
+give            = prt_o_retardant_16
+take            = prt_o_retardant_14:2,prt_o_retardant_15:2,prt_o_retardant_13:2
 
 
-; sakharov - parts for drugs
+; 17=20, insulated 
+[peregrine_parts_ins1]:peregrine_parts_pvc1
+give            = prt_o_retardant_17
+take            = prt_o_retardant_18:2,prt_o_retardant_19:2,prt_o_retardant_20:2
+sort_rank       = 6
+
+[peregrine_parts_ins2]:peregrine_parts_ins1
+give            = prt_o_retardant_18
+take            = prt_o_retardant_17:2,prt_o_retardant_19:2,prt_o_retardant_20:2
+
+[peregrine_parts_ins3]:peregrine_parts_ins1
+give            = prt_o_retardant_19
+take            = prt_o_retardant_18:2,prt_o_retardant_17:2,prt_o_retardant_20:2
+
+[peregrine_parts_ins4]:peregrine_parts_ins1
+give            = prt_o_retardant_20
+take            = prt_o_retardant_18:2,prt_o_retardant_19:2,prt_o_retardant_17:2
+
+; sakharov - redo, artifacts?
 [sakharov_parts]
 trader          = yan_stalker_sakharov
 type            = anyOf
@@ -112,23 +193,23 @@ desc            = st_sakharov_parts
 
 [sakharov_parts2]:sakharov_parts
 give            = drug_booster
-take            = mutant_part_heart_chimera,mutant_part_chimera_claw:2
+take            = mutant_part_heart_chimera,mutant_part_chimera_claw:2,mutant_part_chimera_kogot
 
 [sakharov_parts3]:sakharov_parts
-give            = medkit_scientic
+give            = drug_psy_blockade
 take            = mutant_part_controller_glass,mutant_part_controller_hand,mutant_part_burer_hand:2
-limit           = 2
+limit           = 4
 sort_rank       = 2
 
 [sakharov_parts4]:sakharov_parts
-give            = stimpack_scientic
+give            = medkit_scientic
 take            = mutant_part_controller_glass,mutant_part_controller_hand,mutant_part_burer_hand:2
 limit           = 1
 sort_rank       = 2
 
 [sakharov_parts5]:sakharov_parts
 give            = adrenalin
-take            = mutant_part_pseudogigant_hand,mutant_part_pseudogigant_eye,mutant_part_chimera_kogot
+take            = mutant_part_pseudogigant_hand,mutant_part_pseudogigant_eye
 limit           = 1
 sort_rank       = 3
 

@@ -33,7 +33,7 @@ sort_rank       = 10
 trader          = mil_smart_terrain_7_7_freedom_mechanic_stalker
 give            = sewing_kit_a
 take            = ied_new:2
-repeat          = fixed
+repeat          = restock
 limit           = 2
 desc            = st_screw_ied
 desc_done       = st_screw_ied_done
@@ -46,37 +46,51 @@ limit           = 3
 [screw_ied3]:screw_ied
 give            = heavy_repair_kit
 take            = ied_rpg_new:2,ied_new:2
+repeat          = fixed
+
+[screw_ied4]:screw_ied
+give            = heavy_sewing_thread
+take            = explo_metalcan_powder
+limit           = 5
+
+[screw_radio]
+trader          = mil_smart_terrain_7_7_freedom_mechanic_stalker
+give            = gun_oil_ru
+take            = radio,radio2,walkie
+repeat          = fixed
+limit           = 4
+desc            = st_screw_radio
+
+[screw_radio2]:screw_radio
+give            = solvent:1
 
 ; skinflint
 [skinflint_lottery] ; patches
 trader          = mil_smart_terrain_7_10_freedom_trader_stalker
 give            = ammo_5.56x45_fmj
-take            = monolith_patch:3
+take            = monolith_patch:4
 repeat          = restock
 limit           = 2
+sort_rank       = 2
 desc            = st_skinflint_lottery
 desc_done       = st_skinflint_lottery_done
 
 [skinflint_lottery2]:skinflint_lottery
 give            = ammo_7.62x51_fmj
-take            = monolith_patch:5
+take            = monolith_patch:6
 faction         = freedom
-goodwill        = 300
 
 [skinflint_lottery2a]:skinflint_lottery2
-give            = ammo_5.56x45_ap
-take            = monolith_patch:5
-goodwill        = 300
+give            = ammo_11.43x23_fmj
+take            = monolith_patch:3
 
 [skinflint_lottery3]:skinflint_lottery2
-give            = ammo_magnum_300
-take            = monolith_patch:8
-goodwill        = 500
+give            = ammo_357_hp_mag
+take            = monolith_patch:4
 
 [skinflint_lottery3a]:skinflint_lottery2
-give            = ammo_7.62x51_ap
-take            = monolith_patch:8
-goodwill        = 300
+give            = ammo_9x19_fmj
+take            = monolith_patch:2
 
 [skinflint_lottery4]:skinflint_lottery2
 give            = wpn_colt1911_modern
@@ -95,12 +109,12 @@ faction         = freedom
 goodwill        = 150
 
 [skinflint_lottery5]:skinflint_lottery4
-give            = wpn_vz61
+give            = wpn_fnx45
 take            = monolith_patch:15
 goodwill        = 300
 
 [skinflint_lottery5a]:skinflint_lottery4
-give            = wpn_mp5_custom
+give            = wpn_mp5sd
 take            = monolith_patch:15
 goodwill        = 300
 
@@ -110,12 +124,12 @@ take            = monolith_patch:30
 goodwill        = 500
 
 [skinflint_lottery7]:skinflint_lottery4
-give            = wpn_protecta_custom
+give            = wpn_protecta
 take            = monolith_patch:30
 goodwill        = 500
 
 [skinflint_lottery8]:skinflint_lottery4
-give            = wpn_scar_custom
+give            = wpn_scar
 take            = monolith_patch:50
 goodwill        = 800
 

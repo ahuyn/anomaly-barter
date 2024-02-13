@@ -9,28 +9,39 @@ desc            = st_dv_suits
 desc_done       = st_dv_suits_done
 
 [limpid_suit2]:limpid_suit
-precondition    = barter_core.pre_std
-precond_text    = barter_core.str_std
-give            = af_mincer_meat
+give            = af_blood
 take            = stalker_outfit
 faction         = bandit
 goodwill        = 200
 
 [limpid_suit3]:limpid_suit2
-give            = af_bracelet   
+give            = af_kislushka   
 take            = dolg_outfit
 faction         = bandit
 goodwill        = 300
 
-; bandit trader
+[limpid_gas]
+trader          = val_smart_terrain_7_3_bandit_mechanic_stalker
+give            = explo_jerrycan_fuel:3
+take            = vodka,vodka2,bottle_metal
+type            = anyOf
+repeat          = restock
+limit           = 3
+desc            = st_dv_gas
+
+[limpid_gas2]:limpid_gas
+give            = kerosene
+take            = vodka_quality
+
+; bandit trader, pistol ammo for suppressors
 [bandit_supp]
 trader          = val_smart_terrain_7_4_bandit_trader_stalker
 give            = wpn_kiparis
 take            = wpn_sil_9mm,wpn_sil_aps,wpn_sil_6p9
 repeat          = fixed
 limit           = 1
+sort_rank       = 2
 desc            = st_dv_silencer
-desc_done       = st_dv_suits_done
 
 [bandit_supp2]:bandit_supp
 give            = wpn_colt1911_custom
@@ -40,15 +51,50 @@ take            = wpn_sil_gemtech,wpn_sil_57,wpn_sil_45
 give            = wpn_ak74u
 take            = wpn_sil_pbs4,wpn_sil_pbs1,wpn_sil_tgp-a
 
+[bandit_supp4]:bandit_supp
+give            = wpn_sks
+take            = wpn_sil_atg,wpn_sil_nato
 
-; [bandit_drugs]
-; trader          = val_smart_terrain_7_4_bandit_trader_stalker
-; give            = 
-; take            = 
-; precondition    = barter_core.pre_std
-; precond_text    = barter_core.str_std
-; postcondition   = barter_core.post_std
-; repeat          = fixed
-; limit           = 1
-; desc            = st_dv_drugs
-; desc_done       = st_dv_suits_done
+[bandit_supp5]:bandit_supp
+give            = wpn_k98
+take            = wpn_sil_sr25,wpn_sil_9a91,wpn_sil_vihr
+
+[bandit_supp_scope]:bandit_supp
+give            = wpn_addon_scope_g43
+take            = wpn_sil_kzrzp
+
+
+[bandit_supp_ammo]
+trader          = val_smart_terrain_7_4_bandit_trader_stalker
+give            = ammo_9x18_fmj:2
+take            = wpn_sil_9mm,wpn_sil_aps,wpn_sil_6p9
+type            = anyOf
+repeat          = restock
+limit           = 4
+desc            = st_dv_silencer
+
+[bandit_supp_ammo2]:bandit_supp_ammo
+give            = ammo_7.62x39_fmj
+take            = wpn_sil_atg,wpn_sil_pbs1,wpn_sil_pbs4,wpn_sil_nato
+
+[bandit_supp_ammo3]:bandit_supp_ammo
+give            = ammo_7.92x33_fmj
+take            = wpn_sil_kzrzp,wpn_sil_sr25,wpn_sil_vihr,wpn_sil_9a91
+
+; bandit medic, drug swap
+
+[bandit_drugs]
+trader          = bandit_main_base_medic_mlr
+give            = stimpack_army
+take            = cocaine
+type            = anyOf
+repeat          = restock
+limit           = 3
+desc            = st_dv_drugs
+
+[bandit_drugs2]:bandit_drugs
+give            = drug_radioprotector
+take            = marijuana,joint:2
+[bandit_drugs3]:bandit_drugs
+give            = drug_antidot
+take            = marijuana,joint:2

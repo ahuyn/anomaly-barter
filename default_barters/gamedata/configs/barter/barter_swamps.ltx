@@ -40,9 +40,19 @@ limit           = 1
 
 
 [spore_kits]:spore_cleaning
-give            = cigar3:12
+give            = af_dummy_glassbeads
 take            = cleaning_kit_r7,cleaning_kit_r5
-limit           = 2
+type            = allOf
+repeat          = fixed
+limit           = 1
+
+[spore_kits2]:spore_kits
+give            = af_grapes
+take            = light_repair_kit:2
+
+[spore_kits3]:spore_kits
+give            = af_vyvert
+take            = toolkit_s:3
 
 [novikov_armor1]
 trader          = mar_base_stalker_tech

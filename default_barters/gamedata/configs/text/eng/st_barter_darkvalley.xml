@@ -1,22 +1,26 @@
 <?xml version="1.0" encoding="windows-1251"?>
 <string_table>
     
-    
     <string id="st_dv_suits">
-        <text>Listen, the boys are planning an ambush and we need to get our hands on some disguises. Come through for us and we'll share you the haul we got from our last robbery.</text>
+        <text>Listen, the boys are planning an ambush and we need to get our hands on some disguises. We have some artifacts we nabbed from wandering pigeons we can offer you.</text>
     </string>
     <string id="st_dv_suits_done">
         <text>Great! Here you go, as promised. Time to break out the old tailoring skills...</text>
     </string>
     
-    <string id="st_dv_drugs">
-        <text>We knocked off a medical box not too long ago from some eggheads. Give the boys something to psych them up for the next hit and we'll give you some of the goods.</text>
+    <string id="st_dv_gas">
+        <text>I managed to get the fuel station here working somehow. There's some kind of anomaly there that keeps replenishing the gas, but at a slow pace. Obviously, we can't drink gasoline, so we're willing to trade.</text>
     </string>
+
 
     <string id="st_dv_silencer">
         <text>Keeping things quiet for us is important, obviously. To that end we're willing to trade some of our stuff to get our hands on suppressors.</text>
     </string>
     
+    
+    <string id="st_dv_drugs">
+        <text>We have a variety of medicines here that we don't really need. Most of the boys won't risk their necks diving into anomaly fields. We'll trade what we have if you have other kinds of drugs.</text>
+    </string>
     
 
 

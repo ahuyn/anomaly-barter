@@ -12,6 +12,10 @@
     <string id="st_darkscape_gas">
         <text>There's a weird anomaly here. The fuel station never seems to run out. Sometimes it's empty, and then there's more the next day. Well, it keeps our lights on, at least, and we're happy to share.</text>
     </string>
+    
+    <string id="st_darkscape_food">
+        <text>The pigs here make for good eating. We're willing to share some food if you have ammo we can use to take them down.</text>
+    </string>
 
     <string id="st_darkscape_suit">
         <text>I have some ideas on how to upgrade and modify stalker suits. If you have any suits you want changed, bring them here and I'll see what I can do.</text>

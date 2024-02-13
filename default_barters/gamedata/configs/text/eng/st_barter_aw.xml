@@ -16,10 +16,14 @@
     </string>
     
     <string id="st_screw_ied">
-        <text>I'm planning on setting up a minefield around the Barrier. Those rock worshippers come through, they'll be blown to kingdom come! I'll take any explosives off your hands and give you something to fix your suit.</text>
+        <text>Keeping the Barrier entrance mined helps us keep the Monolith at bay, and also helps us deal with some of the nastier creatures that lurk here. I'll take any explosives off your hands and give you something to fix your suit.</text>
     </string>
     <string id="st_screw_ied_done">
-        <text>Sweet, these will do nicely.</text>
+        <text>Those rock worshippers won't know what hit em.</text>
+    </string>
+
+    <string id="st_screw_radio">
+        <text>We need spare radios to both maintain contact with our Barrier garrison as well as for jury-rigged remote explosives. If you have spare radios I'll trade you for them.</text>
     </string>
 
     <string id="st_screw_paint">

@@ -21,7 +21,7 @@ function print_dbg(msg, ...)
 -- printf("barter | %s | " .. msg, time_global(), ...)
     if get_config("debug") then
         dbg_log = dbg_log or mcm_log and mcm_log.new("DBG")
-        if false then --dbg_log then
+        if dbg_log then --dbg_log then
             dbg_log.enabled = true
             dbg_log:log( msg , ...)
         else

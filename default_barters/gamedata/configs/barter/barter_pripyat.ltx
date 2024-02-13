@@ -1,30 +1,125 @@
-; ; mercs
-; [meeker_wep1]
-; trader          = pri_special_trader_mlr
-; give            = wpn_colt1911_custom
-; take            = flask:9,mineral_water:4,tea:3
-; repeat          = fixed
-; limit           = 1
-; sort_rank       = 1
-; desc            = st_meeker_weapons
-; desc_done       = st_meeker_weapons_done
 
-; [meeker_wep2]:meeker_wep1
-; give            = wpn_g36
-; take            = tushonka:3,conserva:5
-; sort_rank       = 2
+; 1-6
+[yar_kevlar1]
+trader          = jup_b19_freedom_yar
+give            = prt_o_ballistic_1
+take            = prt_o_ballistic_2:2,prt_o_ballistic_3:2,prt_o_ballistic_4:2,prt_o_ballistic_5:2,prt_o_ballistic_6:2
+repeat          = restock
+type            = anyOf
+limit           = 2
+sort_rank       = 2
+desc            = st_yar_parts
 
-; [meeker_wep3]:meeker_wep1
-; give            = wpn_galil_modern
-; take            = mre,chili:4
-; sort_rank       = 2
+[yar_kevlar2]:yar_kevlar1
+give            = prt_o_ballistic_2
+take            = prt_o_ballistic_1:2,prt_o_ballistic_3:2,prt_o_ballistic_4:2,prt_o_ballistic_5:2,prt_o_ballistic_6:2
+[yar_kevlar3]:yar_kevlar1
+give            = prt_o_ballistic_3
+take            = prt_o_ballistic_2:2,prt_o_ballistic_1:2,prt_o_ballistic_4:2,prt_o_ballistic_5:2,prt_o_ballistic_6:2
+[yar_kevlar4]:yar_kevlar1
+give            = prt_o_ballistic_4
+take            = prt_o_ballistic_2:2,prt_o_ballistic_3:2,prt_o_ballistic_1:2,prt_o_ballistic_5:2,prt_o_ballistic_6:2
+[yar_kevlar5]:yar_kevlar1
+give            = prt_o_ballistic_5
+take            = prt_o_ballistic_2:2,prt_o_ballistic_3:2,prt_o_ballistic_4:2,prt_o_ballistic_1:2,prt_o_ballistic_6:2
+[yar_kevlar6]:yar_kevlar1
+give            = prt_o_ballistic_6
+take            = prt_o_ballistic_2:2,prt_o_ballistic_3:2,prt_o_ballistic_4:2,prt_o_ballistic_5:2,prt_o_ballistic_1:2
 
-; [meeker_wep4]:meeker_wep1
-; give            = wpn_l96a1m
-; take            = ration_ukr:12
-; sort_rank       = 3
+; 7, 8, 11, 12
+[yar_parts_k119]:yar_kevlar1
+give            = prt_o_ballistic_7
+take            = prt_o_ballistic_8:2,prt_o_ballistic_11:2,prt_o_ballistic_12:2
+sort_rank       = 3
+[yar_parts_k1192]:yar_parts_k119
+give            = prt_o_ballistic_8
+take            = prt_o_ballistic_7:2,prt_o_ballistic_11:2,prt_o_ballistic_12:2
+[yar_parts_k1193]:yar_parts_k119
+give            = prt_o_ballistic_11
+take            = prt_o_ballistic_8:2,prt_o_ballistic_7:2,prt_o_ballistic_12:2
+[yar_parts_k1194]:yar_parts_k119
+give            = prt_o_ballistic_12
+take            = prt_o_ballistic_8:2,prt_o_ballistic_11:2,prt_o_ballistic_7:2
 
-; ; loners
+; 9, 10, 13, 14, 17, 18
+[yar_parts_poly1]:yar_kevlar1
+give            = prt_o_ballistic_9
+take            = prt_o_ballistic_10:2,prt_o_ballistic_13:2,prt_o_ballistic_14:2,prt_o_ballistic_17:2,prt_o_ballistic_18:2
+sort_rank       = 4
+[yar_parts_poly2]:yar_parts_poly1
+give            = prt_o_ballistic_10
+take            = prt_o_ballistic_9:2,prt_o_ballistic_13:2,prt_o_ballistic_14:2,prt_o_ballistic_17:2,prt_o_ballistic_18:2
+[yar_parts_poly3]:yar_parts_poly1
+give            = prt_o_ballistic_13
+take            = prt_o_ballistic_10:2,prt_o_ballistic_9:2,prt_o_ballistic_14:2,prt_o_ballistic_17:2,prt_o_ballistic_18:2
+
+[yar_parts_poly4]:yar_parts_poly1
+give            = prt_o_ballistic_14
+take            = prt_o_ballistic_10:2,prt_o_ballistic_13:2,prt_o_ballistic_9:2,prt_o_ballistic_17:2,prt_o_ballistic_18:2
+
+[yar_parts_poly5]:yar_parts_poly1
+give            = prt_o_ballistic_17
+take            = prt_o_ballistic_10:2,prt_o_ballistic_13:2,prt_o_ballistic_14:2,prt_o_ballistic_9:2,prt_o_ballistic_18:2
+
+[yar_parts_poly6]:yar_parts_poly1
+give            = prt_o_ballistic_18
+take            = prt_o_ballistic_10:2,prt_o_ballistic_13:2,prt_o_ballistic_14:2,prt_o_ballistic_17:2,prt_o_ballistic_9:2
+
+; 15, 16, 19, 20
+[yar_parts_carbon]:yar_kevlar1
+give            = prt_o_ballistic_15
+take            = prt_o_ballistic_16:2,prt_o_ballistic_19:2,prt_o_ballistic_20:2
+sort_rank       = 5
+[yar_parts_carbon2]:yar_parts_carbon
+give            = prt_o_ballistic_16
+take            = prt_o_ballistic_15:2,prt_o_ballistic_19:2,prt_o_ballistic_20:2
+
+[yar_parts_carbon3]:yar_parts_carbon
+give            = prt_o_ballistic_19
+take            = prt_o_ballistic_16:2,prt_o_ballistic_15:2,prt_o_ballistic_20:2
+[yar_parts_carbon4]:yar_parts_carbon
+give            = prt_o_ballistic_20
+take            = prt_o_ballistic_16:2,prt_o_ballistic_19:2,prt_o_ballistic_15:2
+
+[yar_voyager]
+trader          = jup_b19_freedom_yar
+type            = allOf
+give            = wastelander_outfit
+take            = stalker_drought_outfit,af_grid,upgr_o_2_carry,synthrope,light_repair_kit:1
+repeat          = fixed
+limit           = 1
+sort_rank       = 10
+desc            = st_yar_suit
+
+
+
+;  mercs
+[meeker_wep1]
+trader          = pri_special_trader_mlr
+give            = wpn_colt1911_custom
+take            = flask,ammo_9x19_fmj:2,armor_repair_fa
+repeat          = fixed
+limit           = 1
+sort_rank       = 1
+desc            = st_meeker_weapons
+desc_done       = st_meeker_weapons_done
+
+[meeker_wep2]:meeker_wep1
+give            = wpn_g36
+take            = tushonka,sewing_kit_a:2,medkit_army,ammo_5.56x45_fmj:2
+sort_rank       = 2
+
+[meeker_wep3]:meeker_wep1
+give            = wpn_galil_modern
+take            = stimpack_army,jgut:2,af_plates,ammo_7.62x51_fmj:2
+sort_rank       = 2
+
+[meeker_wep4]:meeker_wep1
+give            = wpn_l96a1m
+take            = ration_ukr,leatherman_tool,ammo_9x39_ap:3
+sort_rank       = 3
+
+;  loners
 
 ; [cashier_scopes]
 ; trader          = trader_pri_a15_mlr

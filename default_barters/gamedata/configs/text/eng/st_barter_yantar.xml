@@ -20,6 +20,10 @@
         <text>I spend all day here tinkering with scientist equipment, and no one thought of bringing anything good to eat. Bring me something tasty and I'll share some equipment with you.</text>
     </string>
 
+    <string id="st_peregrine_parts">
+        <text>Want to swap outfit parts?</text>
+    </string>
+
     <string id="st_sakharov_parts">
         <text>As an unofficial part of the sample collection compensation program, I have put up for exchange a limited selection of our field medical supplies. Should you find yourself in possession of rare mutant samples, we will gladly exchange some of our medical items for them.</text>
     </string>

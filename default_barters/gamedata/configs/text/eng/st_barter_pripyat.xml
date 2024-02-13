@@ -9,7 +9,10 @@
     </string>
 
     <string id="st_yar_parts">
-        <text>This place is definitely no resort. Lots of our guys have been able to salvage some 'lightly used' Monolith weaponry. If you can get us resupplied, we can trade you these rifles.</text>
+        <text>Want to swap outfit parts?</text>
+    </string>
+    <string id="st_yar_suit">
+        <text>Hey, I can upgrade your suit if you want. I need a few parts, though.</text>
     </string>
     <string id="st_cashier_suits">
         <text>There's a lot of urban combat going on here. If you can get us optics, we'll trade some of our ammo.</text>
