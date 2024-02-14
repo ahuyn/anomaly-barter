@@ -1,5 +1,10 @@
 <?xml version="1.0" encoding="windows-1251"?>
 <string_table>
 
+    
+    <string id="st_forester_meds">
+        <text>I've gotten used to making my own medicine from the creatures of the Zone. The Swamp Doctor and I trade ideas and theories regularly. Stalkers here usually trade some medicine for my services, but I don't need it as much anymore.</text>
+    </string>
+    
 
 </string_table>
