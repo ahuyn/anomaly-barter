@@ -246,6 +246,10 @@ function build_string(name)
     return str
 end
 
+function safe_insert(tbl, itm) 
+    if itm then table.insert(tbl, itm) end
+end
+
 function str_any(name)
     if barters[name].type == "anyOf" then
         return gc("st_barter_anyOf")
@@ -286,18 +290,18 @@ function str_std(name)
     local str = {}
     
     if ini_barters:r_string_ex(name, "repeat") then
-        table.insert(str, str_limit(name))
+        safe_insert(str, str_limit(name))
     end
     if ini_barters:r_string_ex(name, "faction") then
-        table.insert(str, str_goodwill(name))
+        safe_insert(str, str_goodwill(name))
     end
     
     if ini_barters:r_string_ex(name, "has_info") then
-        table.insert(str, gc("st_barter_info"))
+        safe_insert(str, gc("st_barter_info"))
     end
 
     if barters[name].type == "anyOf" then
-        table.insert(str, gc("st_barter_anyOf"))
+        safe_insert(str, gc("st_barter_anyOf"))
     end
 
     return str
