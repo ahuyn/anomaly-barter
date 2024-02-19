@@ -91,13 +91,15 @@ limit           = 1
 sort_rank       = 10
 desc            = st_yar_suit
 
+; cashier
+
 
 
 ;  mercs
 [meeker_wep1]
 trader          = pri_special_trader_mlr
 give            = wpn_colt1911_custom
-take            = flask,ammo_9x19_fmj:2,armor_repair_fa
+take            = flask,ammo_9x19_fmj:4,armor_repair_fa
 repeat          = fixed
 limit           = 1
 sort_rank       = 1
@@ -106,18 +108,45 @@ desc_done       = st_meeker_weapons_done
 
 [meeker_wep2]:meeker_wep1
 give            = wpn_g36
-take            = tushonka,sewing_kit_a:2,medkit_army,ammo_5.56x45_fmj:2
+take            = tushonka,sewing_kit_a:2,medkit_army,ammo_5.56x45_fmj:4
 sort_rank       = 2
 
 [meeker_wep3]:meeker_wep1
 give            = wpn_galil_modern
-take            = stimpack_army,jgut:2,af_plates,ammo_7.62x51_fmj:2
+take            = stimpack_army,jgut:2,af_plates,ammo_7.62x51_fmj:4
 sort_rank       = 2
 
 [meeker_wep4]:meeker_wep1
 give            = wpn_l96a1m
-take            = ration_ukr,leatherman_tool,ammo_9x39_ap:3
+take            = ration_ukr,leatherman_tool,ammo_9x39_ap:4
 sort_rank       = 3
+
+;pri_a18_mech_mlr
+[trunk_ammo]
+trader          = merc_pri_a18_mech_mlr
+give            = ammo_9x18_ap
+take            = ammo_9x19_fmj
+repeat          = restock
+limit           = 10
+sort_rank       = 1
+desc            = st_trunk_ammo
+
+[trunk_ammo2]:trunk_ammo
+give            = ammo_5.7x28_ss190
+take            = ammo_9x19_ap
+
+[trunk_ammo3]:trunk_ammo
+give            = ammo_7.62x39_fmj
+take            = ammo_5.56x45_fmj
+
+[trunk_ammo4]:trunk_ammo
+give            = grenade_f1
+take            = ammo_m209
+
+[trunk_ammo5]:trunk_ammo
+give            = ammo_12.7x55_fmj
+take            = ammo_magnum_300
+limit           = 3
 
 ;  loners
 

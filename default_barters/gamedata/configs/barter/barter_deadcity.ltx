@@ -1,0 +1,100 @@
+; cit_killers_merc_trader_stalker
+
+
+
+; cit_killers_merc_barman_mlr, artifact trade
+[aslan_arti]
+trader          = cit_killers_merc_barman_mlr
+give            = af_fuzz_kolobok
+take            = af_moh,af_kogot,af_eye
+type            = anyOf
+repeat          = fixed
+limit           = 1
+desc            = st_aslan_arty
+
+[aslan_arti2]:aslan_arti
+give            = af_fonar
+take            = af_elektron,af_dummy_battery,af_ring
+
+[aslan_arti3]:aslan_arti
+give            = af_glass
+take            = af_cristall_flower,af_kislushka,af_moonlight
+
+[aslan_arti4]:aslan_arti
+give            = af_star_phantom
+take            = af_sun,af_electra_flash,af_itcher
+
+; cit_killers_merc_medic_stalker
+[surgeon_meds]
+trader          = cit_killers_merc_medic_stalker
+give            = ammo_5.56x45_fmj
+take            = drug_radioprotector
+repeat          = restock
+limit           = 4
+desc            = st_surgeon_ammo
+
+[surgeon_meds2]:surgeon_meds
+give            = ammo_5.56x45_ap
+take            = drug_booster
+[surgeon_meds3]:surgeon_meds
+give            = ammo_11.43x23_hydro
+take            = drug_coagulant
+[surgeon_meds4]:surgeon_meds
+give            = ammo_5.7x28_ss190
+take            = drug_sleepingpills
+[surgeon_meds5]:surgeon_meds
+give            = ammo_5.7x28_ss195
+take            = antibio_chlor
+[surgeon_meds6]:surgeon_meds
+give            = ammo_7.62x51_ap
+take            = drug_psy_blockade
+
+; cit_killers_merc_mechanic_stalker
+
+[hog_attachment]
+trader          = cit_killers_merc_mechanic_stalker
+give            = sewing_kit_b
+take            = af_surge,af_freon,af_cooler
+type            = anyOf
+repeat          = restock
+limit           = 4
+desc            = st_hog_attachment
+
+[hog_attachment2]:hog_attachment
+give            = glue_e
+
+[hog_attachment3]:hog_attachment
+give            = toolkit_r5
+take            = af_aac
+limit           = 1
+
+[hog_attachment4]:hog_attachment
+give            = toolkit_r7
+take            = af_aam
+limit           = 1
+
+[hog_detectors]
+trader          = cit_killers_merc_mechanic_stalker
+give            = steel_wool
+take            = broken_detector
+type            = allOf
+repeat          = restock
+limit           = 6
+sort_rank       = 2
+desc            = st_hog_attachment
+
+[hog_detectors2]:hog_detectors
+give            = grenade_f1:2
+take            = detector_simple
+
+[hog_detectors3]:hog_detectors
+give            = medium_repair_kit:2
+take            = detector_advanced
+limit           = 3
+
+[hog_detectors4]:hog_detectors
+give            = merc_coyote_outfit
+take            = detector_elite
+repeat          = fixed
+limit           = 1
+sort_rank       = 3

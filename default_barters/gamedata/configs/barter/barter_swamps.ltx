@@ -13,11 +13,11 @@ desc_done       = st_spore_weapons_done
 
 [spore_mp133]:spore_mosin
 give            = wpn_mp133
-take            = equ_small_pack,detector_geiger
+take            = equ_small_pack,detector_geiger,itm_sleepbag
 
 [spore_type63]:spore_mosin
 give            = wpn_type63
-take            = itm_backpack,cooking,matches
+take            = itm_backpack,cooking,matches,lead_box
 
 [spore_cleaning]
 trader          = mar_base_owl_stalker_trader
@@ -57,7 +57,7 @@ take            = toolkit_s:3
 [novikov_armor1]
 trader          = mar_base_stalker_tech
 give            = cs_stalker_outfit
-take            = cs_novice_outfit:1,af_kevlar:1,boots:1,sewing_thread:2,prt_o_fabrics_2:2
+take            = cs_novice_outfit,af_kevlar,boots,sewing_thread:6,prt_o_fabrics_2:2
 repeat          = fixed
 limit           = 1
 give_info       = novikov_armor1
@@ -77,14 +77,14 @@ desc            = st_novikov_2a
 
 [novikov_armor2b]:novikov_armor2a
 give            = cs_medium_outfit
-take            = cs_stalker_outfit:1,af_plates:1,synthrope:2,medium_repair_kit:1,prt_o_fabrics_4:1
+take            = cs_stalker_outfit,af_plates,synthrope:2,medium_repair_kit:1,prt_o_fabrics_4
 desc            = st_novikov_2b
 
 [novikov_armor2c]:novikov_armor2a
 precondition    = barter_core.pre_std,barter_core.check_toolkit3
 precond_text    = barter_core.str_std,barter_core.str_toolkit3
 give            = cs_stalker_proto_exo_outfit
-take            = cs_stalker_outfit,prt_o_support_1,heavy_sewing_thread:1,prt_i_copper:2,exo_repair_kit:1,vodka
+take            = cs_stalker_outfit,prt_o_support_1,heavy_sewing_thread,prt_i_copper:2,exo_repair_kit:1,vodka
 goodwill        = 400
 desc            = st_novikov_2c
 
@@ -100,12 +100,12 @@ desc            = st_novikov_3a
 
 [novikov_armor_3b]:novikov_armor_3a
 give            = cs_heavy_outfit
-take            = cs_medium_outfit:1,heavy_sewing_thread:1,prt_o_ballistic_2:1,prt_o_fabrics_4:2,af_kevlar,gloves
+take            = cs_medium_outfit,heavy_sewing_thread,prt_o_ballistic_2,prt_o_fabrics_4:2,af_kevlar,gloves
 desc            = st_novikov_3b
 
 [novikov_armor_4a]:novikov_armor_3a
 give            = military_sky_outfit
-take            = cs_heavy_outfit:1,heavy_repair_kit:1,prt_o_ballistic_2:1,prt_o_retardant_15:1,prt_o_fabrics_4:2,af_kevlar_up:1
+take            = cs_heavy_outfit,heavy_repair_kit:1,prt_o_ballistic_2,prt_o_retardant_15,prt_o_fabrics_4:2,af_kevlar_up
 goodwill        = 600
 has_info        = novikov_armor3
 give_info       = novikov_armor4
@@ -115,7 +115,7 @@ desc            = st_novikov_4a
 precondition    = barter_core.pre_std,barter_core.check_toolkit3
 precond_text    = barter_core.str_std,barter_core.str_toolkit3
 give            = cs_exolight_outfit
-take            = cs_heavy_outfit:1,af_plates_up:1,heavy_repair_kit:2,prt_o_ballistic_6:1,prt_o_ballistic_15:1,heavy_sewing_thread:1
+take            = cs_heavy_outfit,af_plates_up,heavy_repair_kit:2,prt_o_ballistic_6,prt_o_ballistic_15,heavy_sewing_thread
 goodwill        = 800
 desc            = st_novikov_4b
 
@@ -123,7 +123,7 @@ desc            = st_novikov_4b
 precondition    = barter_core.pre_std,barter_core.check_toolkit3
 precond_text    = barter_core.str_std,barter_core.str_toolkit3
 give            = cs_scientific_outfit_good
-take            = cs_scientific_outfit:1,medium_repair_kit:2,af_cristall_flower_af_iam,af_electra_sparkler_af_iam,kerosene:1
+take            = cs_scientific_outfit,medium_repair_kit:2,af_cristall_flower_af_iam,af_electra_sparkler_af_iam,kerosene
 goodwill        = 1000
 has_info        = novikov_armor4
 desc            = st_novikov_5a
@@ -137,19 +137,16 @@ desc            = st_novikov_5b
 ; librarian fuel
 [librarian_gas]
 trader          = mar_base_stalker_barmen
-precondition    = barter_core.pre_std
-precond_text    = barter_core.str_std,barter_core.str_any
-postcondition   = barter_core.post_std
 type            = anyOf
 give            = explo_balon_gas:2
-take            = mutant_part_dog_meat:2,mutant_part_psevdodog_meat:1
+take            = mutant_part_dog_meat:2,mutant_part_psevdodog_meat
 repeat          = restock
 limit           = 3
 desc            = st_librarian_fuel
 desc_done       = st_librarian_fuel_done
 
 [librarian_gas2]:librarian_gas
-give            = explo_jerrycan_fuel:4
+give            = explo_balon_gas:4
 take            = mutant_part_flesh_meat:2,mutant_part_boar_chop:2
 
 
@@ -176,4 +173,4 @@ take            = antibio_chlor:2,antibio_sulfad:6,tetanus
 
 [kalancha_medicine_arty]:kalancha_medicine
 give            = af_surge
-take            = antibio_chlor:2,antibio_sulfad:6,tetanus:1
+take            = antibio_chlor:2,antibio_sulfad:6,tetanus

@@ -17,6 +17,9 @@
     <string id="st_barman_fuel">
         <text>We have plenty of food, but we're running out of fuel to cook and keep the generators on. If you can bring some to me, I'll give you some goods.</text>
     </string>
+    <string id="st_barman_artifacts">
+        <text>I broker an exchange for stalkers who wish to trade equipment for artifacts. If you possess any of the requested artifacts I'll put you in touch with the interested parties.</text>
+    </string>
     
     <string id="st_asp_smokes">
         <text>Got anything to smoke?</text>

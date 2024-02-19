@@ -1,18 +1,21 @@
 <?xml version="1.0" encoding="windows-1251"?>
 <string_table>
-    <string id="st_hog_repair">
-        <text>Turns out we are...not really prepared for the Zone's conditions. For some reason, I don't know what, our weapons keep malfunctioning and they get dirty really fast. Can you bring us some cleaning kits? We'll give you something else in exchange.</text>
+    <string id="st_hog_attachment">
+        <text>Some Ecologists and enterprising stalkers have supposedly developed devices that help them navigate anomaly fields more safely and effectively. I can offer some useful supplies in exchange.</text>
+    </string>
+    <string id="st_hog_detectors">
+        <text>Have you seen those artifact detectors those stalkers are using? I need a few samples so I can try and reverse engineer or fix them. Whatever you bring, I'll reward you.</text>
     </string>
     <string id="st_hog_repair_done">
         <text>That'll help us, thank you.</text>
     </string>
 
-    
-    <string id="st_aslan_lottery">
-        <text>We.</text>
+    <string id="st_surgeon_ammo">
+        <text>Good medical supplies here are short. Lots of guys don't know what to expect with anomalies and come back with chemical burns, broken bones, stuff like that. Whatever we can get to treat this stuff we'll take.</text>
     </string>
-    <string id="st_aslan_lottery_done">
-        <text>.</text>
+    
+    <string id="st_aslan_arty">
+        <text>Hi, you. Some of our other contractors can't find the exact artifacts they need, though they have been able to 'source' other artifacts. I'm overseeing the exchange to help us scratch each other's backs.</text>
     </string>
 
 </string_table>

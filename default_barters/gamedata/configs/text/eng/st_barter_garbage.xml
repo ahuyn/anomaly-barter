@@ -38,8 +38,8 @@
         <text>Got some junk you don't need? You came to the right place.</text>
     </string>
     
-    <string id="st_flea_artifacts">
-        <text>Looking to swap artifacts? You came to the right place.</text>
+    <string id="st_flea_ammo">
+        <text>Got any artifacts? I've got some stuff that'll make it worth your while...</text>
     </string>
     
 </string_table>

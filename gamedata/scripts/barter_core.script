@@ -302,6 +302,8 @@ function str_std(name)
 
     if barters[name].type == "anyOf" then
         safe_insert(str, gc("st_barter_anyOf"))
+    else
+        safe_insert(str, gc("st_barter_allOf"))
     end
 
     return str

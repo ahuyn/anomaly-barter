@@ -128,3 +128,17 @@ take            = upgr_optical_1:2,upgr_internal_1:2
 [flea_upgr_optical]:flea_upgr_internal
 give            = upgr_optical_1
 take            = upgr_external_1:2,upgr_internal_1:2
+
+[flea_ammo] ; artifacts for good ammo
+trader          = baraholka_trader_night
+give            = ammo_9x19_ap:6
+take            = af_medallion,af_medusa,af_ear,af_grapes,af_dummy_glassbeads
+repeat          = restock
+type            = anyOf
+limit           = 5
+desc            = st_flea_ammo
+
+[flea_ammo2]:flea_ammo
+give            = ammo_9x19_ap_bad:4
+take            = af_medallion,af_medusa,af_ear,af_grapes,af_dummy_glassbeads
+addon           = arti_ballistics

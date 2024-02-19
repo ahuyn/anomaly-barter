@@ -8,6 +8,10 @@
         <text>Thanks. Now get out.</text>
     </string>
 
+    <string id="st_trunk_ammo">
+        <text>There's no shortage of Monolith here we can scavenge for supplies here and there. Like I said, though, not all their ammo is compatible with our equipment. I can exchange some of what we found for what we actually need.</text>
+    </string>
+
     <string id="st_yar_parts">
         <text>Want to swap outfit parts?</text>
     </string>
