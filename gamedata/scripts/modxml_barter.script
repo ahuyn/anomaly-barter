@@ -1,0 +1,28 @@
+function on_xml_read()
+    RegisterScriptCallback("on_xml_read", function(xml_file_name, xml_obj)
+        -- XML file i want to change
+        local xml_to_change = [[gameplay\dialogs.xml]]
+
+        -- Check if its the file i want to change
+        if xml_file_name == xml_to_change then
+            -- Here is my code to change XML
+            local barter_dialog = 
+[[
+    
+    <dialog id="dm_init_barter">
+        <phrase_list>
+            <phrase id="0">
+                <text>st_barter_init</text>
+                <next>1</next>
+            </phrase>
+            <phrase id="1"> <!-- npc -->
+                <script_text>dialogs.st_trader_dialog_reply</script_text>
+                <action>barter_ui.start</action>
+            </phrase>
+        </phrase_list>
+    </dialog>
+]]
+            xml_obj:insertFromXMLString(barter_dialog)
+        end
+    end)
+end

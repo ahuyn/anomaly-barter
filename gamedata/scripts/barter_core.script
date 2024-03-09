@@ -42,7 +42,17 @@ function get_desc(name)
 end
 
 function npc_has_barter(npc)
-    local name = npc and npc:section() or ""
+    local name = ""
+    if type(npc) == "string" then
+        -- two cases for sid and forester
+        if npc == "esc_2_12_stalker_trader" then name = "m_trader" 
+        elseif npc == "red_forester_tech" then name = "m_lesnik" 
+        else
+            name = npc
+        end
+    else
+        name = npc and npc:section() or ""
+    end
     return trader_to_barter[name] and not is_empty(trader_to_barter[name])
 end
 
@@ -112,6 +122,7 @@ end
 
 -- get barter list with data on each barter
 function get_barter_list(npc, random)
+    printf("Checking barters for %s", npc:section())
     if not npc_has_barter(npc) then return {} end
     local name = npc:section()
     print_dbg("Fetching list for %s", npc:character_name())
@@ -641,13 +652,11 @@ local function load_state(mdata)
 end
 
 
-function actor_on_first_update()
-    validate_barters()
-end
 
 function on_game_start()
     RegisterScriptCallback("save_state",save_state)
     RegisterScriptCallback("load_state",load_state)
     RegisterScriptCallback("actor_on_first_update", actor_on_first_update)
     RegisterScriptCallback("trader_on_restock", trader_on_restock)
+    validate_barters()
 end

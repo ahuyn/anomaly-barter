@@ -39,6 +39,10 @@
         <text>condition: %</text>
     </string>
 
+    <string id="st_barter_init">
+        <text>Want to trade for anything? %c[orange][Barter]</text>
+    </string>
+
     <string id="st_barter_restock">
         <text>(refreshed on restock)</text>
     </string>
