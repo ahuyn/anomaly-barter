@@ -1,19 +1,23 @@
 -- cache all existing barters, source of truth
-barters = {}
+barters                     = {}
 -- list of all barters associated with trader (array index)
-trader_to_barter = {}
+trader_to_barter            = {}
 -- track existing data when it comes to barters that have been partially completed n such, need to be reloaded, etc
-barter_mdata = {
+barter_mdata                = {
     fixed = {}, -- limited
     restock = {}, -- resets on restock
     give_items = {} -- locks the current give item if there is a pool
 }
 
-local ini_barters = ini_file("barter\\importer.ltx")
-ini_parts = itms_manager.ini_parts
-gc = game.translate_string
-get_config = barter_mcm.get_config
+ini_barters                 = ini_file("barter\\importer.ltx")
+ini_parts                   = itms_manager.ini_parts
+gc                          = game.translate_string
+get_config                  = barter_mcm.get_config
 
+assert(AddScriptCallback, "Anomaly 1.5.2 is required")
+AddScriptCallback("barter_ui_on_before_dialog")
+AddScriptCallback("barter_ui_on_barter_ask")
+AddScriptCallback("barter_ui_on_barter_answer")
 
 local dbg_log
 function print_dbg(msg, ...)
@@ -643,20 +647,75 @@ local function validate_barters()
     end)
 end
 
-local function save_state(mdata) 
+function save_state(mdata)
 	mdata.barter_mdata = barter_mdata
 end
 
-local function load_state(mdata) 
+function load_state(mdata)
 	barter_mdata = mdata.barter_mdata or {}
 end
 
+-- ---------------------------------------------------------------------------------------------------------------------
+-- Dialog functions
+-- ---------------------------------------------------------------------------------------------------------------------
 
+--- Function used to add the barter dialog to NPCs.
+--- @param character_id string
+--- @param dialog_list userdata
+--- @return nil
+function on_specific_character_dialog_list(character_id, dialog_list)
+    if npc_has_barter(character_id) then
+        dialog_list:add("dm_init_barter", 2)
+    end
+end
 
+--- Function used to check if the NPC should show the barter dialog to the player.
+--- @param actor game_object
+--- @param npc game_object
+--- @param dialog_id number
+--- @return boolean
+function cond_barter_dialog(actor, npc, dialog_id)
+    local flags = { result = true }
+    SendScriptCallback("barter_ui_on_before_dialog", npc, flags)
+    return flags.result
+end
+
+--- Function used to get the text to display in the dialog when the player asks to be guided.
+--- The call to get_speaker(true) is a hack because the engine does not properly sends the arguments to this
+--- function when script_text is used on the first <phrase> node of a dialog.
+--- The nil check on top of that is yet another hack since this function is sometimes called AFTER exiting a dialog.
+--- @param actor game_object
+--- @param npc game_object
+--- @return string
+function st_barter_ask(actor, npc)
+    npc = get_speaker()
+    local flags = { result = "st_barter_init" }
+    if npc then
+        SendScriptCallback("barter_ui_on_barter_ask", npc, flags)
+    end
+    return flags.result
+end
+
+--- Function used to get the answer of the NPC when the player asks to barter.
+--- @param npc game_object
+--- @param actor game_object
+--- @return string
+function st_barter_answer(npc, actor)
+    local flags = { result = dialogs.st_trader_dialog_reply(npc, actor) }
+    SendScriptCallback("barter_ui_on_barter_answer", npc, flags)
+    return flags.result
+end
+
+-- ---------------------------------------------------------------------------------------------------------------------
+-- Callbacks registration
+-- ---------------------------------------------------------------------------------------------------------------------
+
+--- Function used to register callbacks.
+--- @return nil
 function on_game_start()
-    RegisterScriptCallback("save_state",save_state)
-    RegisterScriptCallback("load_state",load_state)
-    RegisterScriptCallback("actor_on_first_update", actor_on_first_update)
+    RegisterScriptCallback("save_state", save_state)
+    RegisterScriptCallback("load_state", load_state)
     RegisterScriptCallback("trader_on_restock", trader_on_restock)
+    RegisterScriptCallback("on_specific_character_dialog_list", on_specific_character_dialog_list)
     validate_barters()
 end
