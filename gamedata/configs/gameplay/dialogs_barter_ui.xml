@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="windows-1251" ?>
+<game_dialogs>
+
+    <dialog id="dm_init_barter">
+        <precondition>barter_core.cond_barter_dialog</precondition>
+        <phrase_list>
+            <phrase id="0"> <!-- actor -->
+                <script_text>barter_core.st_barter_ask</script_text>
+                <next>1</next>
+            </phrase>
+            <phrase id="1"> <!-- npc -->
+                <script_text>barter_core.st_barter_answer</script_text>
+                <action>barter_ui.start</action>
+                <action>dialogs.break_dialog</action>
+            </phrase>
+        </phrase_list>
+    </dialog>
+
+</game_dialogs>
