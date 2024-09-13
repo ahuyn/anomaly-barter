@@ -11,7 +11,7 @@
             <phrase id="1"> <!-- npc -->
                 <script_text>barter_core.st_barter_answer</script_text>
                 <action>barter_ui.start</action>
-                <action>dialogs.break_dialog</action>
+                <!-- <action>dialogs.break_dialog</action> -->
             </phrase>
         </phrase_list>
     </dialog>
